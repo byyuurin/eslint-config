@@ -1,6 +1,6 @@
 {
   "name": "@byyuurin/eslint-config-vue",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "index.js",
   "files": [
     "index.js"
@@ -10,7 +10,7 @@
     "eslint": "^8.4.0"
   },
   "dependencies": {
-    "@byyuurin/eslint-config-typescript": "^0.0.0",
+    "@byyuurin/eslint-config-typescript": "^0.0.1",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^8.0.0",
     "eslint-plugin-vue": "^7.20.0"

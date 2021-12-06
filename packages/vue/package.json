@@ -1,0 +1,21 @@
+{
+  "name": "@byyuurin/eslint-config-vue",
+  "version": "0.0.0",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.4.0"
+  },
+  "dependencies": {
+    "@byyuurin/eslint-config-typescript": "^0.0.0",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/eslint-config-typescript": "^8.0.0",
+    "eslint-plugin-vue": "^7.20.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

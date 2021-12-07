@@ -7,7 +7,7 @@
   ],
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^8.4.0"
+    "eslint": "^8.4.1"
   },
   "dependencies": {
     "@byyuurin/eslint-config-vue": "^0.0.1"

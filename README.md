@@ -8,7 +8,7 @@
 ### 安裝
 
 ```ssh
-pnpm i -D eslint git+https://github.com/byyuurin/eslint-config
+pnpm i -D eslint @byyuurin/eslint-config
 ```
 
 ### 設定 `.eslintrc`

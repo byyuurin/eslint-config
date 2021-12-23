@@ -5,9 +5,9 @@
 
 ## 使用方式
 
-### 安裝
+### 安裝開發依賴
 
-```ssh
+```bash
 pnpm i -D eslint @byyuurin/eslint-config
 ```
 
@@ -21,28 +21,37 @@ pnpm i -D eslint @byyuurin/eslint-config
 
 ### 設定 `.eslintignore`
 
+例:
+
 ```
 dist
 public
 ```
 
-### 在 package.json 新增執行指令
+### 在 `package.json` 新增執行指令
 
 例:
 
 ```json
 {
   "scripts": {
-    "lint": "eslint \"**/*.{vue,ts,js}\""
+    // 檢查
+    "lint": "eslint \"**/*.{vue,ts,js}\"",
+
+    // 檢查並修正
+    "lint:fix": "eslint \"**/*.{vue,ts,js}\" --fix"
   }
 }
 ```
 
-### 啟用 Visual Studio Code 自動修正功能
+### 在 `.vscode/settings.json` 新增以下設定
 
 ```json
 {
+  // 不管是否有安裝 prettier 擴充功能都建議加上此設定以避免規則衝突
   "prettier.enable": false,
+
+  // 啟用 Visual Studio Code 自動修正功能
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   }

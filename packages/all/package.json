@@ -1,6 +1,6 @@
 {
   "name": "@byyuurin/eslint-config",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "index.js",
   "files": [
     "index.js"
@@ -10,7 +10,7 @@
     "eslint": "^8.5.0"
   },
   "dependencies": {
-    "@byyuurin/eslint-config-vue": "^0.0.4"
+    "@byyuurin/eslint-config-vue": "^0.0.5"
   },
   "publishConfig": {
     "access": "public"

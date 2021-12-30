@@ -63,7 +63,7 @@ public
 
 ### 開發備忘
 
-1. 要透過 lerna 發布, 必須將package.json中的 `^0.0.0` 取代為 `^0.0.0`
+1. 要透過 lerna 發布, 必須將package.json中的 `workspace:^0.0.0` 取代為 `^0.0.0`
 
 ```bash
 # 安裝依賴至指定 package 中, {name} 必須與 package.json 中的 name 一致

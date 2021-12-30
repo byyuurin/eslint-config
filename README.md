@@ -1,14 +1,17 @@
 # @byyuurin/eslint-config
 
-1. 參考[此文章](https://zhuanlan.zhihu.com/p/373935751)並實作
-2. 參考[此專案](https://github.com/antfu/eslint-config)結構
+> ESLint config for TypeScript project
+
+1. 參考 [此文章](https://zhuanlan.zhihu.com/p/373935751) 並實作
+2. 參考 [此專案](https://github.com/antfu/eslint-config) 結構
+3. 搭配 [此模板](https://github.com/byyuurin/vscode-blueprint-templates) 產生基本設定檔
 
 ## 使用方式
 
 ### 安裝開發依賴
 
 ```bash
-pnpm i -D eslint @byyuurin/eslint-config
+pnpm i -D typescript eslint @byyuurin/eslint-config
 ```
 
 ### 設定 `.eslintrc`

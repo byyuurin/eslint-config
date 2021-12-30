@@ -1,4 +1,12 @@
 module.exports = {
+  overrides: {
+    files: ['*.ts'],
+    rules: {
+      'no-undef': 'off',
+      'no-unused-vars': 'off'
+    }
+  },
+
   extends: [
     'plugin:@typescript-eslint/recommended',
     '@byyuurin/eslint-config-basic',
@@ -10,7 +18,6 @@ module.exports = {
   plugins: ['@typescript-eslint'],
 
   rules: {
-    'no-undef': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off'

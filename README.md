@@ -1,10 +1,10 @@
 # @byyuurin/eslint-config
 
 > ESLint config for TypeScript project
-
-1. 參考 [此文章](https://zhuanlan.zhihu.com/p/373935751) 並實作
-2. 參考 [此專案](https://github.com/antfu/eslint-config) 結構
-3. 搭配 [此模板](https://github.com/byyuurin/vscode-blueprint-templates) 產生基本設定檔
+1. 參考 [lerna — JS package 管理工具](https://medium.com/lion-f2e/lerna-js-package-%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7-e9ed360d1143)
+1. 參考 [使用 pnpm 构建 Monorepo 项目](https://zhuanlan.zhihu.com/p/373935751)
+2. 參考 [@antfu/eslint-config](https://github.com/antfu/eslint-config) 結構
+3. 可搭配 [模板](https://github.com/byyuurin/vscode-blueprint-templates) 產生基本設定檔
 
 ## 使用方式
 
@@ -59,4 +59,13 @@ public
     "source.fixAll.eslint": true
   }
 }
+```
+
+### 開發備忘
+
+1. 要透過 lerna 發布, 必須將package.json中的 `^0.0.0` 取代為 `^0.0.0`
+
+```bash
+# 安裝依賴至指定 package 中, {name} 必須與 package.json 中的 name 一致
+pnpm i ... --filter {name}
 ```

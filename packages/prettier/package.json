@@ -1,5 +1,5 @@
 {
-  "name": "@byyuurin/eslint-config",
+  "name": "@byyuurin/eslint-config-prettier",
   "version": "0.0.3",
   "main": "index.js",
   "files": [
@@ -10,7 +10,8 @@
     "eslint": "^8.5.0"
   },
   "dependencies": {
-    "@byyuurin/eslint-config-vue": "^0.0.3"
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.5.1"
   },
   "publishConfig": {
     "access": "public"

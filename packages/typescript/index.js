@@ -1,5 +1,13 @@
 module.exports = {
-  extends: ['@byyuurin/eslint-config-basic', 'plugin:@typescript-eslint/recommended'],
+  extends: [
+    'plugin:@typescript-eslint/recommended',
+    '@byyuurin/eslint-config-basic',
+    '@byyuurin/eslint-config-prettier'
+  ],
+
+  parser: '@typescript-eslint/parser',
+
+  plugins: ['@typescript-eslint'],
 
   rules: {
     'no-undef': 'off',

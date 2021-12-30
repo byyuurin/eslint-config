@@ -1,4 +1,14 @@
 module.exports = {
+  overrides: [
+    {
+      files: ['*.vue'],
+      parser: 'vue-eslint-parser',
+      parserOptions: {
+        parser: '@typescript-eslint/parser'
+      }
+    }
+  ],
+
   extends: [
     'plugin:vue/vue3-recommended',
     '@vue/typescript/recommended',
@@ -6,12 +16,6 @@ module.exports = {
     '@vue/prettier/@typescript-eslint',
     '@byyuurin/eslint-config-typescript'
   ],
-
-  parser: 'vue-eslint-parser',
-
-  parserOptions: {
-    parser: '@typescript-eslint/parser'
-  },
 
   rules: {
     'vue/script-setup-uses-vars': 'error',

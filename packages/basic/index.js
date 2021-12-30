@@ -5,28 +5,9 @@ module.exports = {
     browser: true
   },
 
-  extends: ['eslint:recommended'],
+  extends: 'eslint:recommended',
 
   rules: {
-    // es6
-    'no-var': 'error',
-
-    // prettier
-    'prettier/prettier': [
-      'warn',
-      {
-        tabWidth: 2,
-        printWidth: 120,
-        useTabs: false,
-        semi: false,
-        singleQuote: true,
-        bracketSpacing: true,
-        arrowParens: 'always',
-        trailingComma: 'none',
-        stylelintIntegration: true,
-        eslintIntegration: true,
-        wrapAttributes: 'force-aligned'
-      }
-    ]
+    'no-var': 'error'
   }
 }

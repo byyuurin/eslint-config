@@ -1,12 +1,13 @@
 module.exports = {
-  overrides: {
-    files: ['*.ts'],
-    rules: {
-      'no-undef': 'off',
-      'no-unused-vars': 'off'
+  overrides: [
+    {
+      files: ['*.ts'],
+      rules: {
+        'no-undef': 'off',
+        'no-unused-vars': 'off'
+      }
     }
-  },
-
+  ],
   extends: [
     'plugin:@typescript-eslint/recommended',
     '@byyuurin/eslint-config-basic',

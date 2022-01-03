@@ -8,7 +8,7 @@
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "lint": "npx eslint --ext .js,.json,.vue --fix .",
+    "lint": "eslint \"**/*.test.{ts,js,vue}\"",
     "release": "lerna publish"
   },
   "license": "ISC",

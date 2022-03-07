@@ -6,7 +6,8 @@
     "postinstall": "node postinstall.js"
   },
   "files": [
-    "index.js"
+    "index.js",
+    "postinstall.js"
   ],
   "license": "ISC",
   "devDependencies": {

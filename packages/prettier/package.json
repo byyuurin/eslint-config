@@ -14,10 +14,10 @@
     "eslint": "^8.10.0"
   },
   "dependencies": {
+    "@byyuurin/eslint-config-basic": "^0.2.2",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^3.4.1",
-    "prettier": "^2.5.1",
-    "shared": "link:shared"
+    "prettier": "^2.5.1"
   },
   "publishConfig": {
     "access": "public"

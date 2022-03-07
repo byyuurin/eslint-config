@@ -7,16 +7,17 @@
   },
   "files": [
     "index.js",
+    "utils.js",
     "postinstall.js"
   ],
   "license": "ISC",
   "devDependencies": {
     "eslint": "^8.10.0"
   },
+  "dependencies": {
+    "@byyuurin/eslint-config-basic": "^0.2.2"
+  },
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {
-    "shared": "link:shared"
   }
 }

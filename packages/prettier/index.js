@@ -5,7 +5,7 @@ module.exports = {
     browser: true
   },
 
-  extends: ['prettier'],
+  extends: ['prettier', '@byyuurin/eslint-config-basic'],
 
   plugins: ['prettier'],
 

@@ -14,8 +14,8 @@
     "eslint": "^8.10.0"
   },
   "dependencies": {
-    "@byyuurin/eslint-config-vue": "^0.2.2",
-    "shared": "link:shared"
+    "@byyuurin/eslint-config-basic": "^0.2.2",
+    "@byyuurin/eslint-config-vue": "^0.2.2"
   },
   "publishConfig": {
     "access": "public"

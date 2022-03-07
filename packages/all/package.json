@@ -1,6 +1,6 @@
 {
   "name": "@byyuurin/eslint-config",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "main": "index.js",
   "scripts": {
     "postinstall": "node postinstall.js"
@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@byyuurin/eslint-config-basic": "^0.2.3",
-    "@byyuurin/eslint-config-vue": "^0.2.3"
+    "@byyuurin/eslint-config-vue": "^0.2.4"
   },
   "publishConfig": {
     "access": "public"

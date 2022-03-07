@@ -1,6 +1,6 @@
 {
   "name": "@byyuurin/eslint-config-basic",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "index.js",
   "scripts": {
     "postinstall": "node postinstall.js"
@@ -8,7 +8,6 @@
   "files": [
     "index.js"
   ],
-
   "license": "ISC",
   "devDependencies": {
     "eslint": "^8.10.0"

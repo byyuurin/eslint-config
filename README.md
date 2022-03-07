@@ -1,54 +1,36 @@
 # @byyuurin/eslint-config
 
-> ESLint config for TypeScript project
-1. 參考 [lerna — JS package 管理工具](https://medium.com/lion-f2e/lerna-js-package-%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7-e9ed360d1143)
-1. 參考 [使用 pnpm 构建 Monorepo 项目](https://zhuanlan.zhihu.com/p/373935751)
-2. 參考 [@antfu/eslint-config](https://github.com/antfu/eslint-config) 結構
-3. 可搭配 [模板](https://github.com/byyuurin/vscode-blueprint-templates) 產生基本設定檔
-
 ## 使用方式
 
 ### 安裝開發依賴
 
 ```bash
-pnpm i -D typescript eslint @byyuurin/eslint-config
+pnpm i -D eslint @byyuurin/eslint-config
 ```
 
-### 設定 `.eslintrc`
+安裝後 `package.json` 將新增指令
 
 ```json
 {
-  "extends": ["@byyuurin"]
+  // 檢查
+  "lint": "eslint \"**/*.{vue,ts,js}\"",
+
+  // 檢查並修正
+  "lint:fix": "eslint \"**/*.{vue,ts,js}\" --fix"
 }
 ```
 
-### 設定 `.eslintignore`
+安裝後將新增以下檔案
 
-例:
+1. .vscode/settings.json
+2. .editorconfig
+3. .eslintrc.json
+4. .eslintignore
+5. .gitignore
 
-```
-dist
-public
-```
+若檔案已存在時可參考以下檔案內容進行調整
 
-### 在 `package.json` 新增執行指令
-
-例:
-
-```json
-{
-  "scripts": {
-    // 檢查
-    "lint": "eslint \"**/*.{vue,ts,js}\"",
-
-    // 檢查並修正
-    "lint:fix": "eslint \"**/*.{vue,ts,js}\" --fix"
-  }
-}
-```
-
-### 在 `.vscode/settings.json` 新增以下設定
-
+**.vscode/settings.json**
 ```json
 {
   // 不管是否有安裝 prettier 擴充功能都建議加上此設定以避免規則衝突
@@ -61,7 +43,14 @@ public
 }
 ```
 
-### 開發備忘
+**.eslintrc.json**
+```json
+{
+  "extends": ["@byyuurin"]
+}
+```
+
+## 開發備忘
 
 1. 要透過 lerna 發布, 必須將package.json中的 `workspace:^0.0.0` 取代為 `^0.0.0`
 
@@ -69,3 +58,10 @@ public
 # 安裝依賴至指定 package 中, {name} 必須與 package.json 中的 name 一致
 pnpm i ... --filter {name}
 ```
+
+## 參考資料
+
+1. [使用 pnpm 构建 Monorepo 项目](https://zhuanlan.zhihu.com/p/373935751)
+2. [lerna — JS package 管理工具](https://medium.com/lion-f2e/lerna-js-package-%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7-e9ed360d1143)
+3. [@antfu/eslint-config](https://github.com/antfu/eslint-config) 專案結構
+4. [@fmfe/genesis-lint](https://github.com/fmfe/genesis/tree/master/packages/genesis-lint) 的 `postinstall.js`

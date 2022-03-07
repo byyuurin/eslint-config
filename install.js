@@ -1,38 +1,22 @@
 /* eslint-disable */
 const path = require('path')
 const fs = require('fs')
-const package = require('./package.json')
-const vscodeConfig = require('./.vscode/settings.json')
-const eslintConfig = require('./.eslintrc.json')
 /* eslint-enable  */
 
-let baseDir = path.resolve(__dirname)
-let isLoopContinue = true
-
 const log = (message) => console.log(message)
-const resolve = (file, base = baseDir) => path.resolve(base, file)
+const pathResolve = (file, base) => path.resolve(base, file)
 
-log(`\n${'='.repeat(20)}\n${package.name}\n${'='.repeat(20)}`)
+const mergePackage = (baseDir) => {
+  const path = pathResolve('package.json', baseDir)
 
-// 找出目前專案路徑
-while (isLoopContinue) {
-  const root = resolve('./')
-  const isProjectRoot = fs.existsSync(resolve('../package.json'))
-  baseDir = resolve('../')
-  isLoopContinue = baseDir !== root && !isProjectRoot
-}
-
-const packageFile = resolve('package.json')
-
-const mergePackage = () => {
-  if (!fs.existsSync(packageFile)) return
+  if (!fs.existsSync(path)) return
 
   let data = null
 
   try {
-    data = JSON.parse(fs.readFileSync(packageFile, 'utf-8'))
+    data = JSON.parse(fs.readFileSync(path, 'utf-8'))
   } catch (e) {
-    log('Merge package.json fail.')
+    log(`Merge package.json fail\n${path}`)
   }
 
   if (!data) return
@@ -48,34 +32,52 @@ const mergePackage = () => {
 
   Object.assign(data, template)
 
-  fs.writeFileSync(packageFile, JSON.stringify(data, null, 2) + '\n')
+  fs.writeFileSync(path, JSON.stringify(data, null, 2) + '\n')
 
-  log('Merge package.json done.')
+  log(`Merge file done\n${path}`)
 }
 
 const createFile = ({ path, text, beforeCreate }) => {
   if (fs.existsSync(path)) return
 
   if (typeof beforeCreate === 'function') {
-    beforeCreate({ path, text, beforeCreate })
+    beforeCreate({ path, text })
   }
 
   fs.writeFileSync(path, text)
 
-  log(`Create file: ${path}.`)
+  log(`Create file: ${path}`)
 }
 
-const install = () => {
-  mergePackage()
+const install = (base, name) => {
+  let baseDir = base
+  let isLoopContinue = true
+  const resolve = (path) => pathResolve(path, baseDir)
+
+  // 找出目前專案路徑
+  while (isLoopContinue) {
+    const root = resolve('./')
+    const isProjectRoot = fs.existsSync(resolve('../package.json'))
+    baseDir = resolve('../')
+    isLoopContinue = baseDir !== root && !isProjectRoot
+  }
+
+  mergePackage(baseDir)
 
   const files = [
     {
       path: resolve('.vscode/settings.json'),
       beforeCreate: ({ path }) => {
-        const dir = resolve('../', path)
+        const dir = pathResolve('../', path)
         if (!fs.existsSync(dir)) fs.mkdirSync(dir)
       },
-      text: JSON.stringify(vscodeConfig, null, 2)
+      text: `{
+  "prettier.enable": false,
+  "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+  }
+}
+`
     },
     {
       path: resolve('.editorconfig'),
@@ -99,12 +101,14 @@ insert_final_newline = true
     },
     {
       path: resolve('.eslintrc.json'),
-      text: JSON.stringify(eslintConfig, null, 2)
+      text: `{
+  "extends": "${name}"
+}
+`
     },
     {
       path: resolve('.eslintignore'),
-      text: `node_modules
-dist
+      text: `dist
 public
 `
     },
@@ -142,4 +146,4 @@ dist-ssr
   files.forEach((file) => createFile(file))
 }
 
-install()
+module.exports = { install }

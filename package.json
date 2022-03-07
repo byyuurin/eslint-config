@@ -8,15 +8,15 @@
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "lint": "eslint \"**/*.test.{ts,js,vue}\"",
-    "release": "lerna publish",
-    "postinstall": "node postinstall.js"
+    "lint": "eslint \"**/*.{vue,ts,js}\"",
+    "lint:fix": "eslint \"**/*.{vue,ts,js}\" --fix",
+    "release": "lerna publish"
   },
   "license": "ISC",
   "devDependencies": {
     "@byyuurin/eslint-config": "*",
     "@types/node": "^17.0.21",
-    "eslint": "^8.5.0",
+    "eslint": "^8.10.0",
     "lerna": "^4.0.0",
     "typescript": "^4.5.4"
   }

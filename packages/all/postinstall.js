@@ -1,5 +1,5 @@
 /* eslint-disable */
-const { install } = require('../../install')
+const { install } = require('shared')
 /* eslint-enable  */
 
 install(__dirname, '@byyuurin')

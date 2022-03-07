@@ -4,11 +4,14 @@ importers:
 
   .:
     specifiers:
-      '@byyuurin/eslint-config': workspace:*
+      '@byyuurin/eslint-config': '*'
       '@types/node': ^17.0.21
       eslint: ^8.10.0
       lerna: ^4.0.0
+      shared: link:shared
       typescript: ^4.5.4
+    dependencies:
+      shared: link:shared
     devDependencies:
       '@byyuurin/eslint-config': link:packages/all
       '@types/node': 17.0.21
@@ -18,16 +21,21 @@ importers:
 
   packages/all:
     specifiers:
-      '@byyuurin/eslint-config-vue': workspace:^0.1.0
+      '@byyuurin/eslint-config-vue': ^0.2.1
       eslint: ^8.10.0
+      shared: link:shared
     dependencies:
       '@byyuurin/eslint-config-vue': link:../vue
+      shared: link:shared
     devDependencies:
       eslint: 8.10.0
 
   packages/basic:
     specifiers:
       eslint: ^8.10.0
+      shared: link:shared
+    dependencies:
+      shared: link:shared
     devDependencies:
       eslint: 8.10.0
 
@@ -37,31 +45,35 @@ importers:
       eslint-config-prettier: ^8.5.0
       eslint-plugin-prettier: ^3.4.1
       prettier: ^2.5.1
+      shared: link:shared
     dependencies:
       eslint-config-prettier: 8.5.0_eslint@8.10.0
       eslint-plugin-prettier: 3.4.1_f3d13a703a9c1079e3d1af6044603beb
       prettier: 2.5.1
+      shared: link:shared
     devDependencies:
       eslint: 8.10.0
 
   packages/typescript:
     specifiers:
-      '@byyuurin/eslint-config-basic': ^0.1.0
-      '@byyuurin/eslint-config-prettier': ^0.1.0
+      '@byyuurin/eslint-config-basic': ^0.2.1
+      '@byyuurin/eslint-config-prettier': ^0.2.1
       '@typescript-eslint/eslint-plugin': ^5.13.0
       '@typescript-eslint/parser': ^5.13.0
       eslint: ^8.10.0
+      shared: link:shared
     dependencies:
       '@byyuurin/eslint-config-basic': link:../basic
       '@byyuurin/eslint-config-prettier': link:../prettier
       '@typescript-eslint/eslint-plugin': 5.13.0_5366e44e2dd30174f25adbac33cb45a3
       '@typescript-eslint/parser': 5.13.0_eslint@8.10.0+typescript@4.5.4
+      shared: link:shared
     devDependencies:
       eslint: 8.10.0
 
   packages/vue:
     specifiers:
-      '@byyuurin/eslint-config-typescript': workspace:^0.1.0
+      '@byyuurin/eslint-config-typescript': ^0.2.1
       '@typescript-eslint/eslint-plugin': ^5.13.0
       '@typescript-eslint/parser': ^5.13.0
       '@vue/eslint-config-prettier': ^6.0.0
@@ -70,6 +82,7 @@ importers:
       eslint-plugin-prettier: ^3.4.1
       eslint-plugin-vue: ^7.20.0
       prettier: ^2.5.1
+      shared: link:shared
     dependencies:
       '@byyuurin/eslint-config-typescript': link:../typescript
       '@typescript-eslint/eslint-plugin': 5.13.0_5366e44e2dd30174f25adbac33cb45a3
@@ -79,6 +92,7 @@ importers:
       eslint-plugin-prettier: 3.4.1_eslint@8.10.0+prettier@2.5.1
       eslint-plugin-vue: 7.20.0_eslint@8.10.0
       prettier: 2.5.1
+      shared: link:shared
     devDependencies:
       eslint: 8.10.0
 

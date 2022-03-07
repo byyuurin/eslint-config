@@ -1,6 +1,6 @@
 {
   "name": "@byyuurin/eslint-config-typescript",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "index.js",
   "scripts": {
     "postinstall": "node postinstall.js"
@@ -14,8 +14,8 @@
     "eslint": "^8.10.0"
   },
   "dependencies": {
-    "@byyuurin/eslint-config-basic": "^0.2.0",
-    "@byyuurin/eslint-config-prettier": "^0.2.0",
+    "@byyuurin/eslint-config-basic": "^0.2.1",
+    "@byyuurin/eslint-config-prettier": "^0.2.1",
     "@typescript-eslint/eslint-plugin": "^5.13.0",
     "@typescript-eslint/parser": "^5.13.0"
   },

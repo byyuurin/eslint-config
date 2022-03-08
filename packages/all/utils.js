@@ -16,7 +16,7 @@ const mergePackage = (baseDir) => {
   try {
     data = JSON.parse(fs.readFileSync(path, 'utf-8'))
   } catch (e) {
-    log(`Merge package.json fail\n${path}`)
+    log(`Merge fail: ${path}`)
   }
 
   if (!data) return
@@ -34,7 +34,7 @@ const mergePackage = (baseDir) => {
 
   fs.writeFileSync(path, JSON.stringify(data, null, 2) + '\n')
 
-  log(`Merge file done\n${path}`)
+  log(`Merge file: ${path}`)
 }
 
 const createFile = ({ path, text, beforeCreate }) => {

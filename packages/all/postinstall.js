@@ -1,5 +1,5 @@
 /* eslint-disable */
-const { install } = require('@byyuurin/eslint-config-basic/utils')
+const { install } = require('./utils')
 /* eslint-enable  */
 
 install(__dirname, '@byyuurin')

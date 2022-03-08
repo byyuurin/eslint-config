@@ -2,19 +2,15 @@
   "name": "@byyuurin/eslint-config-prettier",
   "version": "0.2.3",
   "main": "index.js",
-  "scripts": {
-    "postinstall": "node postinstall.js"
-  },
   "files": [
-    "index.js",
-    "postinstall.js"
+    "index.js"
   ],
   "license": "ISC",
   "devDependencies": {
     "eslint": "^8.10.0"
   },
   "dependencies": {
-    "@byyuurin/eslint-config-basic": "^0.2.3",
+    "@vue/eslint-config-prettier": "^6.0.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^3.4.1",
     "prettier": "^2.5.1"

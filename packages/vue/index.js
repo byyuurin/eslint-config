@@ -9,13 +9,7 @@ module.exports = {
     }
   ],
 
-  extends: [
-    'plugin:vue/vue3-recommended',
-    '@vue/typescript/recommended',
-    '@vue/prettier',
-    '@vue/prettier/@typescript-eslint',
-    '@byyuurin/eslint-config-typescript'
-  ],
+  extends: ['plugin:vue/vue3-recommended', '@vue/typescript/recommended', '@byyuurin/eslint-config-typescript'],
 
   rules: {
     'vue/script-setup-uses-vars': 'error',

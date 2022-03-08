@@ -5,7 +5,7 @@
 ### 安裝開發依賴
 
 ```bash
-pnpm i -D eslint @byyuurin/eslint-config
+pnpm i -D typescript eslint @byyuurin/eslint-config
 ```
 
 安裝後 `package.json` 將新增指令

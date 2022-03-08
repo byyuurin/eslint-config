@@ -8,11 +8,7 @@ module.exports = {
       }
     }
   ],
-  extends: [
-    'plugin:@typescript-eslint/recommended',
-    '@byyuurin/eslint-config-basic',
-    '@byyuurin/eslint-config-prettier'
-  ],
+  extends: ['plugin:@typescript-eslint/recommended', '@byyuurin/eslint-config-basic'],
 
   parser: '@typescript-eslint/parser',
 

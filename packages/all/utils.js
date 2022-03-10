@@ -3,7 +3,7 @@ const path = require('path')
 const fs = require('fs')
 /* eslint-enable  */
 
-const log = (message) => console.log(message)
+const log = (message) => console.log(message) // eslint-disable-line no-console
 const pathResolve = (file, base) => path.resolve(base, file)
 
 const mergePackage = (baseDir) => {
@@ -15,7 +15,8 @@ const mergePackage = (baseDir) => {
 
   try {
     data = JSON.parse(fs.readFileSync(path, 'utf-8'))
-  } catch (e) {
+  }
+  catch (e) {
     log(`Merge fail: ${path}`)
   }
 
@@ -25,7 +26,7 @@ const mergePackage = (baseDir) => {
     // 增加 script
     scripts: {
       ...(data.scripts || {}),
-      lint: 'eslint "**/*.{vue,ts,js}"',
+      'lint': 'eslint "**/*.{vue,ts,js}"',
       'lint:fix': 'eslint "**/*.{vue,ts,js}" --fix'
     }
   }
@@ -40,9 +41,8 @@ const mergePackage = (baseDir) => {
 const createFile = ({ path, text, beforeCreate }) => {
   if (fs.existsSync(path)) return
 
-  if (typeof beforeCreate === 'function') {
+  if (typeof beforeCreate === 'function')
     beforeCreate({ path, text })
-  }
 
   fs.writeFileSync(path, text)
 

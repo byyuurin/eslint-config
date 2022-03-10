@@ -1,6 +1,7 @@
 {
   "name": "@byyuurin/eslint-config-monorepo",
   "version": "0.0.0",
+  "license": "ISC",
   "private": true,
   "repository": {
     "type": "git",
@@ -10,9 +11,9 @@
     "preinstall": "npx only-allow pnpm",
     "lint": "eslint \"**/*.{vue,ts,js}\"",
     "lint:fix": "eslint \"**/*.{vue,ts,js}\" --fix",
+    "lint:all": "eslint \"src/**/*.*\" --fix",
     "release": "lerna publish"
   },
-  "license": "ISC",
   "devDependencies": {
     "@byyuurin/eslint-config": "workspace:*",
     "@types/node": "^17.0.21",

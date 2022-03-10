@@ -63,5 +63,5 @@ pnpm i ... --filter {name}
 
 1. [使用 pnpm 构建 Monorepo 项目](https://zhuanlan.zhihu.com/p/373935751)
 2. [lerna — JS package 管理工具](https://medium.com/lion-f2e/lerna-js-package-%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7-e9ed360d1143)
-3. [@antfu/eslint-config](https://github.com/antfu/eslint-config) 專案結構
+3. [@antfu/eslint-config](https://github.com/antfu/eslint-config) 專案結構與規則
 4. [@fmfe/genesis-lint](https://github.com/fmfe/genesis/tree/master/packages/genesis-lint) 的 `postinstall.js`

@@ -1,22 +1,17 @@
 {
   "name": "@byyuurin/eslint-config",
   "version": "0.3.1",
+  "license": "ISC",
+  "files": ["index.js", "utils.js", "postinstall.js"],
   "main": "index.js",
   "scripts": {
     "postinstall": "node postinstall.js"
   },
-  "files": [
-    "index.js",
-    "utils.js",
-    "postinstall.js"
-  ],
-  "license": "ISC",
+  "dependencies": {
+    "@byyuurin/eslint-config-vue": "^0.3.0"
+  },
   "devDependencies": {
     "eslint": "^8.10.0"
-  },
-  "dependencies": {
-    "@byyuurin/eslint-config-prettier": "^0.3.0",
-    "@byyuurin/eslint-config-vue": "^0.3.0"
   },
   "publishConfig": {
     "access": "public"

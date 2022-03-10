@@ -1,18 +1,16 @@
 {
   "name": "@byyuurin/eslint-config-typescript",
   "version": "0.3.0",
-  "main": "index.js",
-  "files": [
-    "index.js"
-  ],
   "license": "ISC",
-  "devDependencies": {
-    "eslint": "^8.10.0"
-  },
+  "files": ["index.js"],
+  "main": "index.js",
   "dependencies": {
     "@byyuurin/eslint-config-basic": "^0.3.0",
     "@typescript-eslint/eslint-plugin": "^5.13.0",
     "@typescript-eslint/parser": "^5.13.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.10.0"
   },
   "publishConfig": {
     "access": "public"

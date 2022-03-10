@@ -1,8 +1,10 @@
 {
   "name": "@byyuurin/eslint-config-basic",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "license": "ISC",
-  "files": ["index.js"],
+  "files": [
+    "index.js"
+  ],
   "main": "index.js",
   "dependencies": {
     "eslint-plugin-html": "^6.2.0",

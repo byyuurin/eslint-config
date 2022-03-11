@@ -1,6 +1,6 @@
 {
   "name": "@byyuurin/eslint-config",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "license": "ISC",
   "files": [
     "index.js",
@@ -12,7 +12,7 @@
     "postinstall": "node postinstall.js"
   },
   "dependencies": {
-    "@byyuurin/eslint-config-vue": "^0.4.0"
+    "@byyuurin/eslint-config-vue": "^0.4.1"
   },
   "devDependencies": {
     "eslint": "^8.10.0"

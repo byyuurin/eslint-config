@@ -169,7 +169,8 @@ module.exports = {
     ],
 
     'no-var': 'error',
-    'no-unused-vars': 'warn',
+    'no-unused-vars': 'error',
+    'no-redeclare': 'error',
     'no-param-reassign': ['warn', { props: true }],
     'no-constant-condition': 'warn',
     'no-debugger': 'error',

@@ -5,6 +5,9 @@ module.exports = {
       parser: 'vue-eslint-parser',
       parserOptions: {
         parser: '@typescript-eslint/parser'
+      },
+      rules: {
+        'no-undef': 'off'
       }
     }
   ],
@@ -15,25 +18,7 @@ module.exports = {
   ],
 
   rules: {
-    'vue/script-setup-uses-vars': 'error',
-    'vue/component-tags-order': [
-      'error',
-      {
-        order: ['script', 'template', 'style']
-      }
-    ],
-    'vue/html-self-closing': [
-      'warn',
-      {
-        html: {
-          void: 'always',
-          normal: 'always',
-          component: 'always'
-        },
-        svg: 'always',
-        math: 'always'
-      }
-    ],
+    'vue/max-attributes-per-line': 'off',
     'vue/no-v-html': 'off'
   }
 }

@@ -8,19 +8,24 @@
 pnpm i -D typescript eslint @byyuurin/eslint-config
 ```
 
-安裝後 `package.json` 將新增指令
+可以在 `package.json` 新增 lint 指令主動進行檢查
 
 ```json
 {
-  // 檢查
-  "lint": "eslint \"**/*.{vue,ts,js}\"",
+  "scripts": {
+    // 檢查
+    "lint-all": "eslint .",
 
-  // 檢查並修正
-  "lint:fix": "eslint \"**/*.{vue,ts,js}\" --fix"
+    // 檢查並嘗試修正錯誤
+    "lint-all-fix": "eslint . --fix",
+
+    // 指定範圍進行檢查
+    "lint-fix": "eslint \"src/**/*.{vue,ts,js}\""
+  }
 }
 ```
 
-安裝後將新增以下檔案
+**安裝後將新增以下檔案**
 
 1. .vscode/settings.json
 2. .editorconfig
@@ -43,12 +48,42 @@ pnpm i -D typescript eslint @byyuurin/eslint-config
 }
 ```
 
+**.editorconfig**
+```bash
+# http://editorconfig.org
+root = true
+
+[*]
+# 縮排使用空白
+indent_style = space
+# 縮排大小
+indent_size = 2
+# 換行字元
+end_of_line = lf
+# 字元編碼
+charset = utf-8
+# 是否刪除句尾空格
+trim_trailing_whitespace = true
+# 是否在文件最後插入空白行
+insert_final_newline = true
+```
+
 **.eslintrc.json**
 ```json
 {
   "extends": ["@byyuurin"]
 }
 ```
+
+**.eslintignore**
+```
+dist
+public
+```
+
+**.gitignore**
+
+[參考 create-vite/template-vue-ts](https://github.com/vitejs/vite/blob/main/packages/create-vite/template-vue-ts/_gitignore)
 
 ## 開發備忘
 

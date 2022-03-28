@@ -6,38 +6,6 @@ const fs = require('fs')
 const log = (message) => console.log(message) // eslint-disable-line no-console
 const pathResolve = (file, base) => path.resolve(base, file)
 
-const mergePackage = (baseDir) => {
-  const path = pathResolve('package.json', baseDir)
-
-  if (!fs.existsSync(path)) return
-
-  let data = null
-
-  try {
-    data = JSON.parse(fs.readFileSync(path, 'utf-8'))
-  }
-  catch (e) {
-    log(`Merge fail: ${path}`)
-  }
-
-  if (!data) return
-
-  const template = {
-    // 增加 script
-    scripts: {
-      ...(data.scripts || {}),
-      'lint': 'eslint "**/*.{vue,ts,js}"',
-      'lint:fix': 'eslint "**/*.{vue,ts,js}" --fix'
-    }
-  }
-
-  Object.assign(data, template)
-
-  fs.writeFileSync(path, JSON.stringify(data, null, 2) + '\n')
-
-  log(`Merge file: ${path}`)
-}
-
 const createFile = ({ path, text, beforeCreate }) => {
   if (fs.existsSync(path)) return
 
@@ -61,8 +29,6 @@ const install = (base, name) => {
     baseDir = resolve('../')
     isLoopContinue = baseDir !== root && !isProjectRoot
   }
-
-  mergePackage(baseDir)
 
   const files = [
     {

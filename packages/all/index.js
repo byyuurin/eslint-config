@@ -1,3 +1,3 @@
 module.exports = {
-  extends: ['@byyuurin/vue']
+  extends: ['@byyuurin/vue'],
 }

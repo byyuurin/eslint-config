@@ -5,7 +5,7 @@ module.exports = {
 
   extends: [
     '@byyuurin/eslint-config-basic',
-    'plugin:@typescript-eslint/recommended'
+    'plugin:@typescript-eslint/recommended',
   ],
 
   parser: '@typescript-eslint/parser',
@@ -34,21 +34,21 @@ module.exports = {
     '@typescript-eslint/brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
 
     'comma-dangle': 'off',
-    '@typescript-eslint/comma-dangle': ['error', 'never'],
+    '@typescript-eslint/comma-dangle': ['error', 'always-multiline'],
 
     'no-unused-vars': 'off',
-    '@typescript-eslint/no-unused-vars': 'error',
+    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
 
     'no-redeclare': 'off',
     '@typescript-eslint/no-redeclare': 'error',
 
     'no-use-before-define': 'off',
-    '@typescript-eslint/no-use-before-define': ['error', { functions: true, classes: true, variables: true }],
+    '@typescript-eslint/no-use-before-define': ['error', { functions: false, classes: false, variables: true }],
 
     'object-curly-spacing': 'off',
     '@typescript-eslint/object-curly-spacing': ['error', 'always'],
 
     // eslint-plugin-import
-    'import/named': 'off'
-  }
+    'import/named': 'off',
+  },
 }

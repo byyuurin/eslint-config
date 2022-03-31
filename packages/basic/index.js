@@ -2,7 +2,7 @@ module.exports = {
   env: {
     node: true,
     es6: true,
-    browser: true
+    browser: true,
   },
 
   extends: [
@@ -10,7 +10,7 @@ module.exports = {
     'plugin:import/recommended',
     'plugin:jsonc/recommended-with-jsonc',
     'plugin:yml/standard',
-    'plugin:markdown/recommended'
+    'plugin:markdown/recommended',
   ],
 
   ignorePatterns: [
@@ -20,15 +20,21 @@ module.exports = {
     'public',
     'temp',
     'CHANGELOG.md',
-    'LICENSE.*'
+    'LICENSE.*',
+    'packages-lock.json',
+    'pnpm-lock.yaml',
+    'yarn.lock',
+    '__snapshots__',
+    '!.github',
+    '!.vscode',
   ],
 
   plugins: ['html'],
 
   settings: {
     'import/resolver': {
-      node: { extensions: ['.js', '.mjs', '.ts', '.d.ts'] }
-    }
+      node: { extensions: ['.js', '.mjs', '.ts', '.d.ts'] },
+    },
   },
 
   overrides: [
@@ -38,8 +44,8 @@ module.exports = {
       rules: {
         'quotes': ['error', 'double'],
         'quote-props': ['error', 'always'],
-        'comma-dangle': ['error', 'never']
-      }
+        'comma-dangle': ['error', 'never'],
+      },
     },
     {
       files: ['package.json'],
@@ -72,50 +78,50 @@ module.exports = {
               'peerDependenciesMeta',
               'dependencies',
               'devDependencies',
-              'eslintConfig'
-            ]
+              'eslintConfig',
+            ],
           },
           {
             pathPattern: '^(?:dev|peer|optional|bundled)?[Dd]ependencies$',
-            order: { type: 'asc' }
-          }
-        ]
-      }
+            order: { type: 'asc' },
+          },
+        ],
+      },
     },
     {
       files: ['*.yaml', '*.yml'],
-      parser: 'yaml-eslint-parser'
+      parser: 'yaml-eslint-parser',
     },
     {
       files: ['pnpm-lock.yaml'],
       parser: 'yaml-eslint-parser',
       rules: {
-        'yml/quotes': 'off'
-      }
+        'yml/quotes': 'off',
+      },
     },
     {
       files: ['*.d.ts'],
       rules: {
-        'import/no-duplicates': 'off'
-      }
+        'import/no-duplicates': 'off',
+      },
     },
     {
       files: ['*.js'],
       rules: {
-        '@typescript-eslint/no-var-requires': 'off'
-      }
+        '@typescript-eslint/no-var-requires': 'off',
+      },
     },
     {
       files: ['scripts/**/*.*', 'cli.*'],
       rules: {
-        'no-console': 'off'
-      }
+        'no-console': 'off',
+      },
     },
     {
       files: ['*.test.ts', '*.test.js', '*.spec.ts', '*.spec.js'],
       rules: {
-        'no-unused-expressions': 'off'
-      }
+        'no-unused-expressions': 'off',
+      },
     },
     {
       // Code blocks in markdown file
@@ -127,9 +133,9 @@ module.exports = {
         'no-unused-expressions': 'off',
         'import/no-unresolved': 'off',
         '@typescript-eslint/no-unused-vars': 'off',
-        '@typescript-eslint/no-use-before-define': 'off'
-      }
-    }
+        '@typescript-eslint/no-use-before-define': 'off',
+      },
+    },
   ],
 
   rules: {
@@ -152,7 +158,7 @@ module.exports = {
     'key-spacing': ['error', { beforeColon: false, afterColon: true }],
     'comma-spacing': ['error', { before: false, after: true }],
     'comma-style': ['error', 'last'],
-    'comma-dangle': ['error', 'never'],
+    'comma-dangle': ['error', 'always-multiline'],
     'space-infix-ops': ['error', { int32Hint: true }],
     'space-before-function-paren': ['error', 'never'],
     'operator-linebreak': ['error', 'before'],
@@ -164,12 +170,12 @@ module.exports = {
         ignoreDeclarationSort: true,
         ignoreMemberSort: false,
         memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
-        allowSeparatedGroups: false
-      }
+        allowSeparatedGroups: false,
+      },
     ],
 
     'no-var': 'error',
-    'no-unused-vars': 'error',
+    'no-unused-vars': 'warn',
     'no-redeclare': 'error',
     'no-param-reassign': ['warn', { props: true }],
     'no-constant-condition': 'warn',
@@ -184,7 +190,7 @@ module.exports = {
     'no-with': 'error',
     'no-void': 'error',
     'no-useless-escape': ['error'],
-    'no-use-before-define': ['error', { functions: true, classes: true, variables: true }],
+    'no-use-before-define': ['error', { functions: false, classes: false, variables: true }],
     'no-restricted-syntax': ['error', 'DebuggerStatement', 'LabeledStatement', 'WithStatement'],
     'no-return-assign': ['error'],
 
@@ -193,6 +199,6 @@ module.exports = {
     'import/first': 'error',
     'import/no-mutable-exports': 'error',
     'import/no-unresolved': 'off',
-    'import/no-absolute-path': 'off'
-  }
+    'import/no-absolute-path': 'off',
+  },
 }

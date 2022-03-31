@@ -2,7 +2,7 @@ module.exports = {
   env: {
     node: true,
     es6: true,
-    browser: true
+    browser: true,
   },
 
   extends: ['prettier', '@vue/prettier', '@vue/prettier/@typescript-eslint'],
@@ -23,8 +23,8 @@ module.exports = {
         trailingComma: 'none',
         stylelintIntegration: true,
         eslintIntegration: true,
-        wrapAttributes: 'force-aligned'
-      }
-    ]
-  }
+        wrapAttributes: 'force-aligned',
+      },
+    ],
+  },
 }

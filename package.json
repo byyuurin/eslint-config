@@ -9,9 +9,7 @@
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "lint": "eslint \"**/*.{vue,ts,js}\"",
-    "lint:fix": "eslint \"**/*.{vue,ts,js}\" --fix",
-    "lint:all": "eslint \"src/**/*.*\" --fix",
+    "lint": "eslint .",
     "release": "lerna publish"
   },
   "devDependencies": {

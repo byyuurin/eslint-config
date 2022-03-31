@@ -43,7 +43,7 @@ const install = (base, name) => {
       "source.fixAll.eslint": true
   }
 }
-`
+`,
     },
     {
       path: resolve('.editorconfig'),
@@ -63,20 +63,20 @@ charset = utf-8
 trim_trailing_whitespace = true
 # 是否在文件最後插入空白行
 insert_final_newline = true
-`
+`,
     },
     {
       path: resolve('.eslintrc.json'),
       text: `{
   "extends": "${name}"
 }
-`
+`,
     },
     {
       path: resolve('.eslintignore'),
       text: `dist
 public
-`
+`,
     },
     {
       path: resolve('.gitignore'),
@@ -105,8 +105,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-`
-    }
+`,
+    },
   ]
 
   files.forEach((file) => createFile(file))

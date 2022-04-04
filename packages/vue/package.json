@@ -7,7 +7,7 @@
   ],
   "main": "index.js",
   "dependencies": {
-    "@byyuurin/eslint-config-typescript": "^0.4.3",
+    "@byyuurin/eslint-config-typescript": "workspace:*",
     "eslint-plugin-vue": "^7.20.0"
   },
   "devDependencies": {

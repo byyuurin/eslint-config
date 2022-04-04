@@ -12,7 +12,7 @@
     "postinstall": "node postinstall.js"
   },
   "dependencies": {
-    "@byyuurin/eslint-config-vue": "^0.4.3"
+    "@byyuurin/eslint-config-vue": "workspace:*"
   },
   "devDependencies": {
     "eslint": "^8.12.0"

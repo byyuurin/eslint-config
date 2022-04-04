@@ -5,12 +5,19 @@ module.exports = {
 
   extends: [
     '@byyuurin/eslint-config-basic',
+    'plugin:import/typescript',
     'plugin:@typescript-eslint/recommended',
   ],
 
   parser: '@typescript-eslint/parser',
 
   plugins: ['@typescript-eslint'],
+
+  settings: {
+    'import/resolver': {
+      node: { extensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx', '.d.ts'] },
+    },
+  },
 
   rules: {
     '@typescript-eslint/semi': ['error', 'never'],

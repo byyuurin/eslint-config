@@ -20,6 +20,7 @@ module.exports = {
     'public',
     'temp',
     'CHANGELOG.md',
+    'LICENSE',
     'LICENSE.*',
     'packages-lock.json',
     'pnpm-lock.yaml',
@@ -177,7 +178,7 @@ module.exports = {
     'no-var': 'error',
     'no-unused-vars': 'warn',
     'no-redeclare': 'error',
-    'no-param-reassign': ['warn', { props: true }],
+    'no-param-reassign': 'off',
     'no-constant-condition': 'warn',
     'no-debugger': 'error',
     'no-console': ['error', { allow: ['warn', 'error'] }],
@@ -193,6 +194,7 @@ module.exports = {
     'no-use-before-define': ['error', { functions: false, classes: false, variables: true }],
     'no-restricted-syntax': ['error', 'DebuggerStatement', 'LabeledStatement', 'WithStatement'],
     'no-return-assign': ['error'],
+    'no-multiple-empty-lines': ['error', { max: 1, maxBOF: 0, maxEOF: 0 }],
 
     // eslint-plugin-import
     'import/order': 'error',

@@ -6,6 +6,10 @@
     "index.js"
   ],
   "main": "index.js",
+  "peerDependencies": {
+    "eslint": ">=7.4.0",
+    "typescript": ">=3.9"
+  },
   "dependencies": {
     "@byyuurin/eslint-config-basic": "workspace:*",
     "@typescript-eslint/eslint-plugin": "^5.17.0",

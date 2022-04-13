@@ -6,6 +6,9 @@
     "index.js"
   ],
   "main": "index.js",
+  "peerDependencies": {
+    "eslint": ">=7.4.0"
+  },
   "dependencies": {
     "@byyuurin/eslint-config-typescript": "workspace:*",
     "eslint-plugin-vue": "^7.20.0"

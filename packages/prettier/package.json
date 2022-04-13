@@ -6,6 +6,9 @@
     "index.js"
   ],
   "main": "index.js",
+  "peerDependencies": {
+    "eslint": ">=7.4.0"
+  },
   "dependencies": {
     "@vue/eslint-config-prettier": "^6.0.0",
     "eslint-config-prettier": "^8.5.0",

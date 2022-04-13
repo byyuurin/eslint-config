@@ -6,6 +6,9 @@
     "index.js"
   ],
   "main": "index.js",
+  "peerDependencies": {
+    "eslint": ">=7.4.0"
+  },
   "dependencies": {
     "eslint-plugin-html": "^6.2.0",
     "eslint-plugin-import": "^2.25.4",

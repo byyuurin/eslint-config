@@ -161,7 +161,13 @@ module.exports = {
     'comma-style': ['error', 'last'],
     'comma-dangle': ['error', 'always-multiline'],
     'space-infix-ops': ['error', { int32Hint: true }],
-    'space-before-function-paren': ['error', 'never'],
+    'space-before-function-paren': [
+      'error', {
+        anonymous: 'always',
+        named: 'never',
+        asyncArrow: 'always',
+      },
+    ],
     'operator-linebreak': ['error', 'before'],
     // 'consistent-return': 'off',
     // 'complexity': ['warn', 11],

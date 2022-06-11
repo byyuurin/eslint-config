@@ -1,6 +1,6 @@
 {
   "name": "@byyuurin/eslint-config-typescript",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "license": "ISC",
   "files": [
     "index.js"

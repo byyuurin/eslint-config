@@ -1,41 +1,60 @@
 # @byyuurin/eslint-config
 
+[![npm](https://img.shields.io/npm/v/@byyuurin/eslint-config?color=a1b858&label=)](https://npmjs.com/package/@byyuurin/eslint-config)
+
+- 縮排2個空白, 單引號, 無結尾分號
+- 透過自動修正來進行程式碼格式化, 不依賴 prettier
+- TypeScript, Vue 開箱即用
+- 亦適用於 json, yaml, markdown
+- 自動排序 import 內容
+
 ## 使用方式
 
-### 安裝開發依賴
+### 安裝
 
 ```bash
-pnpm i -D typescript eslint @byyuurin/eslint-config
+pnpm i -D eslint @byyuurin/eslint-config
+```
+
+### `.eslintrc.json` 設定
+
+```json
+{
+  "extends": ["@byyuurin"]
+}
 ```
 
 可以在 `package.json` 新增 lint 指令主動進行檢查
 
 ```json
 {
-  "scripts": {
-    // 檢查
-    "lint-all": "eslint .",
-
-    // 檢查並嘗試修正錯誤
-    "lint-all-fix": "eslint . --fix",
-
-    // 指定範圍進行檢查
-    "lint-fix": "eslint \"src/**/*.{vue,ts,js}\""
-  }
+  // 檢查
+  "lint": "eslint .",
+  // 檢查並修正錯誤
+  "lint:fix": "eslint . --fix"
 }
 ```
 
-**安裝後將新增以下檔案**
+```json
+{
+  // 指定範圍進行檢查
+  "lint": "eslint \"src/**/*.{vue,ts,js}\"",
+  // 指定範圍進行檢查並修正錯誤
+  "lint:fix": "eslint \"src/**/*.{vue,ts,js}\""
+}
+```
 
-1. .vscode/settings.json
-2. .editorconfig
+### 若安裝目錄中缺少以下內容時將自動新增檔案
+
+1. .vscode/settings.json (啟用 ESLint 存檔自動格式化功能)
+2. .editorconfig (必須搭配 [VSCode 擴充功能](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig))
 3. .eslintrc.json
 4. .eslintignore
 5. .gitignore
 
-若檔案已存在時可參考以下檔案內容進行調整
+**新增檔案與內容如下**
 
-**.vscode/settings.json**
+**`.vscode/settings.json`**
 ```json
 {
   // 不管是否有安裝 prettier 擴充功能都建議加上此設定以避免規則衝突
@@ -48,7 +67,7 @@ pnpm i -D typescript eslint @byyuurin/eslint-config
 }
 ```
 
-**.editorconfig**
+**`.editorconfig`**
 ```bash
 # http://editorconfig.org
 root = true
@@ -68,24 +87,24 @@ trim_trailing_whitespace = true
 insert_final_newline = true
 ```
 
-**.eslintrc.json**
+**`.eslintrc.json`**
 ```json
 {
   "extends": ["@byyuurin"]
 }
 ```
 
-**.eslintignore**
+**`.eslintignore`**
 ```
 dist
 public
 ```
 
-**.gitignore**
+**`.gitignore`**
 
 [參考 create-vite/template-vue-ts](https://github.com/vitejs/vite/blob/main/packages/create-vite/template-vue-ts/_gitignore)
 
-## 開發備忘
+## 備忘
 
 ```bash
 # 安裝依賴至指定 package 中, {name} 必須與 package.json 中的 name 一致

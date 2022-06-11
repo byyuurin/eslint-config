@@ -160,6 +160,7 @@ module.exports = {
     'comma-spacing': ['error', { before: false, after: true }],
     'comma-style': ['error', 'last'],
     'comma-dangle': ['error', 'always-multiline'],
+    'space-in-parens': ['error', 'never'],
     'space-infix-ops': ['error', { int32Hint: true }],
     'space-before-function-paren': [
       'error', {

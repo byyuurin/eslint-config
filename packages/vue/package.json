@@ -11,10 +11,10 @@
   },
   "dependencies": {
     "@byyuurin/eslint-config-typescript": "workspace:*",
-    "eslint-plugin-vue": "^7.20.0"
+    "eslint-plugin-vue": "^9.1.1"
   },
   "devDependencies": {
-    "eslint": "^8.17.0"
+    "eslint": "^8.18.0"
   },
   "publishConfig": {
     "access": "public"

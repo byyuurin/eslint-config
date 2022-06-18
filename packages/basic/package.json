@@ -1,8 +1,10 @@
 {
   "license": "ISC",
-  "version": "0.5.2",
+  "version": "0.6.0",
   "name": "@byyuurin/eslint-config-basic",
-  "files": ["index.js"],
+  "files": [
+    "index.js"
+  ],
   "main": "index.js",
   "peerDependencies": {
     "eslint": ">=7.4.0"

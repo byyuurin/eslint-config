@@ -70,41 +70,6 @@ insert_final_newline = true
 }
 `,
     },
-    {
-      path: resolve('.eslintignore'),
-      text: `dist
-public
-`,
-    },
-    {
-      path: resolve('.gitignore'),
-      text: `# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/settings.json
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-`,
-    },
   ]
 
   files.forEach((file) => createFile(file))

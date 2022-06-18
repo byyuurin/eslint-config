@@ -49,8 +49,6 @@ pnpm i -D eslint @byyuurin/eslint-config
 1. .vscode/settings.json (啟用 ESLint 存檔自動格式化功能)
 2. .editorconfig (必須搭配 [VSCode 擴充功能](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig))
 3. .eslintrc.json
-4. .eslintignore
-5. .gitignore
 
 **新增檔案與內容如下**
 
@@ -93,26 +91,8 @@ insert_final_newline = true
 }
 ```
 
-**`.eslintignore`**
-```
-dist
-public
-```
-
-**`.gitignore`**
-
-[參考 create-vite/template-vue-ts](https://github.com/vitejs/vite/blob/main/packages/create-vite/template-vue-ts/_gitignore)
-
-## 備忘
-
-```bash
-# 安裝依賴至指定 package 中, {name} 必須與 package.json 中的 name 一致
-pnpm i ... --filter {name}
-```
-
 ## 參考資料
 
 1. [使用 pnpm 构建 Monorepo 项目](https://zhuanlan.zhihu.com/p/373935751)
-2. ~~[lerna — JS package 管理工具](https://medium.com/lion-f2e/lerna-js-package-%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7-e9ed360d1143)~~ 改用 `bumpp` + `pnpm publish`
-3. [@antfu/eslint-config](https://github.com/antfu/eslint-config) 專案結構與規則
-4. [@fmfe/genesis-lint](https://github.com/fmfe/genesis/tree/master/packages/genesis-lint) 的 `postinstall.js`
+2. [@antfu/eslint-config](https://github.com/antfu/eslint-config) 專案結構與規則
+3. [@fmfe/genesis-lint](https://github.com/fmfe/genesis/tree/master/packages/genesis-lint) 的 `postinstall.js`

@@ -59,7 +59,6 @@ pnpm i -D eslint @byyuurin/eslint-config
 {
   // 不管是否有安裝 prettier 擴充功能都建議加上此設定以避免規則衝突
   "prettier.enable": false,
-
   // 啟用 Visual Studio Code 自動修正功能
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true

@@ -1,9 +1,9 @@
 {
-  "name": "@byyuurin/eslint-config-monorepo",
-  "version": "0.5.2",
-  "license": "ISC",
   "private": true,
+  "license": "ISC",
   "packageManager": "pnpm@7.1.0",
+  "version": "0.5.2",
+  "name": "@byyuurin/eslint-config-monorepo",
   "repository": {
     "type": "git",
     "url": "https://github.com/byyuurin/eslint-config.git"

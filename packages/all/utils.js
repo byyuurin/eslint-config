@@ -1,7 +1,5 @@
-/* eslint-disable */
 const path = require('path')
 const fs = require('fs')
-/* eslint-enable  */
 
 const log = (message) => console.log(message) // eslint-disable-line no-console
 const pathResolve = (file, base) => path.resolve(base, file)

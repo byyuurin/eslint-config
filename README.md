@@ -40,7 +40,7 @@ pnpm i -D eslint @byyuurin/eslint-config
   // 指定範圍進行檢查
   "lint": "eslint \"src/**/*.{vue,ts,js}\"",
   // 指定範圍進行檢查並修正錯誤
-  "lint:fix": "eslint \"src/**/*.{vue,ts,js}\""
+  "lint:fix": "eslint \"src/**/*.{vue,ts,js}\" --fix"
 }
 ```
 

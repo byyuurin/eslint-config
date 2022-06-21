@@ -267,6 +267,7 @@ module.exports = {
     'object-property-newline': ['error', { allowMultiplePropertiesPerLine: true }],
     'lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
     'arrow-spacing': ['error', { before: true, after: true }],
+    'arrow-parens': ['error', 'always'],
     'dot-location': ['error', 'property'],
     'dot-notation': ['error', { allowKeywords: true }],
 

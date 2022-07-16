@@ -43,7 +43,7 @@ module.exports = {
 
   overrides: [
     {
-      files: ['*.json', '*.json5'],
+      files: ['*.json', '*.jsonc', '*.json5', '*.code-snippets'],
       parser: 'jsonc-eslint-parser',
       rules: {
         'no-multiple-empty-lines': ['error', { max: 0, maxBOF: 0, maxEOF: 0 }],

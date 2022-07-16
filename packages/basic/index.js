@@ -150,6 +150,13 @@ module.exports = {
             ],
           },
         ],
+        'jsonc/array-bracket-newline': [
+          'error',
+          {
+            multiline: true,
+            minItems: 0,
+          },
+        ],
       },
     },
     {

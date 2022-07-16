@@ -2,7 +2,7 @@
   "private": true,
   "license": "ISC",
   "packageManager": "pnpm@7.1.0",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "name": "@byyuurin/eslint-config-monorepo",
   "repository": {
     "type": "git",

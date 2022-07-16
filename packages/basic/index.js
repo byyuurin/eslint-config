@@ -60,6 +60,10 @@ module.exports = {
     'import/resolver': {
       node: { extensions: ['.js', '.mjs'] },
     },
+    'html': {
+      'indent': '0',
+      'report-bad-indent': 'error',
+    },
   },
 
   overrides: [

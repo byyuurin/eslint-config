@@ -1,78 +1,109 @@
+// @ts-check
 const path = require('path')
 const fs = require('fs')
 
-const log = (message) => console.log(message) // eslint-disable-line no-console
-const pathResolve = (file, base) => path.resolve(base, file)
+// eslint-disable-next-line no-console
+const log = (...args) => console.log(...args)
 
-const createFile = ({ path, text, beforeCreate }) => {
-  if (fs.existsSync(path)) return
+const resolve = (p, base) => path.resolve(base, p)
 
-  if (typeof beforeCreate === 'function')
-    beforeCreate({ path, text })
+const createFolder = (dir) => !fs.existsSync(dir) && fs.mkdirSync(dir)
 
-  fs.writeFileSync(path, text)
+const getProjectDir = () => {
+  let completed = false
+  let dir = __dirname
 
-  log(`Create file: ${path}`)
-}
-
-const install = (base, name) => {
-  let baseDir = base
-  let isLoopContinue = true
-  const resolve = (path) => pathResolve(path, baseDir)
-
-  // 找出目前專案路徑
-  while (isLoopContinue) {
-    const root = resolve('./')
-    const isProjectRoot = fs.existsSync(resolve('../package.json'))
-    baseDir = resolve('../')
-    isLoopContinue = baseDir !== root && !isProjectRoot
+  while (!completed) {
+    completed = fs.existsSync(resolve('../package.json', dir))
+    dir = resolve('../', dir)
+    if (completed) {
+      const title = ` ${dir} `
+      const divider = '='.repeat(title.length)
+      log(['', divider, '%s', divider].join('\n'), title)
+    }
   }
 
-  const files = [
-    {
-      path: resolve('.vscode/settings.json'),
-      beforeCreate: ({ path }) => {
-        const dir = pathResolve('../', path)
-        if (!fs.existsSync(dir)) fs.mkdirSync(dir)
-      },
-      text: `{
-  "prettier.enable": false,
-  "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
-  }
+  return dir
 }
-`,
-    },
-    {
-      path: resolve('.editorconfig'),
-      text: `# http://editorconfig.org
-root = true
 
-[*]
-# 縮排使用空白
-indent_style = space
-# 縮排大小
-indent_size = 2
-# 換行字元
-end_of_line = lf
-# 字元編碼
-charset = utf-8
-# 是否刪除句尾空格
-trim_trailing_whitespace = true
-# 是否在文件最後插入空白行
-insert_final_newline = true
-`,
-    },
-    {
-      path: resolve('.eslintrc.json'),
-      text: `{
-  "extends": "${name}"
+/**
+ * @typedef CustomFile
+ * @type {{ path: string, body: string }}
+ */
+
+/**
+ * @param {CustomFile[]} files
+ */
+const createFiles = (files = []) => {
+  const dir = getProjectDir()
+
+  return files.map(({ path, body }) => {
+    const parents = path.split('/').slice(0, -1)
+
+    if (parents.length) {
+      const parentPath = []
+
+      parents.forEach((p) => {
+        parentPath.push(p)
+        const folderDir = resolve(parentPath.join('/'), dir)
+        createFolder(folderDir)
+      })
+    }
+
+    return {
+      path: resolve(path, dir),
+      body,
+    }
+  }).forEach(({ path, body }) => {
+    if (!fs.existsSync(path)) {
+      fs.writeFileSync(path, body)
+      log(`- [Created] ${path}`)
+    }
+    else {
+      log(`- [Existed] ${path}`)
+    }
+  })
 }
-`,
-    },
+
+const createESLintConfig = (name = '') => {
+  let needWrite = false
+  const dir = getProjectDir()
+  const filePath = resolve('package.json', dir)
+  const configPaths = [
+    '.eslintrc.js',
+    '.eslintrc.cjs',
+    '.eslintrc.yaml',
+    '.eslintrc.yml',
+    '.eslintrc.json',
   ]
+  const json = JSON.parse(fs.readFileSync(filePath, 'utf-8'))
 
-  files.forEach((file) => createFile(file))
+  const config = { extends: name }
+  const rawExtends = (json.eslintConfig && json.eslintConfig.extends) || ''
+
+  if (configPaths.some((p) => fs.existsSync(resolve(p, dir)))) {
+    log('- [Existed] .eslintrc.*')
+    return
+  }
+
+  if (!json.eslintConfig) {
+    json.eslintConfig = config
+    needWrite = true
+    log('- [Appended] eslintConfig')
+  }
+
+  if (!needWrite && typeof rawExtends === 'string' && rawExtends !== config.extends) {
+    json.eslintConfig.extends = name
+    needWrite = true
+    log('- [Replaced] eslintConfig.extends')
+  }
+
+  if (needWrite) {
+    fs.writeFileSync(filePath, `${JSON.stringify(json, null, 2)}\n`, 'utf-8')
+    return
+  }
+
+  log('- [Existed] eslintConfig')
 }
 
-module.exports = { install }
+module.exports = { createFiles, createESLintConfig }

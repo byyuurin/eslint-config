@@ -4,8 +4,7 @@
 
 - 縮排2個空白, 單引號, 無結尾分號
 - 透過自動修正來達成程式碼格式化, 可獨立使用不依賴 prettier
-- TypeScript, Vue 開箱即用
-- 自動修正亦適用於 json, yaml, markdown
+- 自動修正 JavaScript, TypeScript, Vue, json, yaml, markdown
 - 排序導入(import)內容，使用拖尾逗號(comma-dangle)讓差異記錄更清晰
 
 ## 使用方式
@@ -16,15 +15,27 @@
 pnpm i -D eslint @byyuurin/eslint-config
 ```
 
-### 設定 `.eslintrc.json`
+安裝後將嘗試更新 `package.json` 內容，由於已預先設定排除條件，通常不需要 `.eslintignore`
+
+
+### 套用規則
 
 ```json
+// package.json
+{
+  // ...
+  "eslintConfig": {
+    "extends": "@byyuurin"
+  }
+}
+```
+
+```json
+// .eslintrc.json
 {
   "extends": ["@byyuurin"]
 }
 ```
-
-> 已預先設定排除條件，通常不需要設定 `.eslintignore`
 
 ### 設定 `.vscode/settings.json`
 
@@ -32,10 +43,25 @@ pnpm i -D eslint @byyuurin/eslint-config
 {
   // 不管是否有安裝 prettier 擴充功能都建議加上此設定以避免規則衝突
   "prettier.enable": false,
-  // 啟用自動修正
+  // 啟用存檔自動修正
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
-  }
+  },
+  // 設定由 ESLint 驗證的語言
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue",
+    "html",
+    "markdown",
+    "json",
+    "jsonc",
+    "json5",
+    "yml",
+    "yaml"
+  ]
 }
 ```
 
@@ -63,7 +89,6 @@ pnpm i -D eslint @byyuurin/eslint-config
 
 1. .vscode/settings.json (啟用 [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) 存檔自動格式化功能)
 2. .editorconfig (需要搭配安裝 [VSCode 擴充功能](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig))
-3. .eslintrc.json
 
 **新增檔案與內容如下**
 
@@ -95,13 +120,6 @@ charset = utf-8
 trim_trailing_whitespace = true
 # 是否在文件最後插入空白行
 insert_final_newline = true
-```
-
-**`.eslintrc.json`**
-```json
-{
-  "extends": ["@byyuurin"]
-}
 ```
 
 ## 參考資料

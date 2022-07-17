@@ -16,11 +16,6 @@ const getProjectDir = () => {
   while (!completed) {
     completed = fs.existsSync(resolve('../package.json', dir))
     dir = resolve('../', dir)
-    if (completed) {
-      const title = ` ${dir} `
-      const divider = '='.repeat(title.length)
-      log(['', divider, '%s', divider].join('\n'), title)
-    }
   }
 
   return dir
@@ -66,10 +61,10 @@ const createFiles = (files = []) => {
 }
 
 const createESLintConfig = (name = '') => {
-  let needWrite = false
   const dir = getProjectDir()
   const filePath = resolve('package.json', dir)
   const configPaths = [
+    '.eslintrc',
     '.eslintrc.js',
     '.eslintrc.cjs',
     '.eslintrc.yaml',
@@ -77,33 +72,48 @@ const createESLintConfig = (name = '') => {
     '.eslintrc.json',
   ]
   const json = JSON.parse(fs.readFileSync(filePath, 'utf-8'))
-
   const config = { extends: name }
   const rawExtends = (json.eslintConfig && json.eslintConfig.extends) || ''
+  let localConfigName = ''
 
-  if (configPaths.some((p) => fs.existsSync(resolve(p, dir)))) {
-    log('- [Existed] .eslintrc.*')
+  configPaths.some((p) => {
+    const isFileExists = fs.existsSync(resolve(p, dir))
+    if (isFileExists) localConfigName = p
+    return isFileExists
+  })
+
+  if (localConfigName) {
+    log('- [Existed] %s', localConfigName)
     return
   }
 
+  /** @type {'Append' | 'Replace' | ''} */
+  let writeMode = ''
+
   if (!json.eslintConfig) {
     json.eslintConfig = config
-    needWrite = true
-    log('- [Appended] eslintConfig')
+    writeMode = 'Append'
+    log('- [Append] eslintConfig')
   }
 
-  if (!needWrite && typeof rawExtends === 'string' && rawExtends !== config.extends) {
+  if (!writeMode && typeof rawExtends === 'string' && rawExtends !== config.extends) {
     json.eslintConfig.extends = name
-    needWrite = true
-    log('- [Replaced] eslintConfig.extends')
+    writeMode = 'Replace'
+    log('- [Replace] eslintConfig.extends')
   }
 
-  if (needWrite) {
-    fs.writeFileSync(filePath, `${JSON.stringify(json, null, 2)}\n`, 'utf-8')
+  if (writeMode) {
+    try {
+      fs.writeFileSync(filePath, `${JSON.stringify(json, null, 2)}\n`, 'utf-8')
+    }
+    catch (e) {
+      if (writeMode === 'Append')
+        fs.writeFileSync(resolve('.eslintrc.json', dir), `${JSON.stringify(config, null, 2)}\n`)
+    }
     return
   }
 
   log('- [Existed] eslintConfig')
 }
 
-module.exports = { createFiles, createESLintConfig }
+module.exports = { log, createFiles, createESLintConfig }

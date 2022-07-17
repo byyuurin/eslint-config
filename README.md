@@ -20,18 +20,20 @@ pnpm i -D eslint @byyuurin/eslint-config
 
 ### 套用規則
 
+可以選擇在 `package.json` 中新增
+
 ```json
-// package.json
 {
-  // ...
   "eslintConfig": {
     "extends": "@byyuurin"
   }
 }
 ```
 
+或是新增一個[設定檔](https://eslint.org/docs/latest/user-guide/configuring/configuration-files)，
+例 `.eslintrc.json`
+
 ```json
-// .eslintrc.json
 {
   "extends": ["@byyuurin"]
 }
@@ -87,40 +89,9 @@ pnpm i -D eslint @byyuurin/eslint-config
 
 ### 若安裝目錄中缺少以下內容時將自動新增檔案
 
-1. .vscode/settings.json (啟用 [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) 存檔自動格式化功能)
-2. .editorconfig (需要搭配安裝 [VSCode 擴充功能](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig))
-
-**新增檔案與內容如下**
-
-**`.vscode/settings.json`**
-```json
-{
-  "prettier.enable": false,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  }
-}
-```
-
-**`.editorconfig`**
-```bash
-# http://editorconfig.org
-root = true
-
-[*]
-# 縮排使用空白
-indent_style = space
-# 縮排大小
-indent_size = 2
-# 換行字元
-end_of_line = lf
-# 字元編碼
-charset = utf-8
-# 是否刪除句尾空格
-trim_trailing_whitespace = true
-# 是否在文件最後插入空白行
-insert_final_newline = true
-```
+1. [.vscode/settings.json](#設定-vscodesettingsjson) (啟用 [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) 存檔自動格式化功能)
+2. [.editorconfig](./.editorconfig) (需要搭配安裝 [VSCode 擴充功能](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig))
+3. [.eslintrc.json](#套用規則) (僅 package.json 無法加入 eslintConfig 時產生)
 
 ## 參考資料
 

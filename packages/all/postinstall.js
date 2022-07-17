@@ -1,5 +1,10 @@
 // @ts-check
-const { createFiles, createESLintConfig } = require('./utils')
+const { log, createFiles, createESLintConfig } = require('./utils')
+
+const namespace = '@byyuurin'
+const title = `${namespace}/eslint-config`
+const divider = `+-${'-'.repeat(title.length)}-+`
+log([divider, '%s', divider].join('\n'), `| ${title} |`)
 
 createFiles([
   {
@@ -43,4 +48,4 @@ createFiles([
   },
 ])
 
-createESLintConfig('@byyuurin')
+createESLintConfig(namespace)

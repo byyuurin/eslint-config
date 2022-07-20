@@ -4,6 +4,7 @@
     "target": "ESNext",
     "useDefineForClassFields": true,
     "module": "ESNext",
+    "jsx": "preserve",
     "lib": ["ESNext", "DOM"],
     "moduleResolution": "Node",
     "strict": true,

@@ -87,7 +87,7 @@ module.exports = {
     'vue/key-spacing': ['warn', { beforeColon: false, afterColon: true }],
     'vue/keyword-spacing': ['warn', { before: true, after: true }],
     'vue/max-len': 'off',
-    'vue/no-constant-condition': 'warn',
+    'vue/no-constant-condition': ['error', { checkLoops: false }],
     'vue/no-empty-pattern': 'error',
     'vue/no-extra-parens': ['warn', 'functions'],
     'vue/no-irregular-whitespace': 'error',

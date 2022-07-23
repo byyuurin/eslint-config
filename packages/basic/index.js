@@ -91,6 +91,13 @@ module.exports = {
       },
     },
     {
+      files: ['.vscode/extensions.json', '.vscode/settings.json', '.vscode/*.code-snippets'],
+      parser: 'jsonc-eslint-parser',
+      rules: {
+        'jsonc/comma-dangle': ['warn', 'always-multiline'],
+      },
+    },
+    {
       files: ['package.json'],
       parser: 'jsonc-eslint-parser',
       rules: {

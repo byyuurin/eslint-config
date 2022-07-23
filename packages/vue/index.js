@@ -1,4 +1,9 @@
 module.exports = {
+  extends: [
+    'plugin:vue/vue3-recommended',
+    '@byyuurin/eslint-config-typescript',
+  ],
+
   overrides: [
     {
       files: ['*.vue'],
@@ -10,11 +15,6 @@ module.exports = {
         'no-undef': 'off',
       },
     },
-  ],
-
-  extends: [
-    'plugin:vue/vue3-recommended',
-    '@byyuurin/eslint-config-typescript',
   ],
 
   rules: {

@@ -387,6 +387,7 @@ module.exports = {
     'no-useless-call': 'error',
     'no-useless-computed-key': 'warn',
     'no-useless-constructor': 'error',
+    'no-useless-concat': 'error',
     'no-useless-escape': 'error',
     'no-useless-rename': 'warn',
     'no-useless-return': 'warn',

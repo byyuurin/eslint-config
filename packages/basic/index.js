@@ -276,7 +276,7 @@ module.exports = {
     'default-case-last': 'error',
     'dot-location': ['warn', 'property'],
     'dot-notation': ['warn', { allowKeywords: true }],
-    'eqeqeq': ['warn', 'smart'],
+    'eqeqeq': ['error', 'smart'],
     'func-call-spacing': ['warn', 'never'],
     'generator-star-spacing': ['warn', { before: false, after: true }],
     'key-spacing': ['warn', { beforeColon: false, afterColon: true }],

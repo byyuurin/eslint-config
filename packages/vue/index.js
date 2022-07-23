@@ -82,7 +82,7 @@ module.exports = {
     'vue/comma-style': ['warn', 'last'],
     'vue/dot-location': ['warn', 'property'],
     'vue/dot-notation': ['warn', { allowKeywords: true }],
-    'vue/eqeqeq': ['warn', 'smart'],
+    'vue/eqeqeq': ['error', 'smart'],
     'vue/func-call-spacing': ['warn', 'never'],
     'vue/key-spacing': ['warn', { beforeColon: false, afterColon: true }],
     'vue/keyword-spacing': ['warn', { before: true, after: true }],

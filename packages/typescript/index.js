@@ -4,9 +4,9 @@ module.exports = {
   overrides: basic.overrides,
 
   extends: [
+    '@byyuurin/eslint-config-basic',
     'plugin:import/typescript',
     'plugin:@typescript-eslint/recommended',
-    '@byyuurin/eslint-config-basic',
   ],
 
   plugins: ['@typescript-eslint'],

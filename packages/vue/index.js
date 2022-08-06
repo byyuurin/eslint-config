@@ -18,6 +18,40 @@ module.exports = {
   ],
 
   rules: {
+    /* Essential
+    ---------------------------------------- */
+    'vue/multi-word-component-names': 'off',
+    'vue/no-v-text-v-html-on-component': 'error',
+    'vue/prefer-import-from-vue': 'warn',
+
+    /* Strongly Recommended
+    ---------------------------------------- */
+    'vue/html-self-closing': [
+      'warn',
+      {
+        html: {
+          void: 'always',
+          normal: 'never',
+          component: 'always',
+        },
+        svg: 'always',
+        math: 'always',
+      },
+    ],
+    'vue/max-attributes-per-line': 'off',
+    'vue/require-default-prop': 'off',
+    'vue/require-prop-types': 'off',
+
+    /* Recommended
+    ---------------------------------------- */
+    'vue/component-tags-order': [
+      'warn',
+      { order: ['script', 'template', 'style'] },
+    ],
+    'vue/no-v-html': 'off',
+
+    /* Others
+    ---------------------------------------- */
     'vue/block-tag-newline': [
       'warn',
       { singleline: 'always', multiline: 'always' },
@@ -29,47 +63,28 @@ module.exports = {
       },
     ],
     'vue/component-options-name-casing': ['warn', 'PascalCase'],
-    'vue/component-tags-order': [
-      'warn',
-      { order: ['script', 'template', 'style'] },
+    'vue/custom-event-name-casing': [
+      'error', 'kebab-case',
+      { ignores: [] },
     ],
-    'vue/custom-event-name-casing': ['error', 'kebab-case', { ignores: [] }],
     'vue/define-macros-order': 'warn',
     'vue/html-comment-content-newline': [
       'warn',
       { singleline: 'never', multiline: 'always' },
       { exceptions: [] },
     ],
-    'vue/html-comment-content-spacing': ['warn', 'always', { exceptions: [] }],
+    'vue/html-comment-content-spacing': [
+      'warn', 'always',
+      { exceptions: [] },
+    ],
     'vue/html-comment-indent': ['warn', 2],
-    'vue/max-attributes-per-line': 'off',
-    'vue/multi-word-component-names': 'off',
     'vue/no-restricted-v-bind': ['error', '/^v-/'],
     'vue/no-useless-mustaches': 'warn',
     'vue/no-useless-v-bind': 'warn',
-    'vue/no-v-html': 'off',
-    'vue/no-v-text-v-html-on-component': 'error',
     'vue/padding-line-between-blocks': ['warn', 'always'],
-    'vue/prefer-import-from-vue': 'warn',
     'vue/prefer-separate-static-class': 'warn',
-    'vue/require-prop-types': 'off',
-    'vue/require-default-prop': 'off',
 
-    /* strongly recommended
-    ---------------------------------------- */
-    'vue/html-self-closing': [
-      'warn', {
-        html: {
-          void: 'always',
-          normal: 'never',
-          component: 'always',
-        },
-        svg: 'always',
-        math: 'always',
-      },
-    ],
-
-    /* extensions
+    /* Extension Rules
     ---------------------------------------- */
     'vue/array-bracket-newline': ['warn', { multiline: true }],
     'vue/array-bracket-spacing': ['warn', 'never'],
@@ -106,9 +121,5 @@ module.exports = {
     'vue/space-infix-ops': 'warn',
     'vue/space-unary-ops': ['warn', { words: true, nonwords: false }],
     'vue/template-curly-spacing': ['warn', 'never'],
-
-    /* reactivity transform
-    ---------------------------------------- */
-    // 'vue/no-setup-props-destructure': 'off',
   },
 }

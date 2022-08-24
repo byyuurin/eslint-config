@@ -41,6 +41,7 @@ module.exports = {
     'vue/max-attributes-per-line': 'off',
     'vue/require-default-prop': 'off',
     'vue/require-prop-types': 'off',
+    'vue/v-on-event-hyphenation': ['warn', 'always', { autofix: true }],
 
     /* Recommended
     ---------------------------------------- */

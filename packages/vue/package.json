@@ -1,6 +1,6 @@
 {
   "license": "ISC",
-  "version": "0.8.5",
+  "version": "0.8.6",
   "name": "@byyuurin/eslint-config-vue",
   "files": [
     "index.js"

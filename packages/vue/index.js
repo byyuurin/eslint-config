@@ -69,16 +69,12 @@ module.exports = {
       { ignores: [] },
     ],
     'vue/define-macros-order': 'warn',
-    'vue/html-comment-content-newline': [
-      'warn',
-      { singleline: 'never', multiline: 'always' },
-      { exceptions: [] },
-    ],
+    'vue/html-comment-content-newline': 'off',
     'vue/html-comment-content-spacing': [
       'warn', 'always',
       { exceptions: [] },
     ],
-    'vue/html-comment-indent': ['warn', 2],
+    'vue/html-comment-indent': 'off',
     'vue/no-restricted-v-bind': ['error', '/^v-/'],
     'vue/no-useless-mustaches': 'warn',
     'vue/no-useless-v-bind': 'warn',

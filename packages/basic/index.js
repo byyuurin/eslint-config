@@ -73,13 +73,7 @@ module.exports = {
       rules: {
         'no-multiple-empty-lines': ['warn', { max: 0, maxBOF: 0, maxEOF: 0 }],
         'jsonc/array-bracket-spacing': ['warn', 'never'],
-        'jsonc/array-bracket-newline': [
-          'warn',
-          {
-            multiline: true,
-            minItems: null,
-          },
-        ],
+        'jsonc/array-bracket-newline': 'off',
         'jsonc/comma-dangle': ['warn', 'never'],
         'jsonc/comma-style': ['warn', 'last'],
         'jsonc/indent': ['warn', 2],
@@ -181,13 +175,6 @@ module.exports = {
             ],
           },
         ],
-        'jsonc/array-bracket-newline': [
-          'warn',
-          {
-            multiline: true,
-            minItems: 0,
-          },
-        ],
       },
     },
     {
@@ -259,7 +246,7 @@ module.exports = {
       },
     ],
     'array-bracket-spacing': ['warn', 'never'],
-    'array-bracket-newline': ['warn', { multiline: true }],
+    'array-bracket-newline': 'off',
     'array-callback-return': 'error',
     'arrow-spacing': ['warn', { before: true, after: true }],
     'arrow-parens': ['warn', 'always'],

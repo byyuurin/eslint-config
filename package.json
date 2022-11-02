@@ -15,11 +15,11 @@
   },
   "devDependencies": {
     "@byyuurin/eslint-config": "workspace:*",
-    "@types/node": "^18.7.14",
+    "@types/node": "^18.11.9",
     "bumpp": "^8.2.1",
-    "eslint": "^8.23.0",
-    "typescript": "^4.8.2",
-    "vue": "^3.2.38"
+    "eslint": "^8.26.0",
+    "typescript": "^4.8.4",
+    "vue": "^3.2.41"
   },
   "eslintConfig": {
     "extends": "@byyuurin"

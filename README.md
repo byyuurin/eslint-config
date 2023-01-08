@@ -45,25 +45,14 @@ pnpm i -D eslint @byyuurin/eslint-config
 {
   // 不管是否有安裝 prettier 擴充功能都建議加上此設定以避免規則衝突
   "prettier.enable": false,
+  // 關閉存檔自動格式化
+  "editor.formatOnSave": false,
   // 啟用存檔自動修正
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  // 設定由 ESLint 驗證的語言
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "vue",
-    "html",
-    "markdown",
-    "json",
-    "jsonc",
-    "json5",
-    "yml",
-    "yaml"
-  ]
+  // 設定額外由 ESLint 檢查的檔案類型
+  "eslint.validate": ["yml", "yaml", "json", "jsonc"]
 }
 ```
 

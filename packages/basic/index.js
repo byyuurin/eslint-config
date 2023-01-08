@@ -2,7 +2,7 @@ module.exports = {
   reportUnusedDisableDirectives: true,
 
   parserOptions: {
-    ecmaVersion: 2022,
+    ecmaVersion: 'latest',
     ecmaFeatures: {
       jsx: true,
     },
@@ -220,6 +220,7 @@ module.exports = {
     {
       files: ['**/*.md/*.*'],
       rules: {
+        'no-var': 'warn',
         'no-alert': 'off',
         'no-console': 'off',
         'no-restricted-imports': 'off',

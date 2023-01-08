@@ -11,23 +11,11 @@ createFiles([
     path: '.vscode/settings.json',
     body: `${JSON.stringify({
       'prettier.enable': false,
+      'editor.formatOnSave': false,
       'editor.codeActionsOnSave': {
         'source.fixAll.eslint': true,
       },
-      'eslint.validate': [
-        'javascript',
-        'javascriptreact',
-        'typescript',
-        'typescriptreact',
-        'vue',
-        'html',
-        'markdown',
-        'json',
-        'jsonc',
-        'json5',
-        'yml',
-        'yaml',
-      ],
+      'eslint.validate': ['yml', 'yaml', 'json', 'jsonc'],
     }, null, 2)}\n`,
   },
   {

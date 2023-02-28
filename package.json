@@ -1,6 +1,6 @@
 {
   "private": true,
-  "license": "ISC",
+  "license": "MIT",
   "packageManager": "pnpm@7.1.0",
   "version": "0.10.0",
   "name": "@byyuurin/eslint-config-monorepo",

@@ -244,6 +244,7 @@ module.exports = {
         '@typescript-eslint/no-redeclare': 'off',
         '@typescript-eslint/no-var-requires': 'off',
         '@typescript-eslint/comma-dangle': 'off',
+        '@typescript-eslint/consistent-type-imports': 'off',
       },
     },
   ],

@@ -339,7 +339,7 @@ module.exports = {
       {
         groups: [
           ['==', '!=', '===', '!==', '>', '>=', '<', '<='],
-          ['&&', '||'],
+          ['&&', '||', '?:'],
           ['in', 'instanceof'],
         ],
         allowSamePrecedence: true,

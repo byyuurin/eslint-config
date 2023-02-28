@@ -23,25 +23,36 @@ module.exports = {
   },
 
   ignorePatterns: [
+    // nonsupport
+    '*.css',
+    '*.png',
+    '*.ico',
+    '*.toml',
+    '*.patch',
+    '*.txt',
+    '*.crt',
+    '*.key',
+    'Dockerfile',
+    'LICENSE*',
+
+    // file
     '*.min.*',
     '*.d.ts',
+    'package-lock.json',
+    'pnpm-lock.yaml',
+    'yarn.lock',
+    'CHANGELOG.md',
+
+    // folder
     'dist',
     'public',
     'temp',
     'output',
-    'CHANGELOG.md',
-    'LICENSE*',
-
-    // package manager
-    'package-lock.json',
-    'pnpm-lock.yaml',
-    'yarn.lock',
-
-    // test framework
+    'out',
     'coverage',
     '__snapshots__',
 
-    // software
+    // force include
     '!.github',
     '!.vitepress',
     '!.vscode',

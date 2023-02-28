@@ -431,7 +431,7 @@ module.exports = {
     'prefer-const': [
       'warn',
       {
-        destructuring: 'any',
+        destructuring: 'all',
         ignoreReadBeforeAssign: true,
       },
     ],

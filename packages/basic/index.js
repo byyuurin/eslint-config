@@ -65,7 +65,10 @@ module.exports = {
     'plugin:markdown/recommended',
   ],
 
-  plugins: ['html'],
+  plugins: [
+    'html',
+    'unused-imports',
+  ],
 
   settings: {
     'import/resolver': {
@@ -245,6 +248,8 @@ module.exports = {
         'no-unused-expressions': 'off',
         'no-unused-vars': 'off',
         'import/no-unresolved': 'off',
+        'unused-imports/no-unused-imports': 'off',
+        'unused-imports/no-unused-vars': 'off',
         '@typescript-eslint/no-unused-vars': 'off',
         '@typescript-eslint/no-use-before-define': 'off',
         '@typescript-eslint/no-redeclare': 'off',
@@ -389,7 +394,6 @@ module.exports = {
         allowTaggedTemplates: true,
       },
     ],
-    'no-unused-vars': 'warn',
     'no-use-before-define': [
       'error', {
         functions: false,
@@ -567,5 +571,21 @@ module.exports = {
 
     // off
     'yml/no-empty-document': 'off',
+
+    /* eslint-plugin-unused-imports
+    ---------------------------------------- */
+    'unused-imports/no-unused-imports': 'warn',
+    'unused-imports/no-unused-vars': [
+      'error',
+      {
+        vars: 'all',
+        varsIgnorePattern: '^_',
+        args: 'after-used',
+        argsIgnorePattern: '^_',
+      },
+    ],
+
+    // off
+    'no-unused-vars': 'off',
   },
 }

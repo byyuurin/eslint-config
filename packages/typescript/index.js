@@ -38,6 +38,7 @@ module.exports = {
     '@typescript-eslint/no-empty-interface': 'off',
     '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/no-namespace': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
 
     /* override js
     ---------------------------------------- */
@@ -122,9 +123,6 @@ module.exports = {
 
     'lines-between-class-members': 'off',
     '@typescript-eslint/lines-between-class-members': ['warn', 'always', { exceptAfterSingleLine: true }],
-
-    'no-unused-vars': 'off',
-    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
 
     'no-redeclare': 'off',
     '@typescript-eslint/no-redeclare': 'error',

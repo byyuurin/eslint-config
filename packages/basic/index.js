@@ -636,7 +636,7 @@ module.exports = {
     'unicorn/prefer-dom-node-dataset': 'warn',
     'unicorn/prefer-dom-node-remove': 'warn',
     'unicorn/prefer-dom-node-text-content': 'error',
-    'unicorn/prefer-export-from': 'warn',
+    'unicorn/prefer-export-from': 'off',
     'unicorn/prefer-includes': 'warn',
     'unicorn/prefer-keyboard-event-key': 'warn',
     'unicorn/prefer-math-trunc': 'warn',

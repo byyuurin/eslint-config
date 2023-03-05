@@ -115,14 +115,12 @@ module.exports = {
           {
             pathPattern: '^$',
             order: [
-              /* basic information
-              ---------------------------------------- */
+              // basic information
               'private',
               'license',
               'publisher',
 
-              /* project information
-              ---------------------------------------- */
+              // project information
               'packageManager',
               'version',
               'name',
@@ -134,13 +132,11 @@ module.exports = {
               'homepage',
               'bugs',
 
-              /* author information
-              ---------------------------------------- */
+              // author information
               'author',
               'funding',
 
-              /* project contents
-              ---------------------------------------- */
+              // project contents
               'type',
               'sideEffects',
               'engines',
@@ -158,16 +154,14 @@ module.exports = {
               'contributes',
               'scripts',
 
-              /* dependencies
-              ---------------------------------------- */
+              // dependencies
               'peerDependencies',
               'peerDependenciesMeta',
               'dependencies',
               'optionalDependencies',
               'devDependencies',
 
-              /* others
-              ---------------------------------------- */
+              // others
               'pnpm',
               'overrides',
               'resolutions',

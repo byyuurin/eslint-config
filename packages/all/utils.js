@@ -1,6 +1,6 @@
 // @ts-check
-const path = require('path')
-const fs = require('fs')
+const path = require('node:path')
+const fs = require('node:fs')
 
 // eslint-disable-next-line no-console
 const log = (...args) => console.log(...args)
@@ -35,7 +35,7 @@ const createFiles = (files = []) => {
   return files.map(({ path, body }) => {
     const parents = path.split('/').slice(0, -1)
 
-    if (parents.length) {
+    if (parents.length > 0) {
       const parentPath = []
 
       parents.forEach((p) => {
@@ -50,12 +50,12 @@ const createFiles = (files = []) => {
       body,
     }
   }).forEach(({ path, body }) => {
-    if (!fs.existsSync(path)) {
-      fs.writeFileSync(path, body)
-      log(`- [Created] ${path}`)
+    if (fs.existsSync(path)) {
+      log(`- [Existed] ${path}`)
     }
     else {
-      log(`- [Existed] ${path}`)
+      fs.writeFileSync(path, body)
+      log(`- [Created] ${path}`)
     }
   })
 }
@@ -71,7 +71,7 @@ const createESLintConfig = (name = '') => {
     '.eslintrc.yml',
     '.eslintrc.json',
   ]
-  const json = JSON.parse(fs.readFileSync(filePath, 'utf-8'))
+  const json = JSON.parse(fs.readFileSync(filePath, 'utf8'))
   const config = { extends: name }
   const rawExtends = (json.eslintConfig && json.eslintConfig.extends) || ''
   let localConfigName = ''
@@ -97,16 +97,16 @@ const createESLintConfig = (name = '') => {
   }
 
   if (!writeMode && typeof rawExtends === 'string' && rawExtends !== config.extends) {
-    json.eslintConfig.extends = name
+    json.eslintConfig.extends = [rawExtends, name].filter(Boolean)
     writeMode = 'Replace'
     log('- [Replace] eslintConfig.extends')
   }
 
   if (writeMode) {
     try {
-      fs.writeFileSync(filePath, `${JSON.stringify(json, null, 2)}\n`, 'utf-8')
+      fs.writeFileSync(filePath, `${JSON.stringify(json, null, 2)}\n`, 'utf8')
     }
-    catch (e) {
+    catch {
       if (writeMode === 'Append')
         fs.writeFileSync(resolve('.eslintrc.json', dir), `${JSON.stringify(config, null, 2)}\n`)
     }

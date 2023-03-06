@@ -586,7 +586,7 @@ module.exports = {
     /* eslint-plugin-unicorn
     ---------------------------------------- */
     'unicorn/consistent-destructuring': 'warn',
-    'unicorn/consistent-function-scoping': 'error',
+    'unicorn/consistent-function-scoping': ['error', { checkArrowFunctions: false }],
     'unicorn/custom-error-definition': 'warn',
     'unicorn/empty-brace-spaces': 'warn',
     'unicorn/error-message': 'error',

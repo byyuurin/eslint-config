@@ -13,6 +13,7 @@ module.exports = {
       },
       rules: {
         'no-undef': 'off',
+        'unicorn/prefer-top-level-await': 'off',
       },
     },
   ],

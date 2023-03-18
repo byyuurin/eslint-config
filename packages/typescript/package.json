@@ -1,9 +1,9 @@
 {
-  "license": "ISC",
+  "license": "MIT",
   "version": "0.11.1",
   "name": "@byyuurin/eslint-config-typescript",
   "files": [
-    "index.js"
+    "*.js"
   ],
   "main": "index.js",
   "peerDependencies": {

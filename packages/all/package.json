@@ -1,11 +1,9 @@
 {
-  "license": "ISC",
+  "license": "MIT",
   "version": "0.11.1",
   "name": "@byyuurin/eslint-config",
   "files": [
-    "index.js",
-    "utils.js",
-    "postinstall.js"
+    "*.js"
   ],
   "main": "index.js",
   "scripts": {

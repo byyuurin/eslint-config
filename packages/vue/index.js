@@ -115,7 +115,6 @@ module.exports = {
     'vue/padding-line-between-blocks': ['warn', 'always'],
     'vue/padding-line-between-tags': ['warn', [{ blankLine: 'never', prev: '*', next: '*' }]],
     'vue/prefer-separate-static-class': 'warn',
-    'vue/static-class-names-order': 'warn',
 
     /* Extension Rules
     ---------------------------------------- */

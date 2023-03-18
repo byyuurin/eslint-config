@@ -23,10 +23,29 @@ module.exports = {
     ---------------------------------------- */
     'vue/multi-word-component-names': 'off',
     'vue/no-v-text-v-html-on-component': 'error',
+
+    'vue/no-deprecated-data-object-declaration': 'warn',
+    'vue/no-deprecated-destroyed-lifecycle': 'warn',
+    'vue/no-deprecated-dollar-scopedslots-api': 'warn',
+    'vue/no-deprecated-scope-attribute': 'warn',
+    'vue/no-deprecated-slot-attribute': 'warn',
+    'vue/no-deprecated-slot-scope-attribute': 'warn',
+    'vue/no-deprecated-v-on-number-modifiers': 'warn',
+    'vue/no-ref-as-operand': 'warn',
+    'vue/no-shared-component-data': 'warn',
     'vue/prefer-import-from-vue': 'warn',
+    'vue/require-prop-type-constructor': 'warn',
 
     /* Strongly Recommended
     ---------------------------------------- */
+    'vue/attribute-hyphenation': 'warn',
+    'vue/component-definition-name-casing': 'warn',
+    'vue/first-attribute-linebreak': 'warn',
+    'vue/html-closing-bracket-newline': 'warn',
+    'vue/html-closing-bracket-spacing': 'warn',
+    'vue/html-end-tags': 'warn',
+    'vue/html-indent': 'warn',
+    'vue/html-quotes': 'warn',
     'vue/html-self-closing': [
       'warn',
       {
@@ -39,20 +58,35 @@ module.exports = {
         math: 'always',
       },
     ],
+    'vue/multiline-html-element-content-newline': 'warn',
+    'vue/mustache-interpolation-spacing': 'warn',
+    'vue/no-multi-spaces': 'warn',
+    'vue/no-spaces-around-equal-signs-in-attribute': 'warn',
+    'vue/singleline-html-element-content-newline': 'warn',
+    'vue/v-bind-style': 'warn',
+    'vue/v-on-event-hyphenation': ['warn', 'always', { autofix: true }],
+    'vue/v-on-style': 'warn',
+    'vue/v-slot-style': 'warn',
+
+    // off
     'vue/max-attributes-per-line': 'off',
     'vue/require-default-prop': 'off',
     'vue/require-prop-types': 'off',
-    'vue/v-on-event-hyphenation': ['warn', 'always', { autofix: true }],
 
     /* Recommended
     ---------------------------------------- */
+    'vue/attributes-order': 'warn',
     'vue/component-tags-order': [
       'warn',
       { order: ['script', 'template', 'style'] },
     ],
+    'vue/order-in-components': 'warn',
+    'vue/this-in-template': 'warn',
+
+    // off
     'vue/no-v-html': 'off',
 
-    /* Others
+    /* Uncategorized
     ---------------------------------------- */
     'vue/block-tag-newline': [
       'warn',
@@ -70,17 +104,18 @@ module.exports = {
       { ignores: [] },
     ],
     'vue/define-macros-order': 'warn',
-    'vue/html-comment-content-newline': 'off',
+    'vue/html-comment-content-newline': 'warn',
     'vue/html-comment-content-spacing': [
       'warn', 'always',
       { exceptions: [] },
     ],
-    'vue/html-comment-indent': 'off',
     'vue/no-restricted-v-bind': ['error', '/^v-/'],
     'vue/no-useless-mustaches': 'warn',
     'vue/no-useless-v-bind': 'warn',
     'vue/padding-line-between-blocks': ['warn', 'always'],
+    'vue/padding-line-between-tags': ['warn', [{ blankLine: 'never', prev: '*', next: '*' }]],
     'vue/prefer-separate-static-class': 'warn',
+    'vue/static-class-names-order': 'warn',
 
     /* Extension Rules
     ---------------------------------------- */

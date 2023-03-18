@@ -3,6 +3,7 @@
   "version": "0.11.2",
   "name": "@byyuurin/eslint-config-basic",
   "files": [
+    "configs",
     "*.js"
   ],
   "main": "index.js",

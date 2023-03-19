@@ -4,6 +4,11 @@ module.exports = {
     '@byyuurin/eslint-config-typescript',
   ],
 
+  plugins: [
+    // https://github.com/vuejs/eslint-plugin-vue
+    'vue',
+  ],
+
   overrides: [
     {
       files: ['*.vue'],

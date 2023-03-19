@@ -10,7 +10,10 @@ module.exports = {
     'plugin:@typescript-eslint/eslint-recommended',
   ],
 
-  plugins: ['@typescript-eslint'],
+  plugins: [
+    // https://github.com/typescript-eslint/typescript-eslint
+    '@typescript-eslint',
+  ],
 
   settings: {
     'import/resolver': {

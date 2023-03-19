@@ -1,7 +1,7 @@
 {
   "private": true,
   "license": "MIT",
-  "packageManager": "pnpm@7.1.0",
+  "packageManager": "pnpm@7.29.3",
   "version": "0.11.5",
   "name": "@byyuurin/eslint-config-monorepo",
   "repository": {
@@ -15,10 +15,10 @@
   },
   "devDependencies": {
     "@byyuurin/eslint-config": "workspace:*",
-    "@types/node": "^18.14.2",
+    "@types/node": "^18.15.3",
     "bumpp": "^9.0.0",
-    "eslint": "^8.35.0",
-    "typescript": "^4.9.5",
+    "eslint": "^8.36.0",
+    "typescript": "^5.0.2",
     "vue": "^3.2.47"
   },
   "eslintConfig": {

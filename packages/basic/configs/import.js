@@ -6,6 +6,8 @@ module.exports = {
     'import',
     // https://github.com/sweepline/eslint-plugin-unused-imports
     'unused-imports',
+    // https://github.com/lydell/eslint-plugin-simple-import-sort
+    'simple-import-sort',
   ],
   settings: {
     'import/resolver': {
@@ -19,10 +21,10 @@ module.exports = {
     'import/namespace': 'error',
     'import/default': 'error',
     'import/export': 'error',
+    'import/newline-after-import': 'warn',
     'import/no-named-as-default': 'warn',
     'import/no-named-as-default-member': 'warn',
     'import/no-duplicates': 'warn',
-    'import/order': 'warn',
     'import/first': 'warn',
     'import/no-mutable-exports': 'error',
 
@@ -39,7 +41,16 @@ module.exports = {
       },
     ],
 
-    // off
+    // override rules
     'no-unused-vars': 'off',
+
+    /* eslint-plugin-simple-import-sort
+    ---------------------------------------- */
+    'simple-import-sort/imports': 'warn',
+    'simple-import-sort/exports': 'warn',
+
+    // override rules
+    'sort-imports': 'off',
+    'import/order': 'off',
   },
 }

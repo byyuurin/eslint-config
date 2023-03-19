@@ -265,16 +265,6 @@ module.exports = {
     'wrap-iife': ['warn', 'any', { functionPrototypeMethods: true }],
     'yield-star-spacing': ['warn', 'both'],
     'yoda': ['warn', 'never'],
-    'sort-imports': [
-      'warn',
-      {
-        ignoreCase: false,
-        ignoreDeclarationSort: true,
-        ignoreMemberSort: false,
-        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
-        allowSeparatedGroups: false,
-      },
-    ],
 
     // EditorConfig
     'indent': [

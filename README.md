@@ -2,10 +2,11 @@
 
 [![npm](https://img.shields.io/npm/v/@byyuurin/eslint-config?color=a1b858&label=)](https://npmjs.com/package/@byyuurin/eslint-config)
 
-- 縮排2個空白, 單引號, 無結尾分號
-- 透過自動修正來達成程式碼格式化, 可獨立使用不依賴 prettier
-- 自動修正 JavaScript, TypeScript, Vue, json, yaml, markdown
-- 排序導入(import)內容，使用拖尾逗號(comma-dangle)讓差異記錄更清晰
+- 單引號優先，不用結尾分號
+- 透過自動修正來達成格式化（旨在獨立使用，無需Prettier）
+- 自動檢查 JavaScript、TypeScript、Vue、json、yaml 與 markdown
+- 排序 import 內容，逗號懸空(comma-dangle)
+- **風格原則**: 閱讀輕鬆，穩定差異
 
 ## 使用方式
 
@@ -39,7 +40,9 @@ pnpm i -D eslint @byyuurin/eslint-config
 }
 ```
 
-### 設定 `.vscode/settings.json`
+### 啟用 VS Code 自動修正
+
+安裝 [VS Code ESLint 擴充功能](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) 並新增 `.vscode/settings.json`
 
 ```json
 {
@@ -78,7 +81,7 @@ pnpm i -D eslint @byyuurin/eslint-config
 
 ### 若安裝目錄中缺少以下內容時將自動新增檔案
 
-1. [.vscode/settings.json](#設定-vscodesettingsjson) (啟用 [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) 存檔自動格式化功能)
+1. [.vscode/settings.json](#啟用-VS-Code-自動修正) (啟用存檔自動格式化)
 2. [.editorconfig](./.editorconfig) (需要搭配安裝 [VSCode 擴充功能](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig))
 3. [.eslintrc.json](#套用規則) (僅 package.json 無法加入 eslintConfig 時產生)
 

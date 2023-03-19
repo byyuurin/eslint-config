@@ -1,8 +1,8 @@
 'use strict'
 
-// https://github.com/ota-meshi/eslint-plugin-jsonc
 module.exports = {
   plugins: [
+    // https://github.com/ota-meshi/eslint-plugin-jsonc
     'jsonc',
   ],
   extends: [

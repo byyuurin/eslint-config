@@ -1,8 +1,8 @@
 'use strict'
 
-// https://github.com/ota-meshi/eslint-plugin-yml
 module.exports = {
   plugins: [
+    // https://github.com/ota-meshi/eslint-plugin-yml
     'yml',
   ],
   extends: [

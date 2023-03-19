@@ -1,8 +1,8 @@
 'use strict'
 
-// https://github.com/sindresorhus/eslint-plugin-unicorn
 module.exports = {
   plugins: [
+    // https://github.com/sindresorhus/eslint-plugin-unicorn
     'unicorn',
   ],
   rules: {

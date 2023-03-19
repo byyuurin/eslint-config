@@ -1,10 +1,10 @@
 'use strict'
 
-// https://github.com/eslint/eslint-plugin-markdown
-// https://github.com/BenoitZugmeyer/eslint-plugin-html
 module.exports = {
   plugins: [
+    // https://github.com/eslint/eslint-plugin-markdown
     'markdown',
+    // https://github.com/BenoitZugmeyer/eslint-plugin-html
     'html',
   ],
   settings: {

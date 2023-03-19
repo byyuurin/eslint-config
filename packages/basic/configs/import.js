@@ -1,10 +1,10 @@
 'use strict'
 
-// https://github.com/import-js/eslint-plugin-import
-// https://github.com/sweepline/eslint-plugin-unused-imports
 module.exports = {
   plugins: [
+    // https://github.com/import-js/eslint-plugin-import
     'import',
+    // https://github.com/sweepline/eslint-plugin-unused-imports
     'unused-imports',
   ],
   settings: {

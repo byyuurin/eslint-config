@@ -46,7 +46,13 @@ module.exports = {
 
     /* eslint-plugin-simple-import-sort
     ---------------------------------------- */
-    'simple-import-sort/imports': 'warn',
+    'simple-import-sort/imports': ['warn', {
+      groups: [
+        ['^\\u0000'],
+        ['^node:', '^@?\\w'],
+        ['^', '^\\.'],
+      ],
+    }],
     'simple-import-sort/exports': 'warn',
 
     // override rules

@@ -28,6 +28,13 @@ module.exports = {
       rules: {
         'no-undef': 'off',
         'unicorn/prefer-top-level-await': 'off',
+        'simple-import-sort/imports': ['warn', {
+          groups: [
+            ['^\\u0000'],
+            ['^vue', '^@?\\w'],
+            ['^', '^\\.'],
+          ],
+        }],
       },
     },
   ],

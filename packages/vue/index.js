@@ -1,7 +1,16 @@
+const { isPackageExists } = require('local-pkg')
+
+const withTypescript = isPackageExists('typescript')
+
+if (!withTypescript)
+  console.warn('[@byyuurin/eslint-config] TypeScript is not installed, fallback to JS only.')
+
 module.exports = {
   extends: [
     'plugin:vue/vue3-recommended',
-    '@byyuurin/eslint-config-typescript',
+    withTypescript
+      ? '@byyuurin/eslint-config-typescript'
+      : '@byyuurin/eslint-config-basic',
   ],
 
   plugins: [

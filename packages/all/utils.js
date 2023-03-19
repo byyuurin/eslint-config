@@ -78,7 +78,8 @@ const createESLintConfig = (name = '') => {
 
   configPaths.some((p) => {
     const isFileExists = fs.existsSync(resolve(p, dir))
-    if (isFileExists) localConfigName = p
+    if (isFileExists)
+      localConfigName = p
     return isFileExists
   })
 

@@ -30,6 +30,7 @@ importers:
   packages/basic:
     specifiers:
       eslint: ^8.36.0
+      eslint-plugin-antfu: ^0.37.0
       eslint-plugin-html: ^7.1.0
       eslint-plugin-import: ^2.27.5
       eslint-plugin-jsonc: ^2.7.0
@@ -41,6 +42,7 @@ importers:
       jsonc-eslint-parser: ^2.2.0
       yaml-eslint-parser: ^1.2.0
     dependencies:
+      eslint-plugin-antfu: 0.37.0_eslint@8.36.0
       eslint-plugin-html: 7.1.0
       eslint-plugin-import: 2.27.5_eslint@8.36.0
       eslint-plugin-jsonc: 2.7.0_eslint@8.36.0
@@ -849,6 +851,16 @@ packages:
       eslint-import-resolver-node: 0.3.7
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /eslint-plugin-antfu/0.37.0_eslint@8.36.0:
+    resolution: {integrity: sha512-Tekr9S4fkrmH88RS5XHvs3gQwQIn/2As8gYePzrPHTQEQF00pIx0sa1eQrhmvN50ubUG4WkZnpx/uR3073jLeg==}
+    dependencies:
+      '@typescript-eslint/utils': 5.55.0_eslint@8.36.0
+    transitivePeerDependencies:
+      - eslint
+      - supports-color
+      - typescript
     dev: false
 
   /eslint-plugin-html/7.1.0:

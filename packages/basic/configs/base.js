@@ -6,6 +6,8 @@ module.exports = {
     'markdown',
     // https://github.com/BenoitZugmeyer/eslint-plugin-html
     'html',
+    // https://github.com/antfu/eslint-config/tree/main/packages/eslint-plugin-antfu
+    'antfu',
   ],
   settings: {
     html: {
@@ -295,5 +297,10 @@ module.exports = {
       },
     ],
     'eol-last': ['warn', 'always'],
+
+    /* eslint-plugin-import
+    ---------------------------------------- */
+    'antfu/if-newline': 'warn',
+    'antfu/import-dedupe': 'warn',
   },
 }

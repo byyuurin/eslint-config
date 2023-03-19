@@ -177,5 +177,9 @@ module.exports = {
     // '@typescript-eslint/no-non-null-assertion': 'off',
     // '@typescript-eslint/parameter-properties': 'off',
     // '@typescript-eslint/triple-slash-reference': 'off',
+
+    /* eslint-plugin-import
+    ---------------------------------------- */
+    'antfu/generic-spacing': 'warn',
   },
 }

@@ -125,7 +125,10 @@ module.exports = {
       { ignores: [] },
     ],
     'vue/define-macros-order': 'warn',
-    'vue/html-comment-content-newline': 'warn',
+    'vue/html-comment-content-newline': [
+      'warn',
+      { singleline: 'never', multiline: 'ignore' },
+    ],
     'vue/html-comment-content-spacing': [
       'warn', 'always',
       { exceptions: [] },

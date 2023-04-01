@@ -40,8 +40,8 @@ module.exports = {
   ],
 
   rules: {
-    /* Essential
-    ---------------------------------------- */
+    // Essential
+    // ----------------------------------------
     'vue/multi-word-component-names': 'off',
     'vue/no-v-text-v-html-on-component': 'error',
 
@@ -57,8 +57,8 @@ module.exports = {
     'vue/prefer-import-from-vue': 'warn',
     'vue/require-prop-type-constructor': 'warn',
 
-    /* Strongly Recommended
-    ---------------------------------------- */
+    // Strongly Recommended
+    // ----------------------------------------
     'vue/attribute-hyphenation': 'warn',
     'vue/component-definition-name-casing': 'warn',
     'vue/first-attribute-linebreak': 'warn',
@@ -94,8 +94,8 @@ module.exports = {
     'vue/require-default-prop': 'off',
     'vue/require-prop-types': 'off',
 
-    /* Recommended
-    ---------------------------------------- */
+    // Recommended
+    // ----------------------------------------
     'vue/attributes-order': 'warn',
     'vue/component-tags-order': [
       'warn',
@@ -107,8 +107,8 @@ module.exports = {
     // off
     'vue/no-v-html': 'off',
 
-    /* Uncategorized
-    ---------------------------------------- */
+    // Uncategorized
+    // ----------------------------------------
     'vue/block-tag-newline': [
       'warn',
       { singleline: 'always', multiline: 'always' },
@@ -140,8 +140,8 @@ module.exports = {
     'vue/padding-line-between-tags': ['warn', [{ blankLine: 'never', prev: '*', next: '*' }]],
     'vue/prefer-separate-static-class': 'warn',
 
-    /* Extension Rules
-    ---------------------------------------- */
+    // Extension Rules
+    // ----------------------------------------
     'vue/array-bracket-newline': ['warn', { multiline: true }],
     'vue/array-bracket-spacing': ['warn', 'never'],
     'vue/arrow-spacing': ['warn', { before: true, after: true }],

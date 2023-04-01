@@ -22,8 +22,8 @@ module.exports = {
   },
 
   rules: {
-    /* sync basic rules
-    ---------------------------------------- */
+    // sync basic rules
+    // ----------------------------------------
     'no-var': 'warn',
     'prefer-const': [
       'warn',
@@ -33,8 +33,8 @@ module.exports = {
       },
     ],
 
-    /* override basic rules
-    ---------------------------------------- */
+    // override basic rules
+    // ----------------------------------------
     'brace-style': 'off',
     '@typescript-eslint/brace-style': ['warn', 'stroustrup', { allowSingleLine: false }],
 
@@ -145,8 +145,8 @@ module.exports = {
     // off
     'no-useless-constructor': 'off',
 
-    /* @typescript-eslint
-    ---------------------------------------- */
+    // @typescript-eslint
+    // ----------------------------------------
     '@typescript-eslint/adjacent-overload-signatures': 'error',
     '@typescript-eslint/ban-ts-comment': ['error', { 'ts-ignore': 'allow-with-description' }],
     '@typescript-eslint/consistent-type-definitions': ['warn', 'interface'],
@@ -178,8 +178,8 @@ module.exports = {
     // '@typescript-eslint/parameter-properties': 'off',
     // '@typescript-eslint/triple-slash-reference': 'off',
 
-    /* eslint-plugin-import
-    ---------------------------------------- */
+    // antfu
+    // ----------------------------------------
     'antfu/generic-spacing': 'warn',
   },
 }

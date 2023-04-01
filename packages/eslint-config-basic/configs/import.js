@@ -1,5 +1,3 @@
-'use strict'
-
 module.exports = {
   plugins: [
     // https://github.com/import-js/eslint-plugin-import
@@ -15,8 +13,8 @@ module.exports = {
     },
   },
   rules: {
-    /* eslint-plugin-import
-    ---------------------------------------- */
+    // import
+    // ----------------------------------------
     'import/named': 'error',
     'import/namespace': 'error',
     'import/default': 'error',
@@ -28,8 +26,8 @@ module.exports = {
     'import/first': 'warn',
     'import/no-mutable-exports': 'error',
 
-    /* eslint-plugin-unused-imports
-    ---------------------------------------- */
+    // unused-imports
+    // ----------------------------------------
     'unused-imports/no-unused-imports': 'warn',
     'unused-imports/no-unused-vars': [
       'error',
@@ -44,13 +42,12 @@ module.exports = {
     // override rules
     'no-unused-vars': 'off',
 
-    /* eslint-plugin-simple-import-sort
-    ---------------------------------------- */
+    // simple-import-sort
+    // ----------------------------------------
     'simple-import-sort/imports': ['warn', {
       groups: [
         ['^\\u0000'],
-        ['^node:', '^@?\\w'],
-        ['^', '^\\.'],
+        ['^node:', '^@?\\w', '^', '^\\.'],
       ],
     }],
     'simple-import-sort/exports': 'warn',

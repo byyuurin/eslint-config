@@ -1,5 +1,3 @@
-'use strict'
-
 module.exports = {
   plugins: [
     // https://github.com/sindresorhus/eslint-plugin-unicorn

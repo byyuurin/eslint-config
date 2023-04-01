@@ -45,6 +45,7 @@ module.exports = {
 
     // folder
     'dist',
+    'dist-*',
     'public',
     'temp',
     'output',
@@ -130,6 +131,8 @@ module.exports = {
               'files',
               'types',
               'typesVersions',
+              'require',
+              'import',
               'main',
               'module',
               'unpkg',
@@ -221,7 +224,6 @@ module.exports = {
     {
       files: ['**/*.md/*.*'],
       rules: {
-        'no-var': 'warn',
         'no-alert': 'off',
         'no-console': 'off',
         'no-restricted-imports': 'off',

@@ -10,7 +10,7 @@
     "postinstall": "node postinstall.js"
   },
   "peerDependencies": {
-    "eslint": ">=7.4.0"
+    "eslint": ">=8.5.0"
   },
   "dependencies": {
     "@byyuurin/eslint-config-vue": "workspace:*"

@@ -1,5 +1,3 @@
-'use strict'
-
 module.exports = {
   plugins: [
     // https://github.com/ota-meshi/eslint-plugin-yml

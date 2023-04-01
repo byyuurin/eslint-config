@@ -134,6 +134,7 @@ module.exports = {
       { exceptions: [] },
     ],
     'vue/no-restricted-v-bind': ['error', '/^v-/'],
+    'vue/no-unused-refs': 'error',
     'vue/no-useless-mustaches': 'warn',
     'vue/no-useless-v-bind': 'warn',
     'vue/padding-line-between-blocks': ['warn', 'always'],

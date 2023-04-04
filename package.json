@@ -10,7 +10,7 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "lintf": "eslint . --fix",
+    "lint:fix": "eslint . --fix",
     "release": "bumpp -r && pnpm -r publish"
   },
   "devDependencies": {

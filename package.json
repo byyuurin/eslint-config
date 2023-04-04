@@ -2,7 +2,7 @@
   "private": true,
   "license": "MIT",
   "packageManager": "pnpm@7.30.5",
-  "version": "0.13.0",
+  "version": "0.13.1",
   "name": "@byyuurin/eslint-config-monorepo",
   "repository": {
     "type": "git",

@@ -99,7 +99,7 @@ module.exports = {
     'dot-notation': ['warn', { allowKeywords: true }],
     'eqeqeq': ['warn', 'smart'],
     'logical-assignment-operators': ['warn', 'always'],
-    'multiline-comment-style': ['warn', 'separate-lines'],
+    // 'multiline-comment-style': ['warn', 'separate-lines'],
     'new-cap': ['error', { newIsCap: true, capIsNew: false, properties: true }],
     'no-alert': 'error',
     'no-array-constructor': 'error',

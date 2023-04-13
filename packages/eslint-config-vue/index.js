@@ -31,8 +31,7 @@ module.exports = {
         'simple-import-sort/imports': ['warn', {
           groups: [
             ['^\\u0000'],
-            ['^vue', '^@?\\w'],
-            ['^', '^\\.'],
+            ['^vue', '^@?\\w', '^', '^\\.'],
           ],
         }],
       },

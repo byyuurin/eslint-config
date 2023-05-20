@@ -72,7 +72,6 @@ module.exports = {
     'unicorn/prefer-regexp-test': 'warn',
     'unicorn/prefer-set-has': 'warn',
     'unicorn/prefer-set-size': 'warn',
-    'unicorn/prefer-spread': 'warn',
     'unicorn/prefer-string-slice': 'warn',
     'unicorn/prefer-string-starts-ends-with': 'warn',
     'unicorn/prefer-string-trim-start-end': 'warn',

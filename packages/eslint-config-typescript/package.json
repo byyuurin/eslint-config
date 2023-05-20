@@ -1,6 +1,6 @@
 {
   "license": "MIT",
-  "version": "0.13.2",
+  "version": "0.13.3",
   "name": "@byyuurin/eslint-config-typescript",
   "files": [
     "*.js"

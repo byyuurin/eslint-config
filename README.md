@@ -39,9 +39,11 @@ pnpm i -D eslint @byyuurin/eslint-config
 
 > 由於已內置排除生效對象，通常不需要 `.eslintignore`
 
-### VS Code 啟用自動修正
+### VS Code 自動修正
 
-安裝 [VS Code ESLint 擴充功能](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) 並建立 `.vscode/settings.json` 檔案
+安裝 [VS Code ESLint 擴充功能](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+
+將以下設定加入專案目錄下的 `.vscode/settings.json` 中
 
 ```json
 {
@@ -51,10 +53,16 @@ pnpm i -D eslint @byyuurin/eslint-config
   "editor.formatOnSave": false,
   // 啟用存檔自動執行修正
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": true,
+    "source.organizeImports": false
   },
-  // 額外啟用 JSON 與 YAML 檢查
-  "eslint.validate": ["yml", "yaml", "json", "jsonc"]
+  // 增加可進行驗證的檔案類型
+  "eslint.validate": [
+    "yml",
+    "yaml",
+    "json",
+    "jsonc"
+  ]
 }
 ```
 

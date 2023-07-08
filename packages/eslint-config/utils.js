@@ -78,8 +78,10 @@ const createESLintConfig = (name = '') => {
 
   configPaths.some((p) => {
     const isFileExists = fs.existsSync(resolve(p, dir))
+
     if (isFileExists)
       localConfigName = p
+
     return isFileExists
   })
 
@@ -111,6 +113,7 @@ const createESLintConfig = (name = '') => {
       if (writeMode === 'Append')
         fs.writeFileSync(resolve('.eslintrc.json', dir), `${JSON.stringify(config, null, 2)}\n`)
     }
+
     return
   }
 

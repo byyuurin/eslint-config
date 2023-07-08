@@ -3,6 +3,12 @@
   "editor.formatOnSave": false,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
+    "source.organizeImports": false,
   },
-  "eslint.validate": ["yml", "yaml", "json", "jsonc"],
+  "eslint.validate": [
+    "yml",
+    "yaml",
+    "json",
+    "jsonc",
+  ],
 }

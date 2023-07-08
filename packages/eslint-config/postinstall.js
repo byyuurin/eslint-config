@@ -14,6 +14,7 @@ createFiles([
       'editor.formatOnSave': false,
       'editor.codeActionsOnSave': {
         'source.fixAll.eslint': true,
+        'source.organizeImports': false,
       },
       'eslint.validate': ['yml', 'yaml', 'json', 'jsonc'],
     }, null, 2)}\n`,

@@ -28,6 +28,7 @@ module.exports = {
     'jsonc/no-template-literals': 'warn',
     'jsonc/no-undefined-value': 'error',
     'jsonc/no-unicode-codepoint-escapes': 'warn',
+    'jsonc/no-irregular-whitespace': 'error',
     'jsonc/no-useless-escape': 'error',
     'jsonc/quote-props': 'warn',
     'jsonc/quotes': 'warn',

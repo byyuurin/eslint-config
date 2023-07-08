@@ -286,6 +286,13 @@ module.exports = {
         classes: 'never',
       },
     ],
+    'padding-line-between-statements': [
+      'warn',
+      { blankLine: 'always', prev: 'block-like', next: '*' },
+      { blankLine: 'always', prev: '*', next: 'block-like' },
+      { blankLine: 'always', prev: 'if', next: '*' },
+      { blankLine: 'always', prev: '*', next: 'if' },
+    ],
     'quotes': ['warn', 'single'],
     'rest-spread-spacing': ['warn', 'never'],
     'semi': ['warn', 'never'],

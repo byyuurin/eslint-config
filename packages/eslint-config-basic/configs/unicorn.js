@@ -64,6 +64,7 @@ module.exports = {
     'unicorn/prefer-native-coercion-functions': 'warn',
     'unicorn/prefer-negative-index': 'warn',
     'unicorn/prefer-node-protocol': 'warn',
+    'unicorn/prefer-number-properties': 'warn',
     'unicorn/prefer-object-from-entries': 'warn',
     'unicorn/prefer-optional-catch-binding': 'warn',
     'unicorn/prefer-prototype-methods': 'warn',

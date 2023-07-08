@@ -25,6 +25,7 @@ module.exports = {
     'import/no-duplicates': 'warn',
     'import/first': 'warn',
     'import/no-mutable-exports': 'error',
+    'import/no-self-import': 'error',
 
     // unused-imports
     // ----------------------------------------

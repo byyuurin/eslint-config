@@ -149,6 +149,7 @@ module.exports = {
     // ----------------------------------------
     '@typescript-eslint/adjacent-overload-signatures': 'error',
     '@typescript-eslint/ban-ts-comment': ['error', { 'ts-ignore': 'allow-with-description' }],
+    '@typescript-eslint/ban-types': 'error',
     '@typescript-eslint/consistent-type-definitions': ['warn', 'interface'],
     '@typescript-eslint/consistent-type-imports': ['warn', { prefer: 'type-imports', disallowTypeAnnotations: false }],
     '@typescript-eslint/member-delimiter-style': ['warn', { multiline: { delimiter: 'none' } }],
@@ -165,7 +166,6 @@ module.exports = {
     '@typescript-eslint/type-annotation-spacing': ['warn', {}],
 
     // off
-    // '@typescript-eslint/ban-types': 'off',
     // '@typescript-eslint/consistent-indexed-object-style': 'off',
     // '@typescript-eslint/explicit-module-boundary-types': 'off',
     // '@typescript-eslint/explicit-function-return-type': 'off',

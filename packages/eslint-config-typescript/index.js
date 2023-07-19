@@ -44,6 +44,9 @@ module.exports = {
     'comma-spacing': 'off',
     '@typescript-eslint/comma-spacing': ['warn', { before: false, after: true }],
 
+    'func-call-spacing': 'off',
+    '@typescript-eslint/func-call-spacing': ['warn', 'never'],
+
     'indent': 'off',
     '@typescript-eslint/indent': [
       'warn', 2,

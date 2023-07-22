@@ -1,6 +1,6 @@
 {
   "license": "MIT",
-  "version": "0.13.5",
+  "version": "0.14.0",
   "name": "@byyuurin/eslint-config-basic",
   "files": [
     "configs",

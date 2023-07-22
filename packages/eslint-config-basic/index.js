@@ -61,7 +61,6 @@ module.exports = {
 
   extends: [
     './configs/base',
-    './configs/html',
     './configs/import',
     './configs/jsonc',
     './configs/unicorn',

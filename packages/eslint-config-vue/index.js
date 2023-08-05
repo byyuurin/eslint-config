@@ -40,6 +40,7 @@ module.exports = {
 
   rules: {
     // Essential
+    // https://eslint.vuejs.org/rules/#priority-a-essential-error-prevention
     // ----------------------------------------
     'vue/multi-word-component-names': 'off',
     // 'vue/no-arrow-functions-in-watch': 'error',
@@ -130,6 +131,7 @@ module.exports = {
     // 'vue/valid-v-text': 'error',
 
     // Strongly Recommended
+    // https://eslint.vuejs.org/rules/#priority-b-strongly-recommended-improving-readability
     // ----------------------------------------
     'vue/attribute-hyphenation': 'warn',
     'vue/component-definition-name-casing': 'warn',
@@ -169,6 +171,7 @@ module.exports = {
     'vue/v-slot-style': 'warn',
 
     // Recommended
+    // https://eslint.vuejs.org/rules/#priority-c-recommended-potentially-dangerous-patterns
     // ----------------------------------------
     'vue/attributes-order': 'warn',
     'vue/component-tags-order': [
@@ -182,6 +185,7 @@ module.exports = {
     'vue/this-in-template': 'warn',
 
     // Uncategorized
+    // https://eslint.vuejs.org/rules/#uncategorized
     // ----------------------------------------
     // 'vue/block-lang': 'error',
     'vue/block-tag-newline': [
@@ -272,6 +276,7 @@ module.exports = {
     // 'vue/valid-define-options': 'error',
 
     // Extension Rules
+    // https://eslint.vuejs.org/rules/#extension-rules
     // ----------------------------------------
     'vue/array-bracket-newline': ['warn', { multiline: true }],
     'vue/array-bracket-spacing': ['warn', 'never'],

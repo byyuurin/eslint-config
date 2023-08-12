@@ -403,14 +403,17 @@ module.exports = {
     // indent, eol-last, linebreak-style, no-trailing-spaces
 
     // antfu
+    // https://github.com/antfu/eslint-config/tree/main/packages/eslint-plugin-antfu/src/rules
     // ----------------------------------------
     // 'antfu/generic-spacing': 'warn',
     'antfu/if-newline': 'warn',
     'antfu/import-dedupe': 'warn',
+    // 'antfu/named-tuple-spacing': 'warn',
     // 'antfu/no-cjs-exports': 'error',
     // 'antfu/no-const-enum': 'error',
+    'antfu/no-import-node-modules-by-path': 'error',
     // 'antfu/no-ts-export-equal': 'error',
     // 'antfu/prefer-inline-type-import': 'warn',
-    // 'antfu/top-level-function': 'warn',
+    'antfu/top-level-function': 'warn',
   },
 }

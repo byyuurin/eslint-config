@@ -39,6 +39,10 @@ module.exports = {
 
     // antfu
     'antfu/generic-spacing': 'warn',
+    'antfu/named-tuple-spacing': 'warn',
+    'antfu/no-cjs-exports': 'error',
+    'antfu/no-const-enum': 'error',
+    'antfu/no-ts-export-equal': 'error',
 
     // Supported Rules
     // https://typescript-eslint.io/rules/#supported-rules

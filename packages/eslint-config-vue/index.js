@@ -204,7 +204,9 @@ module.exports = {
       { ignores: [] },
     ],
     // 'vue/define-emits-declaration': 'error',
-    'vue/define-macros-order': 'warn',
+    'vue/define-macros-order': ['warn', {
+      order: ['defineOptions', 'defineProps', 'defineEmits', 'defineSlots'],
+    }],
     // 'vue/define-props-declaration': 'error',
     // 'vue/html-button-has-type': 'error',
     'vue/html-comment-content-newline': [

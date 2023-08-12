@@ -80,7 +80,6 @@ module.exports = {
     // 'vue/no-reserved-component-names': 'error',
     // 'vue/no-reserved-keys': 'error',
     // 'vue/no-reserved-props': 'error',
-    // 'vue/no-setup-props-destructure': 'error',
     'vue/no-shared-component-data': 'warn',
     // 'vue/no-side-effects-in-computed-properties': 'error',
     // 'vue/no-template-key': 'error',
@@ -174,10 +173,6 @@ module.exports = {
     // https://eslint.vuejs.org/rules/#priority-c-recommended-potentially-dangerous-patterns
     // ----------------------------------------
     'vue/attributes-order': 'warn',
-    'vue/component-tags-order': [
-      'warn',
-      { order: ['script', 'template', 'style'] },
-    ],
     // 'vue/no-lone-template': 'error',
     // 'vue/no-multiple-slot-args': 'error',
     'vue/no-v-html': 'off',
@@ -188,6 +183,10 @@ module.exports = {
     // https://eslint.vuejs.org/rules/#uncategorized
     // ----------------------------------------
     // 'vue/block-lang': 'error',
+    'vue/block-order': [
+      'warn',
+      { order: ['script', 'template', 'style'] },
+    ],
     'vue/block-tag-newline': [
       'warn',
       { singleline: 'always', multiline: 'always' },
@@ -228,7 +227,7 @@ module.exports = {
     // 'vue/no-empty-component-block': 'error',
     // 'vue/no-multiple-objects-in-class': 'error',
     // 'vue/no-potential-component-option-typo': 'error',
-    // 'vue/no-ref-object-destructure': 'error',
+    // 'vue/no-ref-object-reactivity-loss': 'error',
     // 'vue/no-required-prop-with-default': 'warn',
     // 'vue/no-restricted-block': 'error',
     // 'vue/no-restricted-call-after-await': 'error',
@@ -241,6 +240,7 @@ module.exports = {
     // 'vue/no-restricted-static-attribute': 'error',
     'vue/no-restricted-v-bind': ['error', '/^v-/'],
     // 'vue/no-root-v-if': 'error',
+    // 'vue/no-setup-props-reactivity-loss': 'error',
     // 'vue/no-static-inline-styles': 'error',
     // 'vue/no-template-target-blank': 'error',
     // 'vue/no-this-in-before-route-enter': 'error',
@@ -316,5 +316,9 @@ module.exports = {
     'vue/space-infix-ops': 'warn',
     'vue/space-unary-ops': ['warn', { words: true, nonwords: false }],
     'vue/template-curly-spacing': ['warn', 'never'],
+
+    // Deprecated
+    // https://eslint.vuejs.org/rules/#deprecated
+    // ----------------------------------------
   },
 }

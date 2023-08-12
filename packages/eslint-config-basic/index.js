@@ -57,14 +57,17 @@ module.exports = {
     '!.github',
     '!.vitepress',
     '!.vscode',
+
+    // force exclude
+    '**/.vitepress/cache',
   ],
 
   extends: [
-    './configs/base',
-    './configs/import',
-    './configs/jsonc',
-    './configs/unicorn',
-    './configs/yml',
+    './config/base',
+    './config/import',
+    './config/jsonc',
+    './config/unicorn',
+    './config/yml',
   ],
 
   overrides: [

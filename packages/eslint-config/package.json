@@ -7,7 +7,6 @@
   ],
   "main": "index.js",
   "scripts": {
-    "postinstall": "node postinstall.js"
   },
   "peerDependencies": {
     "eslint": ">=8.5.0"
@@ -16,6 +15,6 @@
     "@byyuurin/eslint-config-vue": "workspace:*"
   },
   "devDependencies": {
-    "eslint": "^8.45.0"
+    "eslint": "^8.47.0"
   }
 }

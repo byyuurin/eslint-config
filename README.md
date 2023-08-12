@@ -88,14 +88,8 @@ pnpm i -D eslint @byyuurin/eslint-config
 }
 ```
 
-### 若安裝目錄中缺少以下內容時將嘗試自動新增檔案 (postinstall)
-
-1. [.vscode/settings.json](#啟用-VS-Code-自動修正) (啟用存檔自動格式化)
-2. [.editorconfig](./.editorconfig) (需要搭配安裝 [VSCode 擴充功能](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig))
-3. [.eslintrc.json](#套用規則) (僅 package.json 無法加入 eslintConfig 時產生)
-
 ## 參考資料
 
 1. [使用 pnpm 构建 Monorepo 项目](https://zhuanlan.zhihu.com/p/373935751)
 2. [@antfu/eslint-config](https://github.com/antfu/eslint-config) 專案結構與規則
-3. [@fmfe/genesis-lint](https://github.com/fmfe/genesis/tree/master/packages/genesis-lint) 的 `postinstall.js`
+3. ~~[@fmfe/genesis-lint](https://github.com/fmfe/genesis/tree/master/packages/genesis-lint) 的 `postinstall.js`~~

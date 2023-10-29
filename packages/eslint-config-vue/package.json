@@ -12,10 +12,10 @@
   "dependencies": {
     "@byyuurin/eslint-config-basic": "workspace:*",
     "@byyuurin/eslint-config-typescript": "workspace:*",
-    "eslint-plugin-vue": "^9.17.0",
+    "eslint-plugin-vue": "^9.18.1",
     "local-pkg": "^0.4.3"
   },
   "devDependencies": {
-    "eslint": "^8.48.0"
+    "eslint": "^8.52.0"
   }
 }

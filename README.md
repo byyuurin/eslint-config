@@ -45,7 +45,7 @@ pnpm i -D eslint @byyuurin/eslint-config
 
 將以下設定加入專案目錄下的 `.vscode/settings.json` 中
 
-```json
+```jsonc
 {
   // 不管是否有安裝 prettier 擴充功能都建議加上此設定以避免規則衝突
   "prettier.enable": false,
@@ -68,7 +68,7 @@ pnpm i -D eslint @byyuurin/eslint-config
 
 ### package.json 中加入執行命令
 
-```json
+```jsonc
 {
   // 檢查
   "lint": "eslint .",
@@ -79,7 +79,7 @@ pnpm i -D eslint @byyuurin/eslint-config
 
 或是需要指定檔案類型時…
 
-```json
+```jsonc
 {
   // 檢查
   "lint": "eslint \"src/**/*.{vue,ts,js}\"",

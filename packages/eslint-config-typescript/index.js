@@ -13,6 +13,8 @@ module.exports = {
   plugins: [
     // https://github.com/typescript-eslint/typescript-eslint
     '@typescript-eslint',
+    // https://eslint.style/packages/ts
+    '@stylistic/ts',
   ],
 
   settings: {
@@ -63,7 +65,7 @@ module.exports = {
     // '@typescript-eslint/explicit-function-return-type': 'error',
     // '@typescript-eslint/explicit-member-accessibility': 'warn',
     // '@typescript-eslint/explicit-module-boundary-types': 'error',
-    '@typescript-eslint/member-delimiter-style': ['warn', { multiline: { delimiter: 'none' } }],
+    '@stylistic/ts/member-delimiter-style': ['warn', { multiline: { delimiter: 'none' } }],
     // '@typescript-eslint/member-ordering': 'error',
     // '@typescript-eslint/method-signature-style': 'warn',
     // '@typescript-eslint/naming-convention': 'error',
@@ -134,7 +136,7 @@ module.exports = {
     // '@typescript-eslint/strict-boolean-expressions': 'warn',
     // '@typescript-eslint/switch-exhaustiveness-check': 'error',
     // '@typescript-eslint/triple-slash-reference': 'error',
-    '@typescript-eslint/type-annotation-spacing': ['warn', {}],
+    '@stylistic/ts/type-annotation-spacing': ['warn', {}],
     // '@typescript-eslint/typedef': 'error',
     // '@typescript-eslint/unbound-method': 'error',
     // '@typescript-eslint/unified-signatures': 'error',
@@ -144,23 +146,23 @@ module.exports = {
     // ----------------------------------------
     // '@typescript-eslint/block-spacing': 'warn',
 
-    'brace-style': 'off',
-    '@typescript-eslint/brace-style': ['warn', 'stroustrup', { allowSingleLine: false }],
+    '@stylistic/js/brace-style': 'off',
+    '@stylistic/ts/brace-style': ['warn', 'stroustrup', { allowSingleLine: false }],
 
-    'comma-dangle': 'off',
-    '@typescript-eslint/comma-dangle': ['warn', 'always-multiline'],
+    '@stylistic/js/comma-dangle': 'off',
+    '@stylistic/ts/comma-dangle': ['warn', 'always-multiline'],
 
-    'comma-spacing': 'off',
-    '@typescript-eslint/comma-spacing': ['warn', { before: false, after: true }],
+    '@stylistic/js/comma-spacing': 'off',
+    '@stylistic/ts/comma-spacing': ['warn', { before: false, after: true }],
 
     // '@typescript-eslint/default-param-last': 'error',
     // '@typescript-eslint/dot-notation': 'warn',
 
-    'func-call-spacing': 'off',
-    '@typescript-eslint/func-call-spacing': ['warn', 'never'],
+    '@stylistic/js/func-call-spacing': 'off',
+    '@stylistic/ts/func-call-spacing': ['warn', 'never'],
 
-    'indent': 'off',
-    '@typescript-eslint/indent': [
+    '@stylistic/js/indent': 'off',
+    '@stylistic/ts/indent': [
       'warn', 2,
       {
         SwitchCase: 1,
@@ -202,13 +204,13 @@ module.exports = {
     // '@typescript-eslint/init-declarations': 'error',
     // '@typescript-eslint/key-spacing': 'warn',
 
-    'keyword-spacing': 'off',
-    '@typescript-eslint/keyword-spacing': ['warn', { before: true, after: true }],
+    '@stylistic/js/keyword-spacing': 'off',
+    '@stylistic/ts/keyword-spacing': ['warn', { before: true, after: true }],
 
     // '@typescript-eslint/lines-around-comment': 'warn',
 
-    'lines-between-class-members': 'off',
-    '@typescript-eslint/lines-between-class-members': ['warn', 'always', { exceptAfterSingleLine: true }],
+    '@stylistic/js/lines-between-class-members': 'off',
+    '@stylistic/ts/lines-between-class-members': ['warn', 'always', { exceptAfterSingleLine: true }],
 
     'no-array-constructor': 'off',
     '@typescript-eslint/no-array-constructor': 'error',
@@ -219,11 +221,11 @@ module.exports = {
     // 'no-empty-function': 'off',
     // '@typescript-eslint/no-empty-function': 'error',
 
-    'no-extra-parens': 'off',
-    '@typescript-eslint/no-extra-parens': ['warn', 'functions'],
+    '@stylistic/js/no-extra-parens': 'off',
+    '@stylistic/ts/no-extra-parens': ['warn', 'functions'],
 
-    'no-extra-semi': 'off',
-    '@typescript-eslint/no-extra-semi': 'error',
+    '@stylistic/js/no-extra-semi': 'off',
+    '@stylistic/ts/no-extra-semi': 'error',
 
     // '@typescript-eslint/no-implied-eval': 'error',
     // '@typescript-eslint/no-invalid-this': 'error',
@@ -250,25 +252,25 @@ module.exports = {
 
     // '@typescript-eslint/no-useless-constructor': 'error',
 
-    'object-curly-spacing': 'off',
-    '@typescript-eslint/object-curly-spacing': ['warn', 'always'],
+    '@stylistic/js/object-curly-spacing': 'off',
+    '@stylistic/ts/object-curly-spacing': ['warn', 'always'],
 
     // '@typescript-eslint/padding-line-between-statements': 'warn',
 
-    'quotes': 'off',
-    '@typescript-eslint/quotes': ['warn', 'single'],
+    '@stylistic/js/quotes': 'off',
+    '@stylistic/ts/quotes': ['warn', 'single'],
 
     // '@typescript-eslint/require-await': 'error',
     // '@typescript-eslint/return-await': 'error',
 
-    'semi': 'off',
-    '@typescript-eslint/semi': ['warn', 'never'],
+    '@stylistic/js/semi': 'off',
+    '@stylistic/ts/semi': ['warn', 'never'],
 
-    'space-before-blocks': 'off',
-    '@typescript-eslint/space-before-blocks': ['warn', 'always'],
+    '@stylistic/js/space-before-blocks': 'off',
+    '@stylistic/ts/space-before-blocks': ['warn', 'always'],
 
-    'space-before-function-paren': 'off',
-    '@typescript-eslint/space-before-function-paren': [
+    '@stylistic/js/space-before-function-paren': 'off',
+    '@stylistic/ts/space-before-function-paren': [
       'warn',
       {
         anonymous: 'always',
@@ -277,7 +279,7 @@ module.exports = {
       },
     ],
 
-    'space-infix-ops': 'off',
-    '@typescript-eslint/space-infix-ops': 'warn',
+    '@stylistic/js/space-infix-ops': 'off',
+    '@stylistic/ts/space-infix-ops': 'warn',
   },
 }

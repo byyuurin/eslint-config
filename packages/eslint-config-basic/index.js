@@ -75,7 +75,7 @@ module.exports = {
       files: ['*.json', '*.jsonc', '*.json5', '*.code-snippets'],
       parser: 'jsonc-eslint-parser',
       rules: {
-        'no-multiple-empty-lines': ['warn', { max: 0, maxBOF: 0, maxEOF: 0 }],
+        '@stylistic/js/no-multiple-empty-lines': ['warn', { max: 0, maxBOF: 0, maxEOF: 0 }],
         'jsonc/array-bracket-spacing': ['warn', 'never'],
         'jsonc/array-bracket-newline': 'off',
         'jsonc/comma-dangle': ['warn', 'never'],
@@ -181,7 +181,7 @@ module.exports = {
       files: ['*.yaml', '*.yml'],
       parser: 'yaml-eslint-parser',
       rules: {
-        'spaced-comment': 'off',
+        '@stylistic/js/spaced-comment': 'off',
       },
     },
     {
@@ -238,7 +238,7 @@ module.exports = {
         'unused-imports/no-unused-vars': 'off',
         'antfu/no-cjs-exports': 'off',
         'antfu/no-ts-export-equal': 'off',
-        '@typescript-eslint/comma-dangle': 'off',
+        '@stylistic/ts/comma-dangle': 'off',
         '@typescript-eslint/consistent-type-imports': 'off',
         '@typescript-eslint/no-namespace': 'off',
         '@typescript-eslint/no-redeclare': 'off',

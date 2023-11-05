@@ -110,7 +110,7 @@ module.exports = {
     // '@typescript-eslint/no-unsafe-return': 'error',
     // '@typescript-eslint/no-useless-empty-export': 'warn',
     '@typescript-eslint/no-var-requires': 'error',
-    // '@typescript-eslint/non-nullable-type-assertion-style': 'warn'
+    // '@typescript-eslint/non-nullable-type-assertion-style': 'warn',
     // '@typescript-eslint/parameter-properties': 'error',
     '@typescript-eslint/prefer-as-const': 'error',
     // '@typescript-eslint/prefer-enum-initializers': 'error',
@@ -144,7 +144,7 @@ module.exports = {
     // Extension Rules
     // https://typescript-eslint.io/rules/#extension-rules
     // ----------------------------------------
-    // '@typescript-eslint/block-spacing': 'warn',
+    // '@stylistic/ts/block-spacing': 'warn',
 
     '@stylistic/js/brace-style': 'off',
     '@stylistic/ts/brace-style': ['warn', 'stroustrup', { allowSingleLine: false }],
@@ -202,12 +202,12 @@ module.exports = {
     ],
 
     // '@typescript-eslint/init-declarations': 'error',
-    // '@typescript-eslint/key-spacing': 'warn',
+    // '@stylistic/ts/key-spacing': 'warn',
 
     '@stylistic/js/keyword-spacing': 'off',
     '@stylistic/ts/keyword-spacing': ['warn', { before: true, after: true }],
 
-    // '@typescript-eslint/lines-around-comment': 'warn',
+    // '@stylistic/ts/lines-around-comment': 'warn',
 
     '@stylistic/js/lines-between-class-members': 'off',
     '@stylistic/ts/lines-between-class-members': ['warn', 'always', { exceptAfterSingleLine: true }],
@@ -255,7 +255,7 @@ module.exports = {
     '@stylistic/js/object-curly-spacing': 'off',
     '@stylistic/ts/object-curly-spacing': ['warn', 'always'],
 
-    // '@typescript-eslint/padding-line-between-statements': 'warn',
+    // '@stylistic/ts/padding-line-between-statements': 'warn',
 
     '@stylistic/js/quotes': 'off',
     '@stylistic/ts/quotes': ['warn', 'single'],

@@ -99,8 +99,13 @@ export async function byyuurin(
     }))
   }
 
-  if (enableUnoCSS)
-    configs.push(unocss(typeof enableUnoCSS === 'boolean' ? {} : enableUnoCSS))
+  if (enableUnoCSS) {
+    configs.push(unocss(
+      typeof enableUnoCSS === 'boolean'
+        ? {}
+        : enableUnoCSS,
+    ))
+  }
 
   if (options.jsonc ?? true) {
     configs.push(

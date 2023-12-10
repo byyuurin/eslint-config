@@ -1,95 +1,274 @@
-# @byyuurin/eslint-config
+# @byyuurin/eslint-config [![npm](https://img.shields.io/npm/v/@byyuurin/eslint-config?color=a1b858&label=)](https://npmjs.com/package/@byyuurin/eslint-config)
 
-[![npm](https://img.shields.io/npm/v/@byyuurin/eslint-config?color=a1b858&label=)](https://npmjs.com/package/@byyuurin/eslint-config)
+ESLint Flat config for JavaScript, TypeScript, Vue, UnoCSS
 
-- 單引號優先，不用結尾分號
-- 透過自動修正來達成格式化（旨在獨立使用，**無需** Prettier）
-- 自動檢查 JavaScript、TypeScript、Vue、Markdown、JSON 與 YAML
-- 排序 import 內容，逗號懸空(comma-dangle)
-- **風格原則**: 最小修改，穩定差異
+- Single quotes, no semi
+- Auto fix for formatting (aimed to be used standalone **without** Prettier)
+- Designed to work with TypeScript, Vue out-of-box
+- Lints also for json, yaml, markdown
+- Sorted imports, dangling commas
+- Reasonable defaults, best practices, only one-line of config
+- [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), compose easily!
+- Using [ESLint Stylistic](https://github.com/eslint-stylistic/eslint-stylistic)
+- Respects `.gitignore` by default
 
-## 使用方式
+## Usage
 
-### 安裝依賴
+### Install
 
 ```bash
 pnpm i -D eslint @byyuurin/eslint-config
 ```
 
-### ESLint 設定
+### Create config file
 
-可以選擇在 `package.json` 中新增
+With `"type": "module"` in `package.json` (recommended):
+
+```js
+// eslint.config.js
+import byyuurin from '@byyuurin/eslint-config'
+
+export default byyuurin()
+```
+
+With CJS:
+
+```js
+// eslint.config.js
+const byyuurin = require('@byyuurin/eslint-config').default
+
+module.exports = byyuurin()
+```
+
+Combined with legacy config:
+
+```js
+// eslint.config.js
+const byyuurin = require('@byyuurin/eslint-config').default
+const { FlatCompat } = require('@eslint/eslintrc')
+const compat = new FlatCompat()
+
+module.exports = byyuurin(
+  {
+    ignores: [],
+  },
+
+  // Legacy config
+  ...compat.config({
+    extends: [
+      'eslint:recommended',
+      // Other extends...
+    ],
+  }),
+
+  // Other flat configs...
+)
+```
+
+> Note that `.eslintignore` no longer works in Flat config
+
+### Add script for package.json
+
+For example:
 
 ```json
 {
-  "eslintConfig": {
-    "extends": "@byyuurin"
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   }
 }
 ```
 
-或是新增一個[設定檔](https://eslint.org/docs/latest/user-guide/configuring/configuration-files)，
-例 `.eslintrc.json`
+## VS Code support (auto fix)
+
+Install [VS Code ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+
+Add the following settings  to your `.vscode/settings.json`:
+
+```jsonc
+{
+  // Disable the default formatter, use eslint instead
+  "prettier.enable": false,
+  "editor.formatOnSave": false,
+
+  // Auto fix
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never"
+  },
+
+  // Enable the ESlint flat config support
+  "eslint.experimental.useFlatConfig": true,
+
+  // Silent the stylistic rules in you IDE, but still auto fix them
+  "eslint.rules.customizations": [
+    { "rule": "style/*", "severity": "off" },
+    { "rule": "*-indent", "severity": "off" },
+    { "rule": "*-spacing", "severity": "off" },
+    { "rule": "*-spaces", "severity": "off" },
+    { "rule": "*-order", "severity": "off" },
+    { "rule": "*-dangle", "severity": "off" },
+    { "rule": "*-newline", "severity": "off" },
+    { "rule": "*quotes", "severity": "off" },
+    { "rule": "*semi", "severity": "off" }
+  ],
+
+  // Enable eslint for all supported languages
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue",
+    "html",
+    "markdown",
+    "json",
+    "jsonc",
+    "yaml"
+  ],
+}
+```
+
+## Customization
+
+You can configure each integration individually, for example:
+
+```js
+// eslint.config.js
+import byyuurin from '@byyuurin/eslint-config'
+
+export default byyuurin({
+  // Enable stylistic formatting rules
+  // stylistic: true,
+
+  // Or customize the stylistic rules
+  stylistic: {
+    indent: 2, // 4, or 'tab'
+    quotes: 'single', // or 'double'
+  },
+
+  // TypeScript and Vue are auto-detected, you can also explicitly enable them:
+  typescript: true,
+  vue: true,
+
+  // Disable jsonc and yaml support
+  jsonc: false,
+  yaml: false,
+
+  // `.eslintignore` is no longer supported in Flat config, use `ignores` instead
+  ignores: [
+    './fixtures',
+    // ...globs
+  ],
+})
+```
+
+The factory function also accepts any number of arbitrary custom config overrides:
+
+```js
+// eslint.config.js
+import byyuurin from '@byyuurin/eslint-config'
+
+export default byyuurin(
+  {
+    // Configures for byyuurin's config
+  },
+
+  // From the second arguments they are ESLint Flat Configs
+  // you can have multiple configs
+  {
+    files: ['**/*.ts'],
+    rules: {},
+  },
+  {
+    rules: {},
+  },
+)
+```
+
+### Plugins Renaming
+
+Since flat config requires us to explicitly provide the plugin names(instead of the mandatory convention from npm package name),
+we renamed some plugins to make the overall scope more consistent and easier to write.
+
+| New Prefix | Original Prefix        | Source Plugin                                                                              |
+| ---------- | ---------------------- | ------------------------------------------------------------------------------------------ |
+| `import/*` | `i/*`                  | [eslint-plugin-i](https://github.com/un-es/eslint-plugin-i)                                |
+| `node/*`   | `n/*`                  | [eslint-plugin-n](https://github.com/eslint-community/eslint-plugin-n)                     |
+| `yaml/*`   | `yml/*`                | [eslint-plugin-yml](https://github.com/ota-meshi/eslint-plugin-yml)                        |
+| `ts/*`     | `@typescript-eslint/*` | [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint) |
+| `style/*`  | `@stylistic/*`         | [@stylistic/eslint-plugin](https://github.com/eslint-stylistic/eslint-stylistic)           |
+
+When you want to override rules, or disable them inline, you need to update to the new prefix:
+
+```diff
+-// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
++// eslint-disable-next-line ts/consistent-type-definitions
+type foo = { bar: 2 }
+```
+
+### Rules Overrides
+
+You can change the rules via the `overrides` option:
+
+```js
+// eslint.config.js
+import byyuurin from '@byyuurin/eslint-config'
+
+export default byyuurin({
+  overrides: {
+    vue: {
+      'vue/operator-linebreak': ['error', 'before'],
+    },
+    typescript: {
+      'ts/consistent-type-definitions': ['error', 'interface'],
+    },
+    yaml: {},
+    // ...
+  },
+})
+```
+
+### Lint Staged
+
+If you want to apply lint and auto-fix before every commit, you can add the following to your `package.json`:
 
 ```json
 {
-  "extends": "@byyuurin"
-}
-```
-
-> 由於已內置排除生效對象，通常不需要 `.eslintignore`
-
-### VS Code 自動修正
-
-安裝 [VS Code ESLint 擴充功能](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-
-將以下設定加入專案目錄下的 `.vscode/settings.json` 中
-
-```jsonc
-{
-  // 不管是否有安裝 prettier 擴充功能都建議加上此設定以避免規則衝突
-  "prettier.enable": false,
-  // 關閉存檔自動執行格式化
-  "editor.formatOnSave": false,
-  // 啟用存檔自動執行修正
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.organizeImports": false
+  "simple-git-hooks": {
+    "pre-commit": "npm run lint-staged"
   },
-  // 增加可進行驗證的檔案類型
-  "eslint.validate": [
-    "yml",
-    "yaml",
-    "json",
-    "jsonc"
-  ]
+  "lint-staged": {
+    "*": "eslint --fix"
+  }
 }
 ```
 
-### package.json 中加入執行命令
+and then
 
-```jsonc
-{
-  // 檢查
-  "lint": "eslint .",
-  // 檢查並修正錯誤
-  "lint:fix": "eslint . --fix"
-}
+```bash
+npm i -D lint-staged simple-git-hooks
 ```
 
-或是需要指定檔案類型時…
+## View what rules are enabled
 
-```jsonc
-{
-  // 檢查
-  "lint": "eslint \"src/**/*.{vue,ts,js}\"",
-  // 檢查並修正錯誤
-  "lint:fix": "eslint \"src/**/*.{vue,ts,js}\" --fix"
-}
+> [eslint-flat-config-viewer](https://github.com/antfu/eslint-flat-config-viewer), built by [Anthony Fu](https://github.com/antfu), is a visual tool designed to help you view and understand your ESLint Flat config
+
+Go to your project root that contains `eslint.config.js` and run:
+
+```bash
+npx eslint-flat-config-viewer
 ```
 
-## 參考資料
+
+## License
+
+[MIT](./LICENSE) License &copy; 2021-PRESENT [Yuurin](https://github.com/byyuurin)
+
+
+## Reference
 
 1. [使用 pnpm 构建 Monorepo 项目](https://zhuanlan.zhihu.com/p/373935751)
-2. [@antfu/eslint-config](https://github.com/antfu/eslint-config) 專案結構與規則
-3. ~~[@fmfe/genesis-lint](https://github.com/fmfe/genesis/tree/master/packages/genesis-lint) 的 `postinstall.js`~~
+2. [@antfu/eslint-config](https://github.com/antfu/eslint-config)
+3. [@sxzz/eslint-config](https://github.com/sxzz/eslint-config)

@@ -12,6 +12,22 @@ export default byyuurin(
       '_fixtures',
     ],
     componentExts: ['vue'],
+    overrides: {
+      vue: {
+        'vue/html-self-closing': [
+          'warn',
+          {
+            html: {
+              void: 'always',
+              normal: 'never',
+              component: 'always',
+            },
+            svg: 'always',
+            math: 'always',
+          },
+        ],
+      },
+    },
   },
   {
     files: ['src/configs/*.ts'],

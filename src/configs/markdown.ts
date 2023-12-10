@@ -1,3 +1,5 @@
+import { mergeProcessors, processorPassThrough } from 'eslint-merge-processors'
+import * as parserPlain from 'eslint-parser-plain'
 import { GLOB_MARKDOWN, GLOB_MARKDOWN_CODE, GLOB_MARKDOWN_IN_MARKDOWN } from '../globs'
 import { defineFlatConfigProvider } from '../helpers'
 import type { OptionsComponentExts, OptionsFiles, OptionsOverrides } from '../types'
@@ -12,18 +14,33 @@ export const markdown = defineFlatConfigProvider(async (
     overrides = {},
   } = options
 
+  // @ts-expect-error missing types
+  const pluginMarkdown = await interopDefault(import('eslint-plugin-markdown'))
+
   return [
     {
       name: 'byyuurin:markdown:setup',
       plugins: {
-        // @ts-expect-error missing types
-        markdown: await interopDefault(import('eslint-plugin-markdown')),
+        markdown: pluginMarkdown,
       },
     },
     {
       name: 'byyuurin:markdown:processor',
       ignores: [GLOB_MARKDOWN_IN_MARKDOWN],
-      processor: 'markdown/markdown',
+      // `eslint-plugin-markdown` only creates virtual files for code blocks,
+      // but not the markdown file itself. We use `eslint-merge-processors` to
+      // add a pass-through processor for the markdown file itself.
+      processor: mergeProcessors([
+        pluginMarkdown.processors.markdown,
+        processorPassThrough,
+      ]),
+      files,
+    },
+    {
+      name: 'byyuurin:markdown:parser',
+      languageOptions: {
+        parser: parserPlain,
+      },
       files,
     },
     {

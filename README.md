@@ -84,7 +84,7 @@ For example:
 
 Install [VS Code ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
-Add the following settings  to your `.vscode/settings.json`:
+Add the following settings to your `.vscode/settings.json`:
 
 ```jsonc
 {
@@ -262,15 +262,12 @@ Go to your project root that contains `eslint.config.js` and run:
 npx eslint-flat-config-viewer
 ```
 
-
 ## License
 
 [MIT](./LICENSE) License &copy; 2021-PRESENT [Yuurin](https://github.com/byyuurin)
-
 
 ## Reference
 
 1. [使用 pnpm 构建 Monorepo 项目](https://zhuanlan.zhihu.com/p/373935751)
 2. [@antfu/eslint-config](https://github.com/antfu/eslint-config)
 3. [@sxzz/eslint-config](https://github.com/sxzz/eslint-config)
-

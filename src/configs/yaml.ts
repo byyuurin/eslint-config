@@ -39,6 +39,8 @@ export const yaml = defineFlatConfigProvider(async (
       },
       files,
       rules: {
+        'style/spaced-comment': 'off',
+
         // YAML Rules
         // https://ota-meshi.github.io/eslint-plugin-yml/rules/#yaml-rules
         // ----------------------------------------

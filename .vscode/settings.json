@@ -16,6 +16,7 @@
   // But I prefer setting it to "warn"
   "eslint.rules.customizations": [
     { "rule": "style/*", "severity": "warn" },
+    { "rule": "format/*", "severity": "warn" },
     { "rule": "*-indent", "severity": "warn" },
     { "rule": "*-spacing", "severity": "warn" },
     { "rule": "*-spaces", "severity": "warn" },
@@ -37,6 +38,6 @@
     "markdown",
     "json",
     "jsonc",
-    "yaml"
+    "yaml",
   ],
 }

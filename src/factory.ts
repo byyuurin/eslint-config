@@ -1,6 +1,6 @@
 import process from 'node:process'
 import { isPackageExists } from 'local-pkg'
-import { comments, ignores, imports, javascript, jsdoc, jsonc, markdown, node, sortPackageJson, sortTsconfigJson, stylistic, typescript, unicorn, unocss, vue, yaml } from './configs'
+import { comments, formatters, ignores, imports, javascript, jsdoc, jsonc, markdown, node, sortPackageJson, sortTsconfigJson, stylistic, typescript, unicorn, unocss, vue, yaml } from './configs'
 import type { Awaitable, FlatConfigItem, OptionsConfig, UserConfigItem } from './types'
 import { combine } from './utils'
 
@@ -124,6 +124,13 @@ export async function byyuurin(
     configs.push(markdown({
       componentExts,
       overrides: overrides.markdown,
+    }))
+  }
+
+  if (options.formatters) {
+    configs.push(formatters({
+      ...options.formatters === true ? {} : options.formatters,
+      stylistic: stylisticOptions,
     }))
   }
 

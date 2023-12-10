@@ -104,6 +104,7 @@ Add the following settings  to your `.vscode/settings.json`:
   // Silent the stylistic rules in you IDE, but still auto fix them
   "eslint.rules.customizations": [
     { "rule": "style/*", "severity": "off" },
+    { "rule": "format/*", "severity": "off" },
     { "rule": "*-indent", "severity": "off" },
     { "rule": "*-spacing", "severity": "off" },
     { "rule": "*-spaces", "severity": "off" },
@@ -272,3 +273,4 @@ npx eslint-flat-config-viewer
 1. [使用 pnpm 构建 Monorepo 项目](https://zhuanlan.zhihu.com/p/373935751)
 2. [@antfu/eslint-config](https://github.com/antfu/eslint-config)
 3. [@sxzz/eslint-config](https://github.com/sxzz/eslint-config)
+

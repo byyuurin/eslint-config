@@ -10,15 +10,17 @@ export const unocss = defineFlatConfigProvider(async (
     strict = false,
   } = options
 
+  const packageName = '@unocss/eslint-plugin'
+
   await ensurePackages([
-    '@unocss/eslint-plugin',
+    packageName,
   ])
 
   return [
     {
       name: 'byyuurin:unocss',
       plugins: {
-        unocss: await interopDefault(import('@unocss/eslint-plugin')),
+        unocss: await interopDefault(import(packageName)),
       },
       rules: {
         'unocss/order': 'warn',

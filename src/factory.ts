@@ -22,6 +22,12 @@ const VuePackages = [
   '@slidev/cli',
 ]
 
+const UnocssPackages = [
+  'unocss',
+  '@unocss/webpack',
+  '@unocss/nuxt',
+]
+
 /**
  * Construct an array of ESLint flat config items.
  */
@@ -35,7 +41,7 @@ export async function byyuurin(
     overrides = {},
     typescript: enableTypeScript = isPackageExists('typescript'),
     vue: enableVue = VuePackages.some((i) => isPackageExists(i)),
-    unocss: enableUnoCSS = false,
+    unocss: enableUnoCSS = UnocssPackages.some((i) => isPackageExists(i)),
   } = options
 
   const stylisticOptions = options.stylistic === false

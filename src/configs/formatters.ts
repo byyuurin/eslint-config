@@ -9,8 +9,10 @@ import { stylisticConfigDefaults } from './stylistic'
 export const formatters = defineFlatConfigProvider(async (
   options: OptionsStylistic & OptionsFormatters = {},
 ) => {
+  const packageName = 'eslint-plugin-format'
+
   await ensurePackages([
-    'eslint-plugin-format',
+    packageName,
   ])
 
   options = {
@@ -52,7 +54,7 @@ export const formatters = defineFlatConfigProvider(async (
     {
       name: 'byyuurin:formatters:setup',
       plugins: {
-        format: await interopDefault(import('eslint-plugin-format')),
+        format: await interopDefault(import(packageName)),
       },
     },
   ]

@@ -68,12 +68,7 @@ export const jsonc = defineFlatConfigProvider(async (
         // https://ota-meshi.github.io/eslint-plugin-jsonc/rules/#extension-rules
         // ----------------------------------------
         // 'jsonc/array-bracket-newline': 'warn',
-        // 'jsonc/array-bracket-spacing': 'warn',
         // 'jsonc/array-element-newline': 'warn',
-        // 'jsonc/comma-dangle': 'warn',
-        // 'jsonc/comma-style': 'warn',
-        'jsonc/indent': ['warn', indent],
-        // 'jsonc/key-spacing': 'warn',
         'jsonc/no-dupe-keys': 'error',
         'jsonc/no-floating-decimal': 'warn',
         'jsonc/no-irregular-whitespace': 'error',
@@ -82,12 +77,22 @@ export const jsonc = defineFlatConfigProvider(async (
         'jsonc/no-octal': 'error',
         'jsonc/no-sparse-arrays': 'error',
         'jsonc/no-useless-escape': 'error',
-        // 'jsonc/object-curly-newline': 'warn',
-        // 'jsonc/object-curly-spacing': 'warn',
-        // 'jsonc/object-property-newline': 'warn',
-        'jsonc/quote-props': 'warn',
-        'jsonc/quotes': 'warn',
         'jsonc/space-unary-ops': 'warn',
+
+        ...stylistic
+          ? {
+              // 'jsonc/array-bracket-spacing': 'warn',
+              // 'jsonc/comma-dangle': 'warn',
+              // 'jsonc/comma-style': 'warn',
+              'jsonc/indent': ['warn', indent],
+              // 'jsonc/key-spacing': 'warn',
+              // 'jsonc/object-curly-newline': 'warn',
+              // 'jsonc/object-curly-spacing': 'warn',
+              // 'jsonc/object-property-newline': 'warn',
+              'jsonc/quote-props': 'warn',
+              'jsonc/quotes': 'warn',
+            }
+          : {},
 
         ...overrides,
       },

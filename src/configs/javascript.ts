@@ -1,24 +1,31 @@
+// @ts-expect-error missing types
+import js from '@eslint/js'
 import globals from 'globals'
 import { GLOB_SRC, GLOB_SRC_EXT } from '../globs'
 import { defineFlatConfigProvider } from '../helpers'
+import { pluginAntfu } from '../plugins'
 import type { OptionsOverrides } from '../types'
-import { interopDefault } from '../utils'
 
-export const javascript = defineFlatConfigProvider(async (
+export const javascript = defineFlatConfigProvider((
   options: OptionsOverrides = {},
 ) => {
   const {
     overrides = {},
   } = options
 
-  // @ts-expect-error missing types
-  const { configs } = await interopDefault(import('@eslint/js'))
+  const recommendedRules = {
+    ...js.configs.recommended.rules,
+
+    // error rules
+    'no-mixed-spaces-and-tabs': 'off',
+    'no-useless-escape': 'off',
+  }
 
   return [
     {
       name: 'byyuurin:javascript',
       plugins: {
-        antfu: await interopDefault(import('eslint-plugin-antfu')),
+        antfu: pluginAntfu,
       },
       languageOptions: {
         ecmaVersion: 2022,
@@ -43,7 +50,7 @@ export const javascript = defineFlatConfigProvider(async (
         reportUnusedDisableDirectives: true,
       },
       rules: {
-        ...configs.recommended.rules,
+        ...recommendedRules,
 
         // https://eslint.org/docs/latest/rules/#possible-problems
         // ----------------------------------------
@@ -296,133 +303,6 @@ export const javascript = defineFlatConfigProvider(async (
         // ----------------------------------------
         // // 'line-comment-position': 'error',
         'unicode-bom': ['warn', 'never'],
-
-        // https://eslint.org/docs/latest/rules/#deprecated
-        // ----------------------------------------
-        // 'array-bracket-newline': ['warn', 'consistent'],
-        // 'array-bracket-spacing': ['warn', 'never'],
-        // // 'array-element-newline': 'warn',
-        // 'arrow-parens': ['warn', 'always'],
-        // 'arrow-spacing': ['warn', { before: true, after: true }],
-        // 'block-spacing': ['warn', 'always'],
-        // 'brace-style': ['warn', 'stroustrup', { allowSingleLine: false }],
-        // 'comma-dangle': ['warn', 'always-multiline'],
-        // 'comma-spacing': ['warn', { before: false, after: true }],
-        // 'comma-style': ['warn', 'last'],
-        // 'computed-property-spacing': ['warn', 'never', { enforceForClassMembers: true }],
-        // 'dot-location': ['warn', 'property'],
-        // 'eol-last': ['warn', 'always'],
-        // 'func-call-spacing': ['warn', 'never'],
-        // // 'function-call-argument-newline': 'warn',
-        // 'function-paren-newline': ['warn', 'consistent'],
-        // 'generator-star-spacing': ['warn', { before: false, after: true }],
-        // // 'implicit-arrow-linebreak': 'warn',
-        // 'indent': [
-        //   'warn', 2,
-        //   {
-        //     SwitchCase: 1,
-        //     VariableDeclarator: 1,
-        //     outerIIFEBody: 1,
-        //   },
-        // ],
-        // // 'jsx-quotes': 'warn',
-        // 'key-spacing': ['warn', { beforeColon: false, afterColon: true }],
-        // 'keyword-spacing': ['warn', { before: true, after: true }],
-        // // 'linebreak-style': 'warn',
-        // // 'lines-around-comment': 'warn',
-        // 'lines-between-class-members': ['warn', 'always', { exceptAfterSingleLine: true }],
-        // // 'max-len': 'error',
-        // 'max-statements-per-line': ['error', { max: 1 }],
-        // 'multiline-ternary': ['warn', 'always-multiline'],
-        // 'new-parens': 'warn',
-        // // 'newline-per-chained-call': 'warn',
-        // 'no-confusing-arrow': 'warn',
-        // 'no-extra-parens': ['warn', 'functions'],
-        // 'no-extra-semi': 'warn',
-        // 'no-floating-decimal': 'warn',
-        // 'no-mixed-operators': [
-        //   'error',
-        //   {
-        //     groups: [
-        //       ['==', '!=', '===', '!==', '>', '>=', '<', '<='],
-        //       ['&&', '||', '?:'],
-        //       ['in', 'instanceof'],
-        //     ],
-        //     allowSamePrecedence: true,
-        //   },
-        // ],
-        // 'no-mixed-spaces-and-tabs': 'error',
-        // 'no-multi-spaces': 'warn',
-        // 'no-multiple-empty-lines': ['warn', { max: 1, maxBOF: 0, maxEOF: 0 }],
-        // 'no-return-await': 'error',
-        // 'no-tabs': 'error',
-        // 'no-trailing-spaces': [
-        //   'warn',
-        //   {
-        //     skipBlankLines: false,
-        //     ignoreComments: false,
-        //   },
-        // ],
-        // 'no-whitespace-before-property': 'warn',
-        // // 'nonblock-statement-body-position': 'warn',
-        // 'object-curly-newline': ['warn', { multiline: true, consistent: true }],
-        // 'object-curly-spacing': ['warn', 'always'],
-        // 'object-property-newline': ['warn', { allowMultiplePropertiesPerLine: true }],
-        // // 'one-var-declaration-per-line': 'warn',
-        // 'operator-linebreak': ['warn', 'before'],
-        // 'padded-blocks': [
-        //   'warn',
-        //   {
-        //     blocks: 'never',
-        //     switches: 'never',
-        //     classes: 'never',
-        //   },
-        // ],
-        // 'padding-line-between-statements': [
-        //   'warn',
-        //   { blankLine: 'always', prev: 'block-like', next: '*' },
-        //   { blankLine: 'always', prev: '*', next: 'block-like' },
-        //   { blankLine: 'always', prev: 'if', next: '*' },
-        //   { blankLine: 'always', prev: '*', next: 'if' },
-        // ],
-        // 'quote-props': ['warn', 'consistent-as-needed'],
-        // 'quotes': ['warn', 'single'],
-        // 'rest-spread-spacing': ['warn', 'never'],
-        // 'semi': ['warn', 'never'],
-        // 'semi-spacing': ['warn', { before: false, after: true }],
-        // // 'semi-style': 'warn',
-        // 'space-before-blocks': ['warn', 'always'],
-        // 'space-before-function-paren': [
-        //   'warn',
-        //   {
-        //     anonymous: 'always',
-        //     named: 'never',
-        //     asyncArrow: 'always',
-        //   },
-        // ],
-        // 'space-in-parens': ['warn', 'never'],
-        // 'space-infix-ops': 'warn',
-        // 'space-unary-ops': ['warn', { words: true, nonwords: false }],
-        // 'spaced-comment': [
-        //   'warn', 'always',
-        //   {
-        //     line: {
-        //       markers: ['/'],
-        //       exceptions: ['/', '#'],
-        //     },
-        //     block: {
-        //       markers: ['!'],
-        //       exceptions: ['*'],
-        //       balanced: true,
-        //     },
-        //   },
-        // ],
-        // // 'switch-colon-spacing': 'warn',
-        // 'template-curly-spacing': ['warn', 'never'],
-        // 'template-tag-spacing': ['warn', 'never'],
-        // 'wrap-iife': ['warn', 'any', { functionPrototypeMethods: true }],
-        // // 'wrap-regex': 'warn',
-        // 'yield-star-spacing': ['warn', 'both'],
 
         ...overrides,
       },

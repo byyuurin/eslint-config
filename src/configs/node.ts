@@ -1,12 +1,11 @@
 import { defineFlatConfigProvider } from '../helpers'
-import { interopDefault } from '../utils'
+import { pluginNode } from '../plugins'
 
-export const node = defineFlatConfigProvider(async () => [
+export const node = defineFlatConfigProvider(() => [
   {
     name: 'byyuurin:node',
     plugins: {
-      // @ts-expect-error missing types
-      node: await interopDefault(import('eslint-plugin-n')),
+      node: pluginNode,
     },
     rules: {
       'node/handle-callback-err': ['error', '^(err|error)$'],

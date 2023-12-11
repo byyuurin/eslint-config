@@ -1,8 +1,8 @@
 import { defineFlatConfigProvider } from '../helpers'
+import { pluginJsdoc } from '../plugins'
 import type { OptionsStylistic } from '../types'
-import { interopDefault } from '../utils'
 
-export const jsdoc = defineFlatConfigProvider(async (
+export const jsdoc = defineFlatConfigProvider((
   options: OptionsStylistic = {},
 ) => {
   const {
@@ -13,8 +13,7 @@ export const jsdoc = defineFlatConfigProvider(async (
     {
       name: 'byyuurin:jsdoc',
       plugins: {
-        // @ts-expect-error missing types
-        jsdoc: await interopDefault(import('eslint-plugin-jsdoc')),
+        jsdoc: pluginJsdoc,
       },
       rules: {
         'jsdoc/check-access': 'warn',

@@ -1,12 +1,11 @@
 import { defineFlatConfigProvider } from '../helpers'
-import { interopDefault } from '../utils'
+import { pluginComments } from '../plugins'
 
-export const comments = defineFlatConfigProvider(async () => [
+export const comments = defineFlatConfigProvider(() => [
   {
     name: 'byyuurin:eslint-comments',
     plugins: {
-      // @ts-expect-error missing types
-      'eslint-comments': await interopDefault(import('eslint-plugin-eslint-comments')),
+      'eslint-comments': pluginComments,
     },
     rules: {
       'eslint-comments/no-aggregating-enable': 'error',

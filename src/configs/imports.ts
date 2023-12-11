@@ -1,8 +1,8 @@
 import { defineFlatConfigProvider } from '../helpers'
+import { pluginAntfu, pluginImport, pluginSimpleImportSort, pluginUnusedImports } from '../plugins'
 import type { OptionsIsInEditor, OptionsStylistic } from '../types'
-import { interopDefault } from '../utils'
 
-export const imports = defineFlatConfigProvider(async (
+export const imports = defineFlatConfigProvider((
   options: OptionsIsInEditor & OptionsStylistic = {},
 ) => {
   const {
@@ -13,13 +13,10 @@ export const imports = defineFlatConfigProvider(async (
   return [
     {
       plugins: {
-        'antfu': await interopDefault(import('eslint-plugin-antfu')),
-        // @ts-expect-error missing types
-        'import': await interopDefault(import('eslint-plugin-i')),
-        // @ts-expect-error missing types
-        'unused-imports': await interopDefault(import('eslint-plugin-unused-imports')),
-        // @ts-expect-error missing types
-        'simple-import-sort': await interopDefault(import('eslint-plugin-simple-import-sort')),
+        'antfu': pluginAntfu,
+        'import': pluginImport,
+        'unused-imports': pluginUnusedImports,
+        'simple-import-sort': pluginSimpleImportSort,
       },
       name: 'byyuurin:imports:rules',
       rules: {
@@ -105,7 +102,6 @@ export const imports = defineFlatConfigProvider(async (
         // ----------------------------------------
         ...stylistic
           ? {
-
               'sort-imports': 'off',
               'import/order': 'off',
               'import/newline-after-import': 'off',

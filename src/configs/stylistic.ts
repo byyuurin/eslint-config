@@ -1,4 +1,5 @@
 import { defineFlatConfigProvider } from '../helpers'
+import { pluginAntfu } from '../plugins'
 import type { StylisticConfig } from '../types'
 import { interopDefault } from '../utils'
 
@@ -22,13 +23,7 @@ export const stylistic = defineFlatConfigProvider(async (
     ...options,
   }
 
-  const [
-    pluginAntfu,
-    pluginStylistic,
-  ] = await Promise.all([
-    interopDefault(import('eslint-plugin-antfu')),
-    interopDefault(import('@stylistic/eslint-plugin')),
-  ])
+  const pluginStylistic = await interopDefault(import('@stylistic/eslint-plugin'))
 
   const config = pluginStylistic.configs.customize({
     flat: true,

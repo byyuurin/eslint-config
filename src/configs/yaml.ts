@@ -42,6 +42,7 @@ export const yaml = defineFlatConfigProvider(async (
         'style/spaced-comment': 'off',
 
         // YAML Rules
+        // https://github.com/ota-meshi/eslint-plugin-yml#yaml-rules
         // ----------------------------------------
         'yaml/block-mapping': 'warn',
         'yaml/block-sequence': 'warn',
@@ -53,6 +54,7 @@ export const yaml = defineFlatConfigProvider(async (
         'yaml/vue-custom-block/no-parsing-error': 'error',
 
         // Extension Rules
+        // https://github.com/ota-meshi/eslint-plugin-yml#extension-rules
         // ----------------------------------------
         'yaml/no-irregular-whitespace': 'error',
 

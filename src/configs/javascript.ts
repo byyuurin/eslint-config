@@ -16,7 +16,7 @@ export const javascript = defineFlatConfigProvider((
   const recommendedRules = {
     ...js.configs.recommended.rules,
 
-    // error rules
+    // fixture breaker
     'no-mixed-spaces-and-tabs': 'off',
     'no-useless-escape': 'off',
   }
@@ -52,6 +52,7 @@ export const javascript = defineFlatConfigProvider((
       rules: {
         ...recommendedRules,
 
+        // Possible Problems
         // https://eslint.org/docs/latest/rules/#possible-problems
         // ----------------------------------------
         'array-callback-return': 'error',
@@ -126,6 +127,7 @@ export const javascript = defineFlatConfigProvider((
         // ],
         // 'valid-typeof': ['error', { requireStringLiterals: true }],
 
+        // Suggestions
         // https://eslint.org/docs/latest/rules/#suggestions
         // ----------------------------------------
         'accessor-pairs': [
@@ -299,6 +301,7 @@ export const javascript = defineFlatConfigProvider((
         'vars-on-top': 'error',
         'yoda': ['warn', 'never'],
 
+        // Layout & Formatting
         // https://eslint.org/docs/latest/rules/#layout--formatting
         // ----------------------------------------
         // // 'line-comment-position': 'error',

@@ -10,7 +10,6 @@ export default byyuurin(
       'fixtures',
       '_fixtures',
     ],
-    componentExts: ['vue'],
   },
   {
     files: ['src/configs/*.ts'],

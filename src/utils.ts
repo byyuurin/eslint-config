@@ -29,6 +29,10 @@ export function toArray<T>(value: T | T[]): T[] {
   return Array.isArray(value) ? value : [value]
 }
 
+export function toUniqueStringArray(items: string[]) {
+  return Array.from(new Set(items))
+}
+
 export async function interopDefault<T>(m: Awaitable<T>): Promise<T extends { default: infer U } ? U : T> {
   const resolved = await m
 

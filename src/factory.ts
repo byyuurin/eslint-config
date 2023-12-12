@@ -2,7 +2,7 @@ import process from 'node:process'
 import { isPackageExists } from 'local-pkg'
 import { comments, formatters, formattersRequirePackages, ignores, imports, javascript, jsdoc, jsonc, markdown, node, sortPackageJson, sortTsconfigJson, stylistic, typescript, unicorn, unocss, unocssRequirePackages, vue, yaml } from './configs'
 import type { Awaitable, FlatConfigItem, OptionsConfig, UserConfigItem } from './types'
-import { combine, ensurePackages } from './utils'
+import { combine, ensurePackages, toUniqueStringArray } from './utils'
 
 const flatConfigProps: (keyof FlatConfigItem)[] = [
   'files',
@@ -36,13 +36,14 @@ export async function byyuurin(
   ...userConfigs: Awaitable<UserConfigItem | UserConfigItem[]>[]
 ): Promise<UserConfigItem[]> {
   const {
-    componentExts = [],
     isInEditor = !!((process.env.VSCODE_PID || process.env.JETBRAINS_IDE) && !process.env.CI),
     overrides = {},
     typescript: enableTypeScript = isPackageExists('typescript'),
     vue: enableVue = VuePackages.some((i) => isPackageExists(i)),
     unocss: enableUnoCSS = UnocssPackages.some((i) => isPackageExists(i)),
   } = options
+
+  let { componentExts = [] } = options
 
   const stylisticOptions = options.stylistic === false
     ? false
@@ -53,10 +54,13 @@ export async function byyuurin(
   if (stylisticOptions && !('jsx' in stylisticOptions))
     stylisticOptions.jsx = true
 
-  const installPackages: string[] = [
+  if (enableVue)
+    componentExts = toUniqueStringArray([...componentExts, 'vue'])
+
+  const installPackages = toUniqueStringArray([
     ...enableUnoCSS ? unocssRequirePackages : [],
     ...options.formatters ? formattersRequirePackages : [],
-  ]
+  ])
 
   if (installPackages.length > 0)
     await ensurePackages(installPackages)

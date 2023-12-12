@@ -1,6 +1,10 @@
 import { defineFlatConfigProvider } from '../helpers'
 import type { OptionsUnoCSS } from '../types'
-import { ensurePackages, interopDefault } from '../utils'
+import { interopDefault, toArray } from '../utils'
+
+const packageName = '@unocss/eslint-plugin'
+
+export const unocssRequirePackages = toArray(packageName)
 
 export const unocss = defineFlatConfigProvider(async (
   options: OptionsUnoCSS = {},
@@ -9,12 +13,6 @@ export const unocss = defineFlatConfigProvider(async (
     attributify = false,
     strict = false,
   } = options
-
-  const packageName = '@unocss/eslint-plugin'
-
-  await ensurePackages([
-    packageName,
-  ])
 
   return [
     {

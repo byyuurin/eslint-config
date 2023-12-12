@@ -1,8 +1,8 @@
 import process from 'node:process'
 import { isPackageExists } from 'local-pkg'
-import { comments, formatters, ignores, imports, javascript, jsdoc, jsonc, markdown, node, sortPackageJson, sortTsconfigJson, stylistic, typescript, unicorn, unocss, vue, yaml } from './configs'
+import { comments, formatters, formattersRequirePackages, ignores, imports, javascript, jsdoc, jsonc, markdown, node, sortPackageJson, sortTsconfigJson, stylistic, typescript, unicorn, unocss, unocssRequirePackages, vue, yaml } from './configs'
 import type { Awaitable, FlatConfigItem, OptionsConfig, UserConfigItem } from './types'
-import { combine } from './utils'
+import { combine, ensurePackages } from './utils'
 
 const flatConfigProps: (keyof FlatConfigItem)[] = [
   'files',
@@ -52,6 +52,14 @@ export async function byyuurin(
 
   if (stylisticOptions && !('jsx' in stylisticOptions))
     stylisticOptions.jsx = true
+
+  const installPackages: string[] = [
+    ...enableUnoCSS ? unocssRequirePackages : [],
+    ...options.formatters ? formattersRequirePackages : [],
+  ]
+
+  if (installPackages.length > 0)
+    await ensurePackages(installPackages)
 
   const configs: Awaitable<FlatConfigItem[]>[] = []
 

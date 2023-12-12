@@ -32,8 +32,8 @@ export const imports = defineFlatConfigProvider((
         // 'import/no-empty-named-blocks': 'error',
         // 'import/no-extraneous-dependencies': 'error',
         'import/no-mutable-exports': 'error',
-        'import/no-named-as-default': 'warn',
-        'import/no-named-as-default-member': 'warn',
+        // 'import/no-named-as-default': 'warn',
+        // 'import/no-named-as-default-member': 'warn',
         // 'import/no-unused-modules': 'error',
 
         // import
@@ -48,7 +48,7 @@ export const imports = defineFlatConfigProvider((
         // import
         // https://github.com/import-js/eslint-plugin-import#static-analysis
         // ----------------------------------------
-        'import/default': 'error',
+        // 'import/default': 'error',
         'import/named': 'error',
         // 'import/namespace': 'error',
         // 'import/no-absolute-path': 'error',

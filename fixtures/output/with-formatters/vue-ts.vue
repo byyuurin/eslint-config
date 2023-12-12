@@ -18,6 +18,10 @@ function incrementCounter() {
       Click me!
     </button>
     <p>Counter: {{ counter }}</p>
+    <!-- void element -->
+    <img src="https://picsum.photos/200/300" alt="image" />
+    <!-- normal element -->
+    <div></div>
   </div>
 </template>
 

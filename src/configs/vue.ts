@@ -93,6 +93,20 @@ export const vue = defineFlatConfigProvider(async (
         // Strongly Recommended
         // ----------------------------------------
         'vue/html-indent': ['error', indent],
+
+        'vue/html-self-closing': [
+          'warn',
+          {
+            html: {
+              void: 'always',
+              normal: 'never',
+              component: 'always',
+            },
+            svg: 'always',
+            math: 'always',
+          },
+        ],
+
         'vue/max-attributes-per-line': 'off',
         'vue/require-default-prop': 'off',
         'vue/require-prop-types': 'off',

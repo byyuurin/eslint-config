@@ -4,6 +4,11 @@
       {{ greeting }}</h1>
     <button @click="incrementCounter">Click me!</button>
     <p>Counter: {{ counter  }}</p>
+    <!-- void element -->
+    <img  src='https://picsum.photos/200/300' alt="image"
+                 >
+    <!--normal element -->
+    <div />
   </div>
 </template>
 

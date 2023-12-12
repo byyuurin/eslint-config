@@ -121,12 +121,11 @@ Add the following settings to your `.vscode/settings.json`:
     "javascriptreact",
     "typescript",
     "typescriptreact",
-    "vue",
-    "html",
     "markdown",
     "json",
     "jsonc",
-    "yaml"
+    "yaml",
+    "vue",
   ],
 }
 ```

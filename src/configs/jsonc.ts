@@ -170,15 +170,11 @@ export const sortPackageJson = defineFlatConfigProvider(() => [
           ],
         },
         {
-          pathPattern: '^(?:dev|peer|optional|bundled)?[Dd]ependencies$',
+          pathPattern: '^(?:dev|peer|optional|bundled)?[Dd]ependencies(Meta)?$',
           order: { type: 'asc' },
         },
         {
-          pathPattern: '^resolutions$',
-          order: { type: 'asc' },
-        },
-        {
-          pathPattern: '^pnpm.overrides$',
+          pathPattern: '^(?:resolutions|overrides|pnpm.overrides)$',
           order: { type: 'asc' },
         },
         {

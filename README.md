@@ -80,6 +80,10 @@ For example:
 }
 ```
 
+> [!important]
+> Running `npx eslint`, you should be prompted to install the required dependencies.
+> The first time you enable formatters, you need to run the command again.
+
 ## VS Code support (auto fix)
 
 Install [VS Code ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)

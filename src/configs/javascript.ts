@@ -13,14 +13,6 @@ export const javascript = defineFlatConfigProvider((
     overrides = {},
   } = options
 
-  const recommendedRules = {
-    ...js.configs.recommended.rules,
-
-    // fixture breaker
-    'no-mixed-spaces-and-tabs': 'off',
-    'no-useless-escape': 'off',
-  }
-
   return [
     {
       name: 'byyuurin:javascript',
@@ -50,7 +42,7 @@ export const javascript = defineFlatConfigProvider((
         reportUnusedDisableDirectives: true,
       },
       rules: {
-        ...recommendedRules,
+        ...js.configs.recommended.rules,
 
         // Possible Problems
         // https://eslint.org/docs/latest/rules/#possible-problems

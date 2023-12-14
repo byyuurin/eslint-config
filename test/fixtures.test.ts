@@ -18,16 +18,32 @@ runWithConfig('js', {
   vue: false,
 })
 
-runWithConfig('all', {
-  typescript: true,
-  vue: true,
-})
+runWithConfig(
+  'all',
+  {
+    typescript: true,
+    vue: true,
+  },
+  {
+    rules: {
+      'no-useless-escape': 'off',
+    },
+  },
+)
 
-runWithConfig('no-style', {
-  typescript: true,
-  vue: true,
-  stylistic: false,
-})
+runWithConfig(
+  'no-style',
+  {
+    typescript: true,
+    vue: true,
+    stylistic: false,
+  },
+  {
+    rules: {
+      'no-useless-escape': 'off',
+    },
+  },
+)
 
 runWithConfig(
   'tab-double-quotes',
@@ -41,6 +57,8 @@ runWithConfig(
   },
   {
     rules: {
+      'no-mixed-spaces-and-tabs': 'off',
+      'no-useless-escape': 'off',
       'style/no-mixed-spaces-and-tabs': 'off',
     },
   },
@@ -53,6 +71,7 @@ runWithConfig(
   },
   {
     rules: {
+      'no-useless-escape': 'off',
       'ts/consistent-type-definitions': ['error', 'type'],
     },
   },
@@ -65,6 +84,11 @@ runWithConfig(
     vue: true,
     formatters: true,
   },
+  {
+    rules: {
+      'no-useless-escape': 'off',
+    },
+  },
 )
 
 runWithConfig(
@@ -74,6 +98,11 @@ runWithConfig(
     markdown: false,
     formatters: {
       markdown: true,
+    },
+  },
+  {
+    rules: {
+      'no-useless-escape': 'off',
     },
   },
 )

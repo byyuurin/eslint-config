@@ -123,7 +123,7 @@ export interface OptionsVue {
 export interface OptionsUnoCSS {
   /**
    * Enable attributify support.
-   * @default true
+   * @default false
    */
   attributify?: boolean
   /**

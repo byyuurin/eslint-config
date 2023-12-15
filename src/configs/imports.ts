@@ -104,7 +104,7 @@ export const imports = defineFlatConfigProvider((
           ? {
               'sort-imports': 'off',
               'import/order': 'off',
-              'import/newline-after-import': 'off',
+              'import/newline-after-import': 'warn',
 
               'simple-import-sort/imports': ['warn', {
                 groups: [

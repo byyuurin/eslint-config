@@ -1,4 +1,4 @@
-import * as parserPlain from 'eslint-parser-plain'
+import { parserPlain } from '../eslint-parser-plain'
 import { GLOB_CSS, GLOB_LESS, GLOB_MARKDOWN, GLOB_POSTCSS, GLOB_SCSS } from '../globs'
 import { defineFlatConfigProvider } from '../helpers'
 import type { FlatConfigItem, OptionsFormatters, OptionsStylistic } from '../types'

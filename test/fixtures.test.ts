@@ -127,7 +127,7 @@ export default byyuurin(
 )
   `)
 
-    await execa('npx', ['eslint', '.', '--fix'], {
+    await execa('npx', ['eslint', '.', '--cache', '--fix'], {
       cwd: target,
       stdio: 'pipe',
     })

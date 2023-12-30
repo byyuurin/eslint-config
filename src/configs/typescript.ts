@@ -1,5 +1,5 @@
 import process from 'node:process'
-import { GLOB_SRC } from '../globs'
+import { GLOB_SRC, GLOB_TS, GLOB_TSX } from '../globs'
 import { defineFlatConfigProvider } from '../helpers'
 import type { FlatConfigItem, OptionsComponentExts, OptionsFiles, OptionsOverrides, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes } from '../types'
 import { interopDefault, renameRules, toArray } from '../utils'
@@ -17,6 +17,8 @@ export const typescript = defineFlatConfigProvider(async (
     GLOB_SRC,
     ...componentExts.map((ext) => `**/*.${ext}`),
   ]
+
+  const filesTypeAware = [GLOB_TS, GLOB_TSX]
 
   const typeAwareRules: FlatConfigItem['rules'] = {
     'dot-notation': 'off',
@@ -88,17 +90,6 @@ export const typescript = defineFlatConfigProvider(async (
           '@typescript-eslint/',
           'ts/',
         ),
-
-        // // sync basic rules
-        // // ----------------------------------------
-        // 'no-var': 'warn',
-        // 'prefer-const': [
-        //   'warn',
-        //   {
-        //     destructuring: 'all',
-        //     ignoreReadBeforeAssign: true,
-        //   },
-        // ],
 
         // // override basic rules
         // // ----------------------------------------
@@ -341,13 +332,21 @@ export const typescript = defineFlatConfigProvider(async (
         // 'space-infix-ops': 'off',
         // 'ts/space-infix-ops': 'warn',
 
+        ...overrides,
+      },
+    },
+    {
+      // ref: https://github.com/antfu/eslint-config/commit/0c1c8db2b76bb08ecf7d92a0ed47628281b44ec2
+      name: 'byyuurin:typescript:rules-type-aware',
+      files: filesTypeAware,
+      rules: {
         ...tsconfigPath ? typeAwareRules : {},
         ...overrides,
       },
     },
     {
-      files: ['**/*.d.ts'],
       name: 'byyuurin:typescript:dts-overrides',
+      files: ['**/*.d.ts'],
       rules: {
         'no-restricted-syntax': 'off',
         'eslint-comments/no-unlimited-disable': 'off',
@@ -356,15 +355,15 @@ export const typescript = defineFlatConfigProvider(async (
       },
     },
     {
-      files: ['**/*.{test,spec}.ts?(x)'],
       name: 'byyuurin:typescript:tests-overrides',
+      files: ['**/*.{test,spec}.ts?(x)'],
       rules: {
         'no-unused-expressions': 'off',
       },
     },
     {
-      files: ['**/*.js', '**/*.cjs'],
       name: 'byyuurin:typescript:javascript-overrides',
+      files: ['**/*.js', '**/*.cjs'],
       rules: {
         'ts/no-require-imports': 'off',
         'ts/no-var-requires': 'off',

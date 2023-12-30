@@ -255,7 +255,12 @@ and then
 
 ```bash
 npm i -D lint-staged simple-git-hooks
+
+# to active the hooks
+npx simple-git-hooks
 ```
+
+> See [Add simple-git-hooks to the project](https://github.com/toplenboren/simple-git-hooks?tab=readme-ov-file#add-simple-git-hooks-to-the-project)
 
 ## View what rules are enabled
 

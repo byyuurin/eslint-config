@@ -28,10 +28,11 @@ export type Rules = WrapRuleConfig<
     JSDocRules &
     ImportRules &
     EslintRules &
+    EslintCommentsRules &
     JsoncRules &
     VueRules &
-    UnicornRules &
-    EslintCommentsRules
+    UnicornRules
+    // TODO: TOML rules
   >
 >
 
@@ -149,13 +150,6 @@ export interface OptionsFormatters {
   html?: 'prettier' | boolean
 
   /**
-   * Enable formatting support for TOML.
-   *
-   * Currently only support dprint.
-   */
-  toml?: 'dprint' | boolean
-
-  /**
    * Enable formatting support for Markdown.
    *
    * Support both Prettier and dprint.
@@ -229,6 +223,13 @@ export interface OptionsConfig extends OptionsComponentExts {
    * @default true
    */
   yaml?: boolean | OptionsOverrides
+
+  /**
+   * Enable TOML support.
+   *
+   * @default true
+   */
+  toml?: boolean | OptionsOverrides
 
   /**
    * Enable linting for **code snippets** in Markdown.

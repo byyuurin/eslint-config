@@ -16,7 +16,6 @@ export const formatters = defineFlatConfigProvider(async (
   options = {
     css: true,
     html: true,
-    toml: true,
     markdown: true,
     graphql: true,
     ...options,
@@ -104,23 +103,6 @@ export const formatters = defineFlatConfigProvider(async (
         },
       },
     )
-  }
-
-  if (options.toml) {
-    items.push({
-      name: 'byyuurin:formatter:toml',
-      languageOptions,
-      files: ['**/*.toml'],
-      rules: {
-        'format/dprint': [
-          'warn',
-          {
-            ...dprintOptions,
-            language: 'toml',
-          },
-        ],
-      },
-    })
   }
 
   if (options.markdown) {

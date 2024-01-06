@@ -10,15 +10,6 @@ export default byyuurin(
       'fixtures',
       '_fixtures',
     ],
-    stylistic: {
-      overrides: {
-        'style/operator-linebreak': [
-          'warn',
-          'after',
-          { overrides: { '?': 'before', ':': 'before' } },
-        ],
-      },
-    },
   },
   {
     files: ['src/configs/*.ts'],

@@ -5,7 +5,7 @@ ESLint Flat config for JavaScript, TypeScript, Vue, UnoCSS
 - Single quotes, no semi
 - Auto fix for formatting (aimed to be used standalone **without** Prettier)
 - Designed to work with TypeScript, Vue out-of-box
-- Lints also for json, yaml, markdown
+- Lints also for json, yaml, toml, markdown
 - Sorted imports, dangling commas
 - Reasonable defaults, best practices, only one-line of config
 - [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), compose easily!
@@ -107,7 +107,7 @@ Add the following settings to your `.vscode/settings.json`:
   // Enable the ESlint flat config support
   "eslint.experimental.useFlatConfig": true,
 
-  // Silent the stylistic rules in you IDE, but still auto fix them
+  // Silent the stylistic rules in you IDE, but still auto fix them (if set to "off")
   "eslint.rules.customizations": [
     { "rule": "style/*", "severity": "off" },
     { "rule": "format/*", "severity": "off" },
@@ -131,6 +131,7 @@ Add the following settings to your `.vscode/settings.json`:
     "json",
     "jsonc",
     "yaml",
+    "toml",
     "vue",
   ],
 }

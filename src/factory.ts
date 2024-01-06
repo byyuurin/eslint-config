@@ -1,6 +1,6 @@
 import process from 'node:process'
 import { isPackageExists } from 'local-pkg'
-import { comments, formatters, formattersRequirePackages, ignores, imports, javascript, jsdoc, jsonc, markdown, node, sortPackageJson, sortTsconfigJson, stylistic, typescript, unicorn, unocss, unocssRequirePackages, vue, yaml } from './configs'
+import { comments, formatters, formattersRequirePackages, ignores, imports, javascript, jsdoc, jsonc, markdown, node, sortPackageJson, sortTsconfigJson, stylistic, toml, typescript, unicorn, unocss, unocssRequirePackages, vue, yaml } from './configs'
 import type { Awaitable, FlatConfigItem, OptionsConfig, UserConfigItem } from './types'
 import { combine, ensurePackages, toUniqueStringArray } from './utils'
 
@@ -130,6 +130,13 @@ export async function byyuurin(
   if (options.yaml ?? true) {
     configs.push(yaml({
       overrides: getOverrides(options, 'yaml'),
+      stylistic: stylisticOptions,
+    }))
+  }
+
+  if (options.toml ?? true) {
+    configs.push(toml({
+      overrides: getOverrides(options, 'toml'),
       stylistic: stylisticOptions,
     }))
   }

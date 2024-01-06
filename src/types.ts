@@ -84,14 +84,14 @@ export interface OptionsIsInEditor {
   isInEditor?: boolean
 }
 
-export interface OptionsTypeScriptParserOptions {
+export interface OptionsTypeScriptParserOptions extends OptionsOverrides {
   /**
    * Additional parser options for TypeScript.
    */
   parserOptions?: Partial<ParserOptions>
 }
 
-export interface OptionsTypeScriptWithTypes {
+export interface OptionsTypeScriptWithTypes extends OptionsOverrides {
   /**
    * When this options is provided, type aware rules will be enabled.
    * @see https://typescript-eslint.io/linting/typed-linting/
@@ -103,7 +103,7 @@ export interface OptionsHasTypeScript {
   typescript?: boolean
 }
 
-export interface OptionsVue {
+export interface OptionsVue extends OptionsOverrides {
   /**
    * Create virtual files for Vue SFC blocks to enable linting.
    *
@@ -196,6 +196,11 @@ export interface OptionsConfig extends OptionsComponentExts {
   gitignore?: boolean | FlatGitignoreOptions
 
   /**
+   * Core rules. Can't be disabled.
+   */
+  javascript?: OptionsOverrides
+
+  /**
    * Enable TypeScript support.
    *
    * Passing an object to enable TypeScript Language Server support.
@@ -216,14 +221,14 @@ export interface OptionsConfig extends OptionsComponentExts {
    *
    * @default true
    */
-  jsonc?: boolean
+  jsonc?: boolean | OptionsOverrides
 
   /**
    * Enable YAML support.
    *
    * @default true
    */
-  yaml?: boolean
+  yaml?: boolean | OptionsOverrides
 
   /**
    * Enable linting for **code snippets** in Markdown.
@@ -232,7 +237,7 @@ export interface OptionsConfig extends OptionsComponentExts {
    *
    * @default true
    */
-  markdown?: boolean
+  markdown?: boolean | OptionsOverrides
 
   /**
    * Enable stylistic rules.
@@ -268,16 +273,4 @@ export interface OptionsConfig extends OptionsComponentExts {
    * @default auto-detect based on the process.env
    */
   isInEditor?: boolean
-
-  /**
-   * Provide overrides for rules for each integration.
-   */
-  overrides?: {
-    javascript?: FlatConfigItem['rules']
-    typescript?: FlatConfigItem['rules']
-    vue?: FlatConfigItem['rules']
-    jsonc?: FlatConfigItem['rules']
-    markdown?: FlatConfigItem['rules']
-    yaml?: FlatConfigItem['rules']
-  }
 }

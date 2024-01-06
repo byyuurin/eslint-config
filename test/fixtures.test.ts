@@ -107,6 +107,32 @@ runWithConfig(
   },
 )
 
+runWithConfig(
+  'overrides',
+  {
+    javascript: {
+      overrides: {
+        'prefer-const': 'off',
+      },
+    },
+    typescript: {
+      overrides: {
+        'prefer-const': 'off',
+      },
+    },
+    vue: {
+      overrides: {
+        'vue/html-quotes': ['error', 'single'],
+      },
+    },
+  },
+  {
+    rules: {
+      'no-useless-escape': 'off',
+    },
+  },
+)
+
 function runWithConfig(name: string, configs: OptionsConfig, ...items: FlatConfigItem[]) {
   it.concurrent(name, async ({ expect }) => {
     const from = resolve('fixtures/input')

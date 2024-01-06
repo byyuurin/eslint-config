@@ -37,7 +37,6 @@ export async function byyuurin(
 ): Promise<UserConfigItem[]> {
   const {
     isInEditor = !!((process.env.VSCODE_PID || process.env.JETBRAINS_IDE) && !process.env.CI),
-    overrides = {},
     typescript: enableTypeScript = isPackageExists('typescript'),
     vue: enableVue = VuePackages.some((i) => isPackageExists(i)),
     unocss: enableUnoCSS = UnocssPackages.some((i) => isPackageExists(i)),
@@ -73,7 +72,7 @@ export async function byyuurin(
       gitignore: options.gitignore,
     }),
     javascript({
-      overrides: overrides.javascript,
+      overrides: getOverrides(options, 'javascript'),
     }),
     comments(),
     node(),
@@ -93,7 +92,6 @@ export async function byyuurin(
         ? {}
         : enableTypeScript,
       componentExts,
-      overrides: overrides.typescript,
     }))
   }
 
@@ -105,7 +103,6 @@ export async function byyuurin(
       ...typeof enableVue === 'boolean'
         ? {}
         : enableVue,
-      overrides: overrides.vue,
       stylistic: stylisticOptions,
       typescript: !!enableTypeScript,
     }))
@@ -122,7 +119,7 @@ export async function byyuurin(
   if (options.jsonc ?? true) {
     configs.push(
       jsonc({
-        overrides: overrides.jsonc,
+        overrides: getOverrides(options, 'jsonc'),
         stylistic: stylisticOptions,
       }),
       sortPackageJson(),
@@ -132,7 +129,7 @@ export async function byyuurin(
 
   if (options.yaml ?? true) {
     configs.push(yaml({
-      overrides: overrides.yaml,
+      overrides: getOverrides(options, 'yaml'),
       stylistic: stylisticOptions,
     }))
   }
@@ -140,7 +137,7 @@ export async function byyuurin(
   if (options.markdown ?? true) {
     configs.push(markdown({
       componentExts,
-      overrides: overrides.markdown,
+      overrides: getOverrides(options, 'markdown'),
     }))
   }
 
@@ -169,4 +166,13 @@ export async function byyuurin(
   )
 
   return merged
+}
+
+function getOverrides(config: OptionsConfig, key: keyof OptionsConfig) {
+  const options = config[key]
+
+  if (!options || typeof options === 'boolean' || !('overrides' in options))
+    return {}
+
+  return options.overrides ?? {}
 }

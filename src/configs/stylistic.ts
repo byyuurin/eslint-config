@@ -18,6 +18,7 @@ export const stylistic = defineFlatConfigProvider(async (
     jsx,
     quotes,
     semi,
+    overrides = {},
   } = {
     ...stylisticConfigDefaults,
     ...options,
@@ -78,6 +79,8 @@ export const stylistic = defineFlatConfigProvider(async (
         'antfu/consistent-list-newline': 'warn',
         'antfu/if-newline': 'warn',
         'antfu/top-level-function': 'warn',
+
+        ...overrides,
       },
     },
   ]

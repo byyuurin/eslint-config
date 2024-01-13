@@ -1,8 +1,9 @@
 import { parserPlain } from '../eslint-parser-plain'
 import { GLOB_CSS, GLOB_LESS, GLOB_MARKDOWN, GLOB_POSTCSS, GLOB_SCSS } from '../globs'
 import { defineFlatConfigProvider } from '../helpers'
-import type { FlatConfigItem, OptionsFormatters, OptionsStylistic } from '../types'
+import type { FlatConfigItem, FormatterConfig, OptionsFormatters, OptionsStylistic, StylisticConfig } from '../types'
 import { interopDefault, toArray } from '../utils'
+import type { VendoredDprintOptions } from '../vender/dprint-types'
 import type { VendoredPrettierOptions } from '../vender/prettier-types'
 import { stylisticConfigDefaults } from './stylistic'
 
@@ -21,31 +22,17 @@ export const formatters = defineFlatConfigProvider(async (
     ...options,
   }
 
-  const {
-    indent,
-    quotes,
-    semi,
-  } = {
-    ...stylisticConfigDefaults,
-    ...typeof options.stylistic === 'boolean' ? {} : options.stylistic,
-  }
+  const prettierOptionsOverrides = typeof options.prettierOptions === 'object'
+    ? options.prettierOptions
+    : {}
 
-  const prettierOptions: VendoredPrettierOptions = {
-    endOfLine: 'auto',
-    semi,
-    singleQuote: quotes === 'single',
-    tabWidth: typeof indent === 'number' ? indent : 2,
-    trailingComma: 'all',
-    useTabs: indent === 'tab',
+  const drpintOptionsOverrides = typeof options.dprintOptions === 'object'
+    ? options.dprintOptions
+    : {}
 
-    ...options.prettierOptions,
-  }
-
-  const dprintOptions = {
-    indentWidth: typeof indent === 'number' ? indent : 2,
-    quoteStyle: quotes === 'single' ? 'preferSingle' : 'preferDouble',
-    useTabs: indent === 'tab',
-  }
+  const stylisticConfig = typeof options.stylistic === 'boolean'
+    ? {}
+    : options.stylistic
 
   const items: FlatConfigItem[] = [
     {
@@ -61,6 +48,12 @@ export const formatters = defineFlatConfigProvider(async (
   }
 
   if (options.css) {
+    const prettierOptions = resolvePrettierOptions(
+      prettierOptionsOverrides,
+      stylisticConfig,
+      options.css,
+    )
+
     items.push(
       {
         name: 'byyuurin:formatter:css',
@@ -90,6 +83,12 @@ export const formatters = defineFlatConfigProvider(async (
   }
 
   if (options.html) {
+    const prettierOptions = resolvePrettierOptions(
+      prettierOptionsOverrides,
+      stylisticConfig,
+      options.html,
+    )
+
     items.push(
       {
         name: 'byyuurin:formatter:html',
@@ -108,7 +107,21 @@ export const formatters = defineFlatConfigProvider(async (
   if (options.markdown) {
     const formatter = options.markdown === true
       ? 'prettier'
-      : options.markdown
+      : options.markdown.formatter
+
+    const formatterConfig = typeof options.markdown === 'boolean' ? {} : options.markdown
+
+    const prettierOptions = resolvePrettierOptions(
+      formatterConfig,
+      stylisticConfig,
+      options.markdown,
+    )
+
+    const dprintOptions = resolveDprintOptions(
+      formatterConfig,
+      stylisticConfig,
+      options.markdown,
+    )
 
     items.push(
       {
@@ -135,6 +148,12 @@ export const formatters = defineFlatConfigProvider(async (
   }
 
   if (options.graphql) {
+    const prettierOptions = resolvePrettierOptions(
+      drpintOptionsOverrides,
+      stylisticConfig,
+      options.graphql,
+    )
+
     items.push(
       {
         name: 'byyuurin:formatter:graphql',
@@ -155,3 +174,64 @@ export const formatters = defineFlatConfigProvider(async (
 
   return items
 })
+
+function resolveStylisticConfig(stylisticConfigOverrides: StylisticConfig | true) {
+  const stylisticConfig: StylisticConfig = {
+    ...stylisticConfigDefaults,
+    ...typeof stylisticConfigOverrides === 'boolean' ? {} : stylisticConfigOverrides,
+  }
+
+  return stylisticConfig
+}
+
+function resolvePrettierOptions(
+  prettierOptionsOverrides: VendoredPrettierOptions,
+  stylisticConfig: StylisticConfig = {},
+  formatterConfig: FormatterConfig | true = true,
+) {
+  const {
+    indent,
+    quotes,
+    semi,
+  } = resolveStylisticConfig({
+    ...stylisticConfig,
+    ...typeof formatterConfig === 'boolean' ? {} : formatterConfig,
+  })
+
+  const prettierOptions: VendoredPrettierOptions = {
+    endOfLine: 'auto',
+    semi,
+    singleQuote: quotes === 'single',
+    tabWidth: typeof indent === 'number' ? indent : 2,
+    trailingComma: 'all',
+    useTabs: indent === 'tab',
+
+    ...prettierOptionsOverrides,
+  }
+
+  return prettierOptions
+}
+
+function resolveDprintOptions(
+  drpintOptionsOverrides: VendoredDprintOptions,
+  stylisticConfig: StylisticConfig = {},
+  formatterConfig: FormatterConfig | true = true,
+) {
+  const {
+    indent,
+    quotes,
+  } = resolveStylisticConfig({
+    ...stylisticConfig,
+    ...typeof formatterConfig === 'boolean' ? {} : formatterConfig,
+  })
+
+  const dprintOptions: VendoredDprintOptions = {
+    indentWidth: typeof indent === 'number' ? indent : 2,
+    quoteStyle: quotes === 'single' ? 'preferSingle' : 'preferDouble',
+    useTabs: indent === 'tab',
+
+    ...drpintOptionsOverrides,
+  }
+
+  return dprintOptions
+}

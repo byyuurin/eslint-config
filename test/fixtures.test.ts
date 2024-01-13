@@ -92,6 +92,31 @@ runWithConfig(
 )
 
 runWithConfig(
+  'with-formatters-customize',
+  {
+    formatters: {
+      html: {
+        formatter: 'prettier',
+        indent: 'tab',
+      },
+      css: {
+        formatter: 'prettier',
+        quotes: 'double',
+      },
+      markdown: {
+        formatter: 'dprint',
+      },
+    },
+  },
+  {
+    rules: {
+      'no-useless-escape': 'off',
+      'style/no-tabs': 'off',
+    },
+  },
+)
+
+runWithConfig(
   'no-markdown-with-formatters',
   {
     vue: false,

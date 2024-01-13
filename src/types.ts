@@ -10,6 +10,7 @@ import type { Linter } from 'eslint'
 import type { FlatGitignoreOptions } from 'eslint-config-flat-gitignore'
 import type { Rules as AntfuRules } from 'eslint-plugin-antfu'
 import type { Options as VueBlocksOptions } from 'eslint-processor-vue-blocks'
+import type { VendoredDprintOptions } from './vender/dprint-types'
 import type { VendoredPrettierOptions } from './vender/prettier-types'
 
 export type Awaitable<T> = T | Promise<T>
@@ -134,20 +135,22 @@ export interface OptionsUnoCSS {
   strict?: boolean
 }
 
+export type FormatterConfig<Formatter extends string = 'prettier' | 'dprint'> = ({ formatter: Formatter } & Pick<StylisticConfig, 'indent' | 'quotes' | 'semi'>)
+
 export interface OptionsFormatters {
   /**
    * Enable formatting support for CSS, Less, Sass, and SCSS.
    *
    * Currently only support Prettier.
    */
-  css?: 'prettier' | boolean
+  css?: FormatterConfig<'prettier'> | boolean
 
   /**
    * Enable formatting support for HTML.
    *
    * Currently only support Prettier.
    */
-  html?: 'prettier' | boolean
+  html?: FormatterConfig<'prettier'> | boolean
 
   /**
    * Enable formatting support for Markdown.
@@ -156,12 +159,12 @@ export interface OptionsFormatters {
    *
    * When set to `true`, it will use Prettier.
    */
-  markdown?: 'prettier' | 'dprint' | boolean
+  markdown?: FormatterConfig<'prettier' | 'dprint'> | boolean
 
   /**
    * Enable formatting support for GraphQL.
    */
-  graphql?: 'prettier' | boolean
+  graphql?: FormatterConfig<'prettier'> | boolean
 
   /**
    * Custom options for Prettier.
@@ -175,7 +178,7 @@ export interface OptionsFormatters {
    *
    * By default it's controlled by our own config.
    */
-  dprintOptions?: boolean
+  dprintOptions?: VendoredDprintOptions
 }
 
 export interface OptionsConfig extends OptionsComponentExts {

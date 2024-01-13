@@ -15,6 +15,9 @@ function identity(x) {
 .foo {
   color: red;
 }
+.foo:before: {
+  content: '';
+}
 ```
 
 | Pilot    | Airport | Hours |

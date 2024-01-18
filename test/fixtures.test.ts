@@ -96,11 +96,9 @@ runWithConfig(
   {
     formatters: {
       html: {
-        formatter: 'prettier',
         indent: 'tab',
       },
       css: {
-        formatter: 'prettier',
         quotes: 'double',
       },
       markdown: {

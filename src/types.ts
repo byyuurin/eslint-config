@@ -135,7 +135,7 @@ export interface OptionsUnoCSS {
   strict?: boolean
 }
 
-export type FormatterConfig<Formatter extends string = 'prettier' | 'dprint'> = ({ formatter: Formatter } & Pick<StylisticConfig, 'indent' | 'quotes' | 'semi'>)
+export type FormatterConfig<Formatter extends string = 'prettier' | 'dprint'> = ({ formatter?: Formatter } & Pick<StylisticConfig, 'indent' | 'quotes' | 'semi'>)
 
 export interface OptionsFormatters {
   /**

@@ -105,22 +105,19 @@ export const formatters = defineFlatConfigProvider(async (
   }
 
   if (options.markdown) {
-    const formatter = options.markdown === true
-      ? 'prettier'
-      : options.markdown.formatter
-
     const formatterConfig = typeof options.markdown === 'boolean' ? {} : options.markdown
+    const { formatter = 'prettier' } = formatterConfig
 
     const prettierOptions = resolvePrettierOptions(
-      formatterConfig,
+      prettierOptionsOverrides,
       stylisticConfig,
-      options.markdown,
+      formatterConfig,
     )
 
     const dprintOptions = resolveDprintOptions(
-      formatterConfig,
+      drpintOptionsOverrides,
       stylisticConfig,
-      options.markdown,
+      formatterConfig,
     )
 
     items.push(
@@ -175,7 +172,9 @@ export const formatters = defineFlatConfigProvider(async (
   return items
 })
 
-function resolveStylisticConfig(stylisticConfigOverrides: StylisticConfig | true) {
+function resolveStylisticConfig(
+  stylisticConfigOverrides: StylisticConfig | true,
+) {
   const stylisticConfig: StylisticConfig = {
     ...stylisticConfigDefaults,
     ...typeof stylisticConfigOverrides === 'boolean' ? {} : stylisticConfigOverrides,

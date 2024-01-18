@@ -165,6 +165,10 @@ export const vue = defineFlatConfigProvider(async (
         'vue/space-infix-ops': 'warn',
         'vue/space-unary-ops': ['warn', { words: true, nonwords: false }],
 
+        // Deprecated
+        // ----------------------------------------
+        'vue/component-tags-order': 'off',
+
         ...stylistic
           ? {
               'vue/array-bracket-spacing': ['warn', 'never'],

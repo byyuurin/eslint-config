@@ -1,6 +1,6 @@
 import { defineFlatConfigProvider } from '../helpers'
 import { pluginAntfu } from '../plugins'
-import type { StylisticConfig } from '../types'
+import type { OptionsOverrides, StylisticConfig } from '../types'
 import { interopDefault } from '../utils'
 
 export const stylisticConfigDefaults: StylisticConfig = {
@@ -11,7 +11,7 @@ export const stylisticConfigDefaults: StylisticConfig = {
 }
 
 export const stylistic = defineFlatConfigProvider(async (
-  options: StylisticConfig = {},
+  options: StylisticConfig & OptionsOverrides = {},
 ) => {
   const {
     indent,

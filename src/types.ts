@@ -75,7 +75,7 @@ export interface OptionsStylistic {
   stylistic?: boolean | StylisticConfig
 }
 
-export interface StylisticConfig extends Pick<StylisticCustomizeOptions, 'indent' | 'quotes' | 'jsx' | 'semi'>, OptionsOverrides {
+export interface StylisticConfig extends Pick<StylisticCustomizeOptions, 'indent' | 'quotes' | 'jsx' | 'semi'> {
 }
 
 export interface OptionsOverrides {
@@ -86,14 +86,14 @@ export interface OptionsIsInEditor {
   isInEditor?: boolean
 }
 
-export interface OptionsTypeScriptParserOptions extends OptionsOverrides {
+export interface OptionsTypeScriptParserOptions {
   /**
    * Additional parser options for TypeScript.
    */
   parserOptions?: Partial<ParserOptions>
 }
 
-export interface OptionsTypeScriptWithTypes extends OptionsOverrides {
+export interface OptionsTypeScriptWithTypes {
   /**
    * When this options is provided, type aware rules will be enabled.
    * @see https://typescript-eslint.io/linting/typed-linting/
@@ -105,7 +105,7 @@ export interface OptionsHasTypeScript {
   typescript?: boolean
 }
 
-export interface OptionsVue extends OptionsOverrides {
+export interface OptionsVue {
   /**
    * Create virtual files for Vue SFC blocks to enable linting.
    *
@@ -204,14 +204,14 @@ export interface OptionsConfig extends OptionsComponentExts {
    *
    * @default auto-detect based on the dependencies
    */
-  typescript?: boolean | OptionsTypeScriptWithTypes | OptionsTypeScriptParserOptions
+  typescript?: boolean | (OptionsTypeScriptWithTypes & OptionsOverrides) | (OptionsTypeScriptParserOptions & OptionsOverrides)
 
   /**
    * Enable Vue support.
    *
    * @default auto-detect based on the dependencies
    */
-  vue?: boolean | OptionsVue
+  vue?: boolean | (OptionsVue & OptionsOverrides)
 
   /**
    * Enable JSONC support.
@@ -248,7 +248,7 @@ export interface OptionsConfig extends OptionsComponentExts {
    *
    * @default true
    */
-  stylistic?: boolean | StylisticConfig
+  stylistic?: boolean | (StylisticConfig & OptionsOverrides)
 
   /**
    * Enable unocss rules.

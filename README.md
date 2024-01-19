@@ -165,7 +165,8 @@ export default byyuurin({
 
   // `.eslintignore` is no longer supported in Flat config, use `ignores` instead
   ignores: [
-    './fixtures',
+    'fixtures',
+    '**/fixtures',
     // ...globs
   ],
 })

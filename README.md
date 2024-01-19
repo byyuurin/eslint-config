@@ -218,24 +218,70 @@ type foo = { bar: 2 }
 
 ### Rules Overrides
 
-You can change the rules via the `overrides` option:
+You can change the rules via the `overrides` option in each integration:
 
 ```js
 // eslint.config.js
 import { byyuurin } from '@byyuurin/eslint-config'
 
 export default byyuurin({
-  overrides: {
-    vue: {
+  vue: {
+    overrides: {
       'vue/operator-linebreak': ['error', 'before'],
     },
-    typescript: {
+  },
+  typescript: {
+    overrides: {
       'ts/consistent-type-definitions': ['error', 'interface'],
     },
-    yaml: {},
-    // ...
+  },
+  yaml: {
+    overrides: {
+      // ...
+    },
   },
 })
+```
+
+### Optional formatters
+
+Use external formatters to format files that ESLint cannot handle yet (`.css`, `.html`, etc).
+Powered by [eslint-plugin-format](https://github.com/antfu/eslint-plugin-format).
+
+```js
+// eslint.config.js
+import { byyuurin } from '@byyuurin/eslint-config'
+
+export default byyuurin({
+  formatters: {
+    /**
+     * Format CSS, LESS, SCSS files, also the `<style>` blocks in Vue
+     */
+    css: true,
+    /**
+     * Format HTML files
+     */
+    html: {
+      indent: 4,
+      quotes: 'double',
+      semi: true,
+    },
+    /**
+     * Format Markdown files
+     * Supports Prettier and dprint
+     * By default uses Prettier
+     */
+    markdown: {
+      formatter: 'dprint',
+    },
+  },
+})
+```
+
+Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
+
+```bash
+npm i -D eslint-plugin-format
 ```
 
 ### Lint Staged

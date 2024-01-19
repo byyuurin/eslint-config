@@ -71,18 +71,18 @@ export const vue = defineFlatConfigProvider(async (
       rules: {
         'node/prefer-global/process': 'off',
 
-        ...pluginVue.configs.base.rules as any,
+        ...pluginVue.configs.base.rules,
 
         ...vueVersion === 2
           ? {
-              ...pluginVue.configs.essential.rules as any,
-              ...pluginVue.configs['strongly-recommended'].rules as any,
-              ...pluginVue.configs.recommended.rules as any,
+              ...pluginVue.configs.essential.rules,
+              ...pluginVue.configs['strongly-recommended'].rules,
+              ...pluginVue.configs.recommended.rules,
             }
           : {
-              ...pluginVue.configs['vue3-essential'].rules as any,
-              ...pluginVue.configs['vue3-strongly-recommended'].rules as any,
-              ...pluginVue.configs['vue3-recommended'].rules as any,
+              ...pluginVue.configs['vue3-essential'].rules,
+              ...pluginVue.configs['vue3-strongly-recommended'].rules,
+              ...pluginVue.configs['vue3-recommended'].rules,
             },
 
         // Essential

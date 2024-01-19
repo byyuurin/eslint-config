@@ -18,31 +18,9 @@ export const typescript = defineFlatConfigProvider(async (
     ...componentExts.map((ext) => `**/*.${ext}`),
   ]
 
-  const filesTypeAware = [GLOB_TS, GLOB_TSX]
+  const filesTypeAware = options.filesTypeAware ?? [GLOB_TS, GLOB_TSX]
 
-  const typeAwareRules: FlatConfigItem['rules'] = {
-    'dot-notation': 'off',
-    'no-implied-eval': 'off',
-    'no-throw-literal': 'off',
-    'ts/await-thenable': 'error',
-    'ts/dot-notation': ['error', { allowKeywords: true }],
-    'ts/no-floating-promises': 'error',
-    'ts/no-for-in-array': 'error',
-    'ts/no-implied-eval': 'error',
-    'ts/no-misused-promises': 'error',
-    'ts/no-throw-literal': 'error',
-    'ts/no-unnecessary-type-assertion': 'error',
-    'ts/no-unsafe-argument': 'error',
-    'ts/no-unsafe-assignment': 'error',
-    'ts/no-unsafe-call': 'error',
-    'ts/no-unsafe-member-access': 'error',
-    'ts/no-unsafe-return': 'error',
-    'ts/restrict-plus-operands': 'error',
-    'ts/restrict-template-expressions': 'error',
-    'ts/unbound-method': 'error',
-  }
-
-  const tsconfigPath = options.tsconfigPath
+  const tsconfigPath = options?.tsconfigPath
     ? toArray(options.tsconfigPath)
     : undefined
 
@@ -54,22 +32,18 @@ export const typescript = defineFlatConfigProvider(async (
     interopDefault(import('@typescript-eslint/parser')),
   ] as const)
 
-  return [
-    {
-      // Install the plugins without globs, so they can be configured separately.
-      name: 'byyuurin:typescript:setup',
-      plugins: {
-        ts: pluginTs,
-      },
-    },
-    {
-      name: 'byyuurin:typescript:rules',
+  // ref: https://github.com/antfu/eslint-config/pull/384
+  function resolveParser(isTypeAware: boolean, files: string[], ignores: string[] = []): FlatConfigItem {
+    return {
+      name: `byyuurin:typescript:${isTypeAware ? 'type-aware-parser' : 'parser'}`,
+      files,
+      ignores,
       languageOptions: {
         parser: parserTs,
         parserOptions: {
-          extraFileExtensions: componentExts.map((ext) => `*.${ext}`),
+          extraFileExtensions: componentExts.map((ext) => `.${ext}`),
           sourceType: 'module',
-          ...tsconfigPath
+          ...isTypeAware
             ? {
                 project: tsconfigPath,
                 tsconfigRootDir: process.cwd(),
@@ -78,6 +52,26 @@ export const typescript = defineFlatConfigProvider(async (
           ...parserOptions as any,
         },
       },
+    }
+  }
+
+  return [
+    {
+      // Install the plugins without globs, so they can be configured separately.
+      name: 'byyuurin:typescript:setup',
+      plugins: {
+        ts: pluginTs,
+      },
+    },
+    // assign type-aware parser for type-aware files and type-unaware parser for the rest
+    ...tsconfigPath
+      ? [
+          resolveParser(true, filesTypeAware),
+          resolveParser(false, files, filesTypeAware),
+        ]
+      : [resolveParser(false, files)],
+    {
+      name: 'byyuurin:typescript:rules',
       files,
       rules: {
         ...renameRules(
@@ -336,11 +330,32 @@ export const typescript = defineFlatConfigProvider(async (
       },
     },
     {
-      // ref: https://github.com/antfu/eslint-config/commit/0c1c8db2b76bb08ecf7d92a0ed47628281b44ec2
       name: 'byyuurin:typescript:rules-type-aware',
       files: filesTypeAware,
       rules: {
-        ...tsconfigPath ? typeAwareRules : {},
+        ...tsconfigPath
+          ? {
+              'dot-notation': 'off',
+              'no-implied-eval': 'off',
+              'no-throw-literal': 'off',
+              'ts/await-thenable': 'error',
+              'ts/dot-notation': ['error', { allowKeywords: true }],
+              'ts/no-floating-promises': 'error',
+              'ts/no-for-in-array': 'error',
+              'ts/no-implied-eval': 'error',
+              'ts/no-misused-promises': 'error',
+              'ts/no-throw-literal': 'error',
+              'ts/no-unnecessary-type-assertion': 'error',
+              'ts/no-unsafe-argument': 'error',
+              'ts/no-unsafe-assignment': 'error',
+              'ts/no-unsafe-call': 'error',
+              'ts/no-unsafe-member-access': 'error',
+              'ts/no-unsafe-return': 'error',
+              'ts/restrict-plus-operands': 'error',
+              'ts/restrict-template-expressions': 'error',
+              'ts/unbound-method': 'error',
+            }
+          : {},
         ...overrides,
       },
     },

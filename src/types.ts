@@ -99,6 +99,12 @@ export interface OptionsTypeScriptWithTypes {
    * @see https://typescript-eslint.io/linting/typed-linting/
    */
   tsconfigPath?: string | string[]
+
+  /**
+   * Glob patterns for files that should be type aware.
+   * @default [GLOB_TS, GLOB_TSX]
+   */
+  filesTypeAware?: string[]
 }
 
 export interface OptionsHasTypeScript {

@@ -5,6 +5,7 @@ import type { Awaitable, FlatConfigItem, OptionsConfig, UserConfigItem } from '.
 import { combine, ensurePackages, toUniqueStringArray } from './utils'
 
 const flatConfigProps: (keyof FlatConfigItem)[] = [
+  'name',
   'files',
   'ignores',
   'languageOptions',

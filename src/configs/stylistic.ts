@@ -51,16 +51,8 @@ export const stylistic = defineFlatConfigProvider(async (
         'style/no-extra-semi': 'warn',
         'style/array-bracket-newline': ['warn', 'consistent'],
         'style/brace-style': ['warn', 'stroustrup', { allowSingleLine: false }],
-
-        // 'style/func-call-spacing': ['warn', 'never'],
-
         'style/function-paren-newline': ['warn', 'consistent'],
         'style/generator-star-spacing': ['warn', { before: false, after: true }],
-
-        // 'style/object-curly-newline': ['warn', { multiline: true, consistent: true }],
-        // 'style/object-curly-spacing': ['warn', 'always'],
-        // 'style/object-property-newline': ['warn', { allowMultiplePropertiesPerLine: true }],
-
         'style/padding-line-between-statements': [
           'warn',
           ...[

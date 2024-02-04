@@ -26,7 +26,7 @@ With `"type": "module"` in `package.json` (recommended):
 
 ```js
 // eslint.config.js
-import { byyuurin } from '@byyuurin/eslint-config'
+import byyuurin from '@byyuurin/eslint-config'
 
 export default byyuurin()
 ```
@@ -143,7 +143,7 @@ You can configure each integration individually, for example:
 
 ```js
 // eslint.config.js
-import { byyuurin } from '@byyuurin/eslint-config'
+import byyuurin from '@byyuurin/eslint-config'
 
 export default byyuurin({
   // Enable stylistic formatting rules
@@ -176,7 +176,7 @@ The factory function also accepts any number of arbitrary custom config override
 
 ```js
 // eslint.config.js
-import { byyuurin } from '@byyuurin/eslint-config'
+import byyuurin from '@byyuurin/eslint-config'
 
 export default byyuurin(
   {
@@ -222,7 +222,7 @@ You can change the rules via the `overrides` option in each integration:
 
 ```js
 // eslint.config.js
-import { byyuurin } from '@byyuurin/eslint-config'
+import byyuurin from '@byyuurin/eslint-config'
 
 export default byyuurin({
   vue: {
@@ -250,7 +250,7 @@ Powered by [eslint-plugin-format](https://github.com/antfu/eslint-plugin-format)
 
 ```js
 // eslint.config.js
-import { byyuurin } from '@byyuurin/eslint-config'
+import byyuurin from '@byyuurin/eslint-config'
 
 export default byyuurin({
   formatters: {
@@ -260,6 +260,7 @@ export default byyuurin({
     css: true,
     /**
      * Format HTML files
+     * Using custom stylistic rules
      */
     html: {
       indent: 4,

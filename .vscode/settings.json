@@ -37,6 +37,6 @@
     "jsonc",
     "yaml",
     "toml",
-    "vue",
-  ],
+    "vue"
+  ]
 }

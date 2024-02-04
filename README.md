@@ -132,8 +132,8 @@ Add the following settings to your `.vscode/settings.json`:
     "jsonc",
     "yaml",
     "toml",
-    "vue",
-  ],
+    "vue"
+  ]
 }
 ```
 

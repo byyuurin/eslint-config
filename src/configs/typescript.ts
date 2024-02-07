@@ -94,6 +94,10 @@ export const typescript = defineFlatConfigProvider(async (
         'ts/ban-types': ['error', { types: { Function: false } }],
         'ts/consistent-type-definitions': ['warn', 'interface'],
         'ts/consistent-type-imports': ['warn', { prefer: 'type-imports', disallowTypeAnnotations: false }],
+
+        // https://www.totaltypescript.com/method-shorthand-syntax-considered-harmful
+        'ts/method-signature-style': ['warn', 'property'],
+
         'ts/no-dynamic-delete': 'off',
         'ts/no-explicit-any': 'off',
         'ts/no-extraneous-class': 'off',

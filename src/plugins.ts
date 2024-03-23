@@ -1,3 +1,4 @@
+// @ts-expect-error missing types
 export { default as pluginAntfu } from 'eslint-plugin-antfu'
 
 // @ts-expect-error missing types

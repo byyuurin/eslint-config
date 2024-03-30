@@ -29,7 +29,7 @@
     "lint:fix": "pnpm run stub && eslint . --fix",
     "release": "bumpp && pnpm publish",
     "test": "vitest",
-    "type-gen": "esno scripts/rules-type-gen.ts",
+    "type-gen": "esno scripts/type-gen.ts",
     "type-check": "tsc --noEmit",
     "prepack": "nr build",
     "prepare": "simple-git-hooks"

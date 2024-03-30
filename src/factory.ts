@@ -2,7 +2,7 @@ import process from 'node:process'
 import type { Linter } from 'eslint'
 import { FlatConfigPipeline } from 'eslint-flat-config-utils'
 import { isPackageExists } from 'local-pkg'
-import { comments, formatters, ignores, imports, javascript, jsdoc, jsonc, markdown, node, sortPackageJson, sortTsconfigJson, stylistic, toml, typescript, unicorn, unocss, vue, yaml } from './configs'
+import { comments, formatters, ignores, imports, javascript, jsdoc, jsonc, markdown, node, stylistic, toml, typescript, unicorn, unocss, vue, yaml } from './configs'
 import { internalPluginRenaming } from './plugins'
 import type { Awaitable, OptionsConfig, TypedFlatConfigItem } from './types'
 import { toUniqueStringArray } from './utils'
@@ -127,8 +127,6 @@ export function byyuurin(
         overrides: getOverrides(options, 'jsonc'),
         stylistic: stylisticOptions,
       }),
-      sortPackageJson(),
-      sortTsconfigJson(),
     )
   }
 

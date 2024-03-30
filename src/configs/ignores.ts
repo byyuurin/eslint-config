@@ -1,7 +1,7 @@
 import fs from 'node:fs'
 import { GLOB_EXCLUDE } from '../globs'
 import { defineFlatConfigProvider } from '../helpers'
-import type { FlatConfigItem, OptionsConfig } from '../types'
+import type { OptionsConfig, TypedFlatConfigItem } from '../types'
 import { interopDefault } from '../utils'
 
 export const ignores = defineFlatConfigProvider(async (
@@ -11,7 +11,7 @@ export const ignores = defineFlatConfigProvider(async (
     gitignore: enableGitignore = true,
   } = options
 
-  const items: FlatConfigItem[] = [
+  const items: TypedFlatConfigItem[] = [
     {
       name: 'byyuurin:ignores',
       ignores: GLOB_EXCLUDE,

@@ -40,7 +40,8 @@ const byyuurin = require('@byyuurin/eslint-config').default
 module.exports = byyuurin()
 ```
 
-Combined with legacy config:
+<details>
+<summary>Combined with legacy config:</summary>
 
 ```js
 // eslint.config.js
@@ -67,6 +68,8 @@ module.exports = byyuurin(
 ```
 
 > Note that `.eslintignore` no longer works in Flat config
+
+</details>
 
 ### Add script for package.json
 
@@ -132,7 +135,9 @@ Add the following settings to your `.vscode/settings.json`:
     "jsonc",
     "yaml",
     "toml",
-    "vue"
+    "vue",
+    "gql",
+    "graphql"
   ]
 }
 ```
@@ -215,6 +220,9 @@ When you want to override rules, or disable them inline, you need to update to t
 +// eslint-disable-next-line ts/consistent-type-definitions
 type foo = { bar: 2 }
 ```
+
+This preset will automatically rename the plugins also for your custom configs.
+You can use the original prefix to override the rules directly.
 
 ### Rules Overrides
 

@@ -1,7 +1,7 @@
 import { parserPlain } from '../eslint-parser-plain'
 import { GLOB_CSS, GLOB_LESS, GLOB_MARKDOWN, GLOB_POSTCSS, GLOB_SCSS } from '../globs'
 import { defineFlatConfigProvider } from '../helpers'
-import type { FlatConfigItem, FormatterConfig, OptionsFormatters, OptionsStylistic, StylisticConfig } from '../types'
+import type { FormatterConfig, OptionsFormatters, OptionsStylistic, StylisticConfig, TypedFlatConfigItem } from '../types'
 import { interopDefault, toArray } from '../utils'
 import type { VendoredDprintOptions } from '../vender/dprint-types'
 import type { VendoredPrettierOptions } from '../vender/prettier-types'
@@ -34,7 +34,7 @@ export const formatters = defineFlatConfigProvider(async (
     ? {}
     : options.stylistic
 
-  const items: FlatConfigItem[] = [
+  const items: TypedFlatConfigItem[] = [
     {
       name: 'byyuurin:formatters:setup',
       plugins: {

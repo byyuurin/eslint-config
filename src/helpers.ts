@@ -1,11 +1,11 @@
-import type { Awaitable, FlatConfigItem } from './types'
+import type { Awaitable, TypedFlatConfigItem } from './types'
 
-type FlatConfigProvider<T> = T extends ((...args: infer P) => Awaitable<FlatConfigItem[]>)
+type FlatConfigProvider<T> = T extends ((...args: infer P) => Awaitable<TypedFlatConfigItem[]>)
   ? P extends never[]
-    ? () => Awaitable<FlatConfigItem[]>
-    : (options?: P[0]) => Awaitable<FlatConfigItem[]>
+    ? () => Awaitable<TypedFlatConfigItem[]>
+    : (options?: P[0]) => Awaitable<TypedFlatConfigItem[]>
   : never
 
-export function defineFlatConfigProvider<T extends (() => Awaitable<FlatConfigItem[]>)>(provider: T) {
+export function defineFlatConfigProvider<T extends (() => Awaitable<TypedFlatConfigItem[]>)>(provider: T) {
   return provider as unknown as FlatConfigProvider<T>
 }

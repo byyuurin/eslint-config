@@ -66,3 +66,4 @@ typings/
 dist
 
 _fixtures
+src/types-rule.d.ts

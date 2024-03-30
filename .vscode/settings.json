@@ -37,6 +37,8 @@
     "jsonc",
     "yaml",
     "toml",
-    "vue"
+    "vue",
+    "gql",
+    "graphql"
   ]
 }

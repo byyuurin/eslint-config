@@ -1,7 +1,7 @@
 import process from 'node:process'
 import { GLOB_SRC, GLOB_TS, GLOB_TSX } from '../globs'
 import { defineFlatConfigProvider } from '../helpers'
-import type { FlatConfigItem, OptionsComponentExts, OptionsFiles, OptionsOverrides, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes } from '../types'
+import type { OptionsComponentExts, OptionsFiles, OptionsOverrides, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from '../types'
 import { interopDefault, renameRules, toArray } from '../utils'
 
 export const typescript = defineFlatConfigProvider(async (
@@ -33,7 +33,7 @@ export const typescript = defineFlatConfigProvider(async (
   ] as const)
 
   // ref: https://github.com/antfu/eslint-config/pull/384
-  function resolveParser(isTypeAware: boolean, files: string[], ignores: string[] = []): FlatConfigItem {
+  function resolveParser(isTypeAware: boolean, files: string[], ignores: string[] = []): TypedFlatConfigItem {
     return {
       name: `byyuurin:typescript:${isTypeAware ? 'type-aware-parser' : 'parser'}`,
       files,
@@ -76,13 +76,11 @@ export const typescript = defineFlatConfigProvider(async (
       rules: {
         ...renameRules(
           pluginTs.configs['eslint-recommended'].overrides![0].rules!,
-          '@typescript-eslint/',
-          'ts/',
+          { '@typescript-eslint': 'ts' },
         ),
         ...renameRules(
           pluginTs.configs.strict.rules!,
-          '@typescript-eslint/',
-          'ts/',
+          { '@typescript-eslint': 'ts' },
         ),
 
         'no-useless-constructor': 'off',

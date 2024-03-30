@@ -1,6 +1,13 @@
 // @ts-check
 import styleMigrate from '@stylistic/eslint-plugin-migrate'
-import byyuurin from './dist/index.js'
+import createJITI from 'jiti'
+
+const jiti = createJITI(import.meta.url)
+
+/**
+ * @type {import('./src').default}
+ */
+const byyuurin = jiti('./src').default
 
 export default byyuurin(
   {
@@ -18,6 +25,13 @@ export default byyuurin(
     },
     rules: {
       'style-migrate/migrate': ['error', { namespaceTo: 'style' }],
+    },
+  },
+  {
+    files: ['test/types.ts'],
+    rules: {
+      'unicorn/no-unreadable-iife': 'off',
+      '@stylistic/padding-line-between-statements': 'off',
     },
   },
 )

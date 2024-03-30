@@ -313,12 +313,12 @@ npx simple-git-hooks
 
 ## View what rules are enabled
 
-> [eslint-flat-config-viewer](https://github.com/antfu/eslint-flat-config-viewer), built by [Anthony Fu](https://github.com/antfu), is a visual tool designed to help you view and understand your ESLint Flat config
+> [@eslint/config-inspector](https://github.com/eslint/config-inspector), built by [Anthony Fu](https://github.com/antfu), is a visual tool designed to help you view and understand your ESLint Flat config
 
 Go to your project root that contains `eslint.config.js` and run:
 
 ```bash
-npx eslint-flat-config-viewer
+npx @eslint/config-inspector
 ```
 
 ## License

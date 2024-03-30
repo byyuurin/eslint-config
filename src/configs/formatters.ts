@@ -1,5 +1,5 @@
 import { parserPlain } from '../eslint-parser-plain'
-import { GLOB_CSS, GLOB_LESS, GLOB_MARKDOWN, GLOB_POSTCSS, GLOB_SCSS } from '../globs'
+import { GLOB_CSS, GLOB_GRAPHQL, GLOB_LESS, GLOB_MARKDOWN, GLOB_POSTCSS, GLOB_SCSS } from '../globs'
 import { defineFlatConfigProvider } from '../helpers'
 import type { FormatterConfig, OptionsFormatters, OptionsStylistic, StylisticConfig, TypedFlatConfigItem } from '../types'
 import { ensurePackages, interopDefault } from '../utils'
@@ -155,7 +155,7 @@ export const formatters = defineFlatConfigProvider(async (
       {
         name: 'byyuurin:formatter:graphql',
         languageOptions,
-        files: ['**/*.graphql'],
+        files: [GLOB_GRAPHQL],
         rules: {
           'format/prettier': [
             'warn',

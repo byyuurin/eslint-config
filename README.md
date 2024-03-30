@@ -207,7 +207,7 @@ we renamed some plugins to make the overall scope more consistent and easier to 
 
 | New Prefix | Original Prefix        | Source Plugin                                                                              |
 | ---------- | ---------------------- | ------------------------------------------------------------------------------------------ |
-| `import/*` | `import-x/*`           | [eslint-plugin-i](https://github.com/un-ts/eslint-plugin-import-x)                         |
+| `import/*` | `import-x/*`           | [eslint-plugin-import-x](https://github.com/un-ts/eslint-plugin-import-x)                  |
 | `node/*`   | `n/*`                  | [eslint-plugin-n](https://github.com/eslint-community/eslint-plugin-n)                     |
 | `yaml/*`   | `yml/*`                | [eslint-plugin-yml](https://github.com/ota-meshi/eslint-plugin-yml)                        |
 | `ts/*`     | `@typescript-eslint/*` | [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint) |
@@ -221,7 +221,7 @@ When you want to override rules, or disable them inline, you need to update to t
 type foo = { bar: 2 }
 ```
 
-This preset will automatically rename the plugins also for your custom configs.
+Since v1.1.0, this preset will automatically rename the plugins also for your custom configs.
 You can use the original prefix to override the rules directly.
 
 ### Rules Overrides

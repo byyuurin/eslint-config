@@ -2,10 +2,10 @@ import process from 'node:process'
 import type { Linter } from 'eslint'
 import { FlatConfigPipeline } from 'eslint-flat-config-utils'
 import { isPackageExists } from 'local-pkg'
-import { comments, formatters, formattersRequirePackages, ignores, imports, javascript, jsdoc, jsonc, markdown, node, sortPackageJson, sortTsconfigJson, stylistic, toml, typescript, unicorn, unocss, unocssRequirePackages, vue, yaml } from './configs'
+import { comments, formatters, ignores, imports, javascript, jsdoc, jsonc, markdown, node, sortPackageJson, sortTsconfigJson, stylistic, toml, typescript, unicorn, unocss, vue, yaml } from './configs'
 import { internalPluginRenaming } from './plugins'
 import type { Awaitable, OptionsConfig, TypedFlatConfigItem } from './types'
-import { ensurePackages, toUniqueStringArray } from './utils'
+import { toUniqueStringArray } from './utils'
 
 const flatConfigProps: (keyof TypedFlatConfigItem)[] = [
   'name',
@@ -41,13 +41,13 @@ const UnocssPackages = [
  * @param userConfigs
  * The user configurations to be merged with the generated configurations.
  *
- * @returns {Promise<TypedFlatConfigItem[]>}
+ * @returns {FlatConfigPipeline<TypedFlatConfigItem>}
  * The merged ESLint configurations.
  */
-export async function byyuurin(
+export function byyuurin(
   options: OptionsConfig & TypedFlatConfigItem = {},
   ...userConfigs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigPipeline<any> | Linter.FlatConfig[]>[]
-): Promise<TypedFlatConfigItem[]> {
+): FlatConfigPipeline<TypedFlatConfigItem> {
   const {
     isInEditor = !!((process.env.VSCODE_PID || process.env.JETBRAINS_IDE) && !process.env.CI),
     typescript: enableTypeScript = isPackageExists('typescript'),
@@ -68,14 +68,6 @@ export async function byyuurin(
 
   if (enableVue)
     componentExts = toUniqueStringArray([...componentExts, 'vue'])
-
-  const installPackages = toUniqueStringArray([
-    ...enableUnoCSS ? unocssRequirePackages : [],
-    ...options.formatters ? formattersRequirePackages : [],
-  ])
-
-  if (installPackages.length > 0)
-    await ensurePackages(installPackages)
 
   const configs: Awaitable<TypedFlatConfigItem[]>[] = []
 
@@ -180,16 +172,16 @@ export async function byyuurin(
   if (Object.keys(fusedConfig).length > 0)
     configs.push([fusedConfig])
 
-  let merged = new FlatConfigPipeline<TypedFlatConfigItem>()
+  let pipeline = new FlatConfigPipeline<TypedFlatConfigItem>()
 
-  merged = merged.append(
+  pipeline = pipeline.append(
     ...configs,
     ...userConfigs as any,
   )
 
-  merged = merged.renamePlugins(internalPluginRenaming)
+  pipeline = pipeline.renamePlugins(internalPluginRenaming)
 
-  return merged
+  return pipeline
 }
 
 function getOverrides(config: OptionsConfig, key: keyof OptionsConfig) {

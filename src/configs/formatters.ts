@@ -2,18 +2,18 @@ import { parserPlain } from '../eslint-parser-plain'
 import { GLOB_CSS, GLOB_LESS, GLOB_MARKDOWN, GLOB_POSTCSS, GLOB_SCSS } from '../globs'
 import { defineFlatConfigProvider } from '../helpers'
 import type { FormatterConfig, OptionsFormatters, OptionsStylistic, StylisticConfig, TypedFlatConfigItem } from '../types'
-import { interopDefault, toArray } from '../utils'
+import { ensurePackages, interopDefault } from '../utils'
 import type { VendoredDprintOptions } from '../vender/dprint-types'
 import type { VendoredPrettierOptions } from '../vender/prettier-types'
 import { stylisticConfigDefaults } from './stylistic'
 
 const packageName = 'eslint-plugin-format'
 
-export const formattersRequirePackages = toArray(packageName)
-
 export const formatters = defineFlatConfigProvider(async (
   options: OptionsStylistic & OptionsFormatters = {},
 ) => {
+  await ensurePackages([packageName])
+
   options = {
     css: true,
     html: true,

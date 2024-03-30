@@ -3,7 +3,7 @@ import { pluginNode } from '../plugins'
 
 export const node = defineFlatConfigProvider(() => [
   {
-    name: 'byyuurin:node',
+    name: 'byyuurin:node:rules',
     plugins: {
       node: pluginNode,
     },

@@ -4,7 +4,7 @@ import { pluginUnicorn } from '../plugins'
 // https://github.com/sindresorhus/eslint-plugin-unicorn
 export const unicorn = defineFlatConfigProvider(() => [
   {
-    name: 'byyuurin:unicorn',
+    name: 'byyuurin:unicorn:rules',
     plugins: {
       unicorn: pluginUnicorn,
     },

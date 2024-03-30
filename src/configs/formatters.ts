@@ -56,7 +56,7 @@ export const formatters = defineFlatConfigProvider(async (
 
     items.push(
       {
-        name: 'byyuurin:formatter:css',
+        name: 'byyuurin:formatters:css',
         languageOptions,
         files: [GLOB_CSS, GLOB_POSTCSS],
         rules: {
@@ -64,7 +64,7 @@ export const formatters = defineFlatConfigProvider(async (
         },
       },
       {
-        name: 'byyuurin:formatter:scss',
+        name: 'byyuurin:formatters:scss',
         languageOptions,
         files: [GLOB_SCSS],
         rules: {
@@ -72,7 +72,7 @@ export const formatters = defineFlatConfigProvider(async (
         },
       },
       {
-        name: 'byyuurin:formatter:less',
+        name: 'byyuurin:formatters:less',
         languageOptions,
         files: [GLOB_LESS],
         rules: {
@@ -91,7 +91,7 @@ export const formatters = defineFlatConfigProvider(async (
 
     items.push(
       {
-        name: 'byyuurin:formatter:html',
+        name: 'byyuurin:formatters:html',
         languageOptions,
         files: ['**/*.html'],
         rules: {
@@ -122,7 +122,7 @@ export const formatters = defineFlatConfigProvider(async (
 
     items.push(
       {
-        name: 'byyuurin:formatter:markdown',
+        name: 'byyuurin:formatters:markdown',
         languageOptions,
         files: [GLOB_MARKDOWN],
         rules: {
@@ -153,7 +153,7 @@ export const formatters = defineFlatConfigProvider(async (
 
     items.push(
       {
-        name: 'byyuurin:formatter:graphql',
+        name: 'byyuurin:formatters:graphql',
         languageOptions,
         files: [GLOB_GRAPHQL],
         rules: {

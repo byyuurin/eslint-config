@@ -11,7 +11,7 @@ export const jsdoc = defineFlatConfigProvider((
 
   return [
     {
-      name: 'byyuurin:jsdoc',
+      name: 'byyuurin:jsdoc:rules',
       plugins: {
         jsdoc: pluginJsdoc,
       },

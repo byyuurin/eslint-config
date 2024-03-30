@@ -15,7 +15,7 @@ export const javascript = defineFlatConfigProvider((
 
   return [
     {
-      name: 'byyuurin:javascript',
+      name: 'byyuurin:eslint-config:rules',
       plugins: {
         antfu: pluginAntfu,
       },
@@ -166,7 +166,7 @@ export const javascript = defineFlatConfigProvider((
       },
     },
     {
-      name: 'byyuurin:scripts-overrides',
+      name: 'byyuurin:eslint-config:disables',
       files: [`scripts/${GLOB_SRC}`, `cli.${GLOB_SRC_EXT}`],
       rules: {
         'no-console': 'off',

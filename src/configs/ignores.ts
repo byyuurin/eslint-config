@@ -13,7 +13,7 @@ export const ignores = defineFlatConfigProvider(async (
 
   const items: TypedFlatConfigItem[] = [
     {
-      name: 'byyuurin:ignores',
+      name: 'byyuurin:ignores:defaults',
       ignores: GLOB_EXCLUDE,
     },
   ]

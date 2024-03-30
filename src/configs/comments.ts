@@ -3,7 +3,7 @@ import { pluginComments } from '../plugins'
 
 export const comments = defineFlatConfigProvider(() => [
   {
-    name: 'byyuurin:eslint-comments',
+    name: 'byyuurin:eslint-comments:rules',
     plugins: {
       'eslint-comments': pluginComments,
     },

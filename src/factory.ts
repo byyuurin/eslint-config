@@ -49,7 +49,7 @@ export function byyuurin(
   ...userConfigs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigPipeline<any> | Linter.FlatConfig[]>[]
 ): FlatConfigPipeline<TypedFlatConfigItem> {
   const {
-    isInEditor = !!((process.env.VSCODE_PID || process.env.JETBRAINS_IDE) && !process.env.CI),
+    isInEditor = !!((process.env.VSCODE_PID || process.env.VSCODE_CWD || process.env.JETBRAINS_IDE || process.env.VIM) && !process.env.CI),
     typescript: enableTypeScript = isPackageExists('typescript'),
     vue: enableVue = VuePackages.some((i) => isPackageExists(i)),
     unocss: enableUnoCSS = UnocssPackages.some((i) => isPackageExists(i)),

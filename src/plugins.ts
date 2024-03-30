@@ -5,7 +5,7 @@ export { default as pluginJsdoc } from 'eslint-plugin-jsdoc'
 export { default as pluginComments } from 'eslint-plugin-eslint-comments'
 
 // @ts-expect-error missing types
-export * as pluginImport from 'eslint-plugin-i'
+export * as pluginImport from 'eslint-plugin-import-x'
 
 // @ts-expect-error missing types
 export { default as pluginNode } from 'eslint-plugin-n'

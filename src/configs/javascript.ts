@@ -4,7 +4,7 @@ import globals from 'globals'
 import { GLOB_SRC, GLOB_SRC_EXT } from '../globs'
 import { defineFlatConfigProvider } from '../helpers'
 import { pluginAntfu } from '../plugins'
-import type { OptionsOverrides } from '../types'
+import type { OptionsOverrides, TypedFlatConfigItem } from '../types'
 
 export const javascript = defineFlatConfigProvider((
   options: OptionsOverrides = {},
@@ -42,7 +42,7 @@ export const javascript = defineFlatConfigProvider((
         reportUnusedDisableDirectives: true,
       },
       rules: {
-        ...js.configs.recommended.rules,
+        ...js.configs.recommended.rules as TypedFlatConfigItem['rules'],
 
         // Possible Problems
         // https://eslint.org/docs/latest/rules/#possible-problems

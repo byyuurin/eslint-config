@@ -35,13 +35,13 @@ export const vue = defineFlatConfigProvider(async (
 
   return [
     {
-      name: 'byyuurin:vue:setup',
+      name: 'byyuurin/vue/setup',
       plugins: {
         vue: pluginVue,
       },
     },
     {
-      name: 'byyuurin:vue:rules',
+      name: 'byyuurin/vue/rules',
       languageOptions: {
         parser: parserVue,
         parserOptions: {

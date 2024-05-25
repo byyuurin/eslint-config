@@ -18,7 +18,7 @@ export const imports = defineFlatConfigProvider((
         'unused-imports': pluginUnusedImports,
         'simple-import-sort': pluginSimpleImportSort,
       },
-      name: 'byyuurin:imports:rules',
+      name: 'byyuurin/imports/rules',
       rules: {
         // antfu
         // ----------------------------------------

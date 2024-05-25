@@ -37,7 +37,7 @@ export const stylistic = defineFlatConfigProvider(async (
 
   return [
     {
-      name: 'byyuurin:stylistic:rules',
+      name: 'byyuurin/stylistic/rules',
       plugins: {
         antfu: pluginAntfu,
         style: pluginStylistic,

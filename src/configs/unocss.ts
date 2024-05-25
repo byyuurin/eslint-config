@@ -16,7 +16,7 @@ export const unocss = defineFlatConfigProvider(async (
 
   return [
     {
-      name: 'byyuurin:unocss:rules',
+      name: 'byyuurin/unocss/rules',
       plugins: {
         unocss: await interopDefault(import(packageName)),
       },

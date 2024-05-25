@@ -26,13 +26,13 @@ export const jsonc = defineFlatConfigProvider(async (
 
   return [
     {
-      name: 'byyuurin:jsonc:setup',
+      name: 'byyuurin/jsonc/setup',
       plugins: {
         jsonc: pluginJsonc,
       },
     },
     {
-      name: 'byyuurin:jsonc:rules',
+      name: 'byyuurin/jsonc/rules',
       languageOptions: {
         parser: parserJsonc,
       },
@@ -98,7 +98,7 @@ export const jsonc = defineFlatConfigProvider(async (
 function getSortConfigs(): TypedFlatConfigItem[] {
   return [
     {
-      name: 'byyuurin:jsonc:sort-package-json',
+      name: 'byyuurin/jsonc/sort-package-json',
       files: ['**/package.json'],
       rules: {
         'jsonc/sort-array-values': [
@@ -195,7 +195,7 @@ function getSortConfigs(): TypedFlatConfigItem[] {
       },
     },
     {
-      name: 'byyuurin:jsonc:sort-tsconfig',
+      name: 'byyuurin/jsonc/sort-tsconfig',
       files: ['**/tsconfig.json', '**/tsconfig.*.json'],
       rules: {
         'jsonc/sort-keys': [

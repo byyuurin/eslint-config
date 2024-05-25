@@ -35,7 +35,7 @@ export const typescript = defineFlatConfigProvider(async (
   // ref: https://github.com/antfu/eslint-config/pull/384
   function resolveParser(isTypeAware: boolean, files: string[], ignores: string[] = []): TypedFlatConfigItem {
     return {
-      name: `byyuurin:typescript:${isTypeAware ? 'type-aware-parser' : 'parser'}`,
+      name: `byyuurin/typescript/${isTypeAware ? 'type-aware-parser' : 'parser'}`,
       files,
       ignores,
       languageOptions: {
@@ -58,7 +58,7 @@ export const typescript = defineFlatConfigProvider(async (
   return [
     {
       // Install the plugins without globs, so they can be configured separately.
-      name: 'byyuurin:typescript:setup',
+      name: 'byyuurin/typescript/setup',
       plugins: {
         ts: pluginTs,
       },
@@ -71,7 +71,7 @@ export const typescript = defineFlatConfigProvider(async (
         ]
       : [resolveParser(false, files)],
     {
-      name: 'byyuurin:typescript:rules',
+      name: 'byyuurin/typescript/rules',
       files,
       rules: {
         ...renameRules(
@@ -130,7 +130,7 @@ export const typescript = defineFlatConfigProvider(async (
       },
     },
     {
-      name: 'byyuurin:typescript:rules-type-aware',
+      name: 'byyuurin/typescript/rules-type-aware',
       files: filesTypeAware,
       rules: {
         ...tsconfigPath
@@ -160,7 +160,7 @@ export const typescript = defineFlatConfigProvider(async (
       },
     },
     {
-      name: 'byyuurin:typescript:dts-overrides',
+      name: 'byyuurin/typescript/dts-overrides',
       files: ['**/*.d.ts'],
       rules: {
         'no-restricted-syntax': 'off',
@@ -170,14 +170,14 @@ export const typescript = defineFlatConfigProvider(async (
       },
     },
     {
-      name: 'byyuurin:typescript:tests-overrides',
+      name: 'byyuurin/typescript/tests-overrides',
       files: ['**/*.{test,spec}.ts?(x)'],
       rules: {
         'no-unused-expressions': 'off',
       },
     },
     {
-      name: 'byyuurin:typescript:javascript-overrides',
+      name: 'byyuurin/typescript/javascript-overrides',
       files: ['**/*.js', '**/*.cjs'],
       rules: {
         'ts/no-require-imports': 'off',

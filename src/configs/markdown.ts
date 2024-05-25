@@ -19,13 +19,13 @@ export const markdown = defineFlatConfigProvider(async (
 
   return [
     {
-      name: 'byyuurin:markdown:setup',
+      name: 'byyuurin/markdown/setup',
       plugins: {
         markdown: pluginMarkdown,
       },
     },
     {
-      name: 'byyuurin:markdown:processor',
+      name: 'byyuurin/markdown/processor',
       ignores: [GLOB_MARKDOWN_IN_MARKDOWN],
       // `eslint-plugin-markdown` only creates virtual files for code blocks,
       // but not the markdown file itself. We use `eslint-merge-processors` to
@@ -37,14 +37,14 @@ export const markdown = defineFlatConfigProvider(async (
       files,
     },
     {
-      name: 'byyuurin:markdown:parser',
+      name: 'byyuurin/markdown/parser',
       languageOptions: {
         parser: parserPlain,
       },
       files,
     },
     {
-      name: 'byyuurin:markdown:disables',
+      name: 'byyuurin/markdown/disables',
       languageOptions: {
         parserOptions: {
           ecmaFeatures: {

@@ -27,13 +27,13 @@ export const yaml = defineFlatConfigProvider(async (
 
   return [
     {
-      name: 'byyuurin:yaml:setup',
+      name: 'byyuurin/yaml/setup',
       plugins: {
         yaml: pluginYaml,
       },
     },
     {
-      name: 'byyuurin:yaml:rules',
+      name: 'byyuurin/yaml/rules',
       languageOptions: {
         parser: parserYaml,
       },

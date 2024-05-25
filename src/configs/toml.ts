@@ -26,13 +26,13 @@ export const toml = defineFlatConfigProvider(async (
 
   return [
     {
-      name: 'byyuurin:toml:setup',
+      name: 'byyuurin/toml/setup',
       plugins: {
         toml: pluginToml,
       },
     },
     {
-      name: 'byyuurin:toml:rules',
+      name: 'byyuurin/toml/rules',
       languageOptions: {
         parser: parserToml,
       },

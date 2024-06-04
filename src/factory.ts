@@ -1,6 +1,6 @@
 import process from 'node:process'
 import type { Linter } from 'eslint'
-import { FlatConfigPipeline } from 'eslint-flat-config-utils'
+import { FlatConfigComposer } from 'eslint-flat-config-utils'
 import { isPackageExists } from 'local-pkg'
 import { comments, formatters, ignores, imports, javascript, jsdoc, jsonc, markdown, node, stylistic, toml, typescript, unicorn, unocss, vue, yaml } from './configs'
 import { internalPluginRenaming } from './plugins'
@@ -41,13 +41,13 @@ const UnocssPackages = [
  * @param userConfigs
  * The user configurations to be merged with the generated configurations.
  *
- * @returns {FlatConfigPipeline<TypedFlatConfigItem>}
+ * @returns {FlatConfigComposer<TypedFlatConfigItem>}
  * The merged ESLint configurations.
  */
 export function byyuurin(
   options: OptionsConfig & TypedFlatConfigItem = {},
-  ...userConfigs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigPipeline<any> | Linter.FlatConfig[]>[]
-): FlatConfigPipeline<TypedFlatConfigItem> {
+  ...userConfigs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any> | Linter.FlatConfig[]>[]
+): FlatConfigComposer<TypedFlatConfigItem> {
   const {
     isInEditor = !!((process.env.VSCODE_PID || process.env.VSCODE_CWD || process.env.JETBRAINS_IDE || process.env.VIM) && !process.env.CI),
     typescript: enableTypeScript = isPackageExists('typescript'),
@@ -170,16 +170,16 @@ export function byyuurin(
   if (Object.keys(fusedConfig).length > 0)
     configs.push([fusedConfig])
 
-  let pipeline = new FlatConfigPipeline<TypedFlatConfigItem>()
+  let composer = new FlatConfigComposer<TypedFlatConfigItem>()
 
-  pipeline = pipeline.append(
+  composer = composer.append(
     ...configs,
     ...userConfigs as any,
   )
 
-  pipeline = pipeline.renamePlugins(internalPluginRenaming)
+  composer = composer.renamePlugins(internalPluginRenaming)
 
-  return pipeline
+  return composer
 }
 
 function getOverrides(config: OptionsConfig, key: keyof OptionsConfig) {

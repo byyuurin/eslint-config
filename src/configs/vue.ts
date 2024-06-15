@@ -182,6 +182,7 @@ export const vue = defineFlatConfigProvider(async (
               'vue/html-comment-content-spacing': ['warn', 'always', { exceptions: ['-'] }],
               'vue/key-spacing': ['warn', { beforeColon: false, afterColon: true }],
               'vue/keyword-spacing': ['warn', { before: true, after: true }],
+              'vue/max-attributes-per-line': ['warn', { singleline: 9, multiline: 1 }],
               'vue/object-curly-newline': ['warn', { multiline: true, consistent: true }],
               'vue/object-curly-spacing': ['warn', 'always'],
               'vue/object-property-newline': ['warn', { allowMultiplePropertiesPerLine: true }],

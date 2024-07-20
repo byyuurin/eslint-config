@@ -88,7 +88,7 @@ export const typescript = defineFlatConfigProvider(async (
         // Supported Rules
         // https://typescript-eslint.io/rules/#supported-rules
         // ----------------------------------------
-        'ts/ban-ts-comment': ['error', { 'ts-ignore': 'allow-with-description' }],
+        'ts/ban-ts-comment': ['error', { 'ts-expect-error': 'allow-with-description' }],
         'ts/ban-types': ['error', { types: { Function: false } }],
         'ts/consistent-type-definitions': ['warn', 'interface'],
         'ts/consistent-type-imports': ['warn', { prefer: 'type-imports', disallowTypeAnnotations: false }],
@@ -103,7 +103,6 @@ export const typescript = defineFlatConfigProvider(async (
         'ts/no-invalid-void-type': 'off',
         'ts/no-non-null-assertion': 'off',
         'ts/no-require-imports': 'error',
-        'ts/prefer-ts-expect-error': 'warn',
         'ts/triple-slash-reference': 'off',
         'ts/unified-signatures': 'off',
 

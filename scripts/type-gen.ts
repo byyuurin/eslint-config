@@ -30,8 +30,15 @@ const configs = await combine(
   yaml(),
 )
 
-const dts = await flatConfigsToRulesDTS(configs, {
+const configNames = configs.map((i) => i.name!).filter(Boolean)
+
+let dts = await flatConfigsToRulesDTS(configs, {
   includeAugmentation: false,
 })
+
+dts = `
+// Names of all the configs
+export type ConfigNames = ${configNames.map((i) => `'${i}'`).join(' | ')}
+${dts}`
 
 await fs.writeFile('src/types-rule.d.ts', dts)

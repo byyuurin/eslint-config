@@ -4,7 +4,7 @@ import { FlatConfigComposer } from 'eslint-flat-config-utils'
 import { isPackageExists } from 'local-pkg'
 import { comments, formatters, ignores, imports, javascript, jsdoc, jsonc, markdown, node, stylistic, toml, typescript, unicorn, unocss, vue, yaml } from './configs'
 import { internalPluginRenaming } from './plugins'
-import type { Awaitable, OptionsConfig, TypedFlatConfigItem } from './types'
+import type { Awaitable, ConfigNames, OptionsConfig, TypedFlatConfigItem } from './types'
 import { toUniqueStringArray } from './utils'
 
 const flatConfigProps: (keyof TypedFlatConfigItem)[] = [
@@ -46,8 +46,8 @@ const UnocssPackages = [
  */
 export function byyuurin(
   options: OptionsConfig & TypedFlatConfigItem = {},
-  ...userConfigs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any> | Linter.FlatConfig[]>[]
-): FlatConfigComposer<TypedFlatConfigItem> {
+  ...userConfigs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any, any> | Linter.FlatConfig[]>[]
+): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
   const {
     isInEditor = !!((process.env.VSCODE_PID || process.env.VSCODE_CWD || process.env.JETBRAINS_IDE || process.env.VIM) && !process.env.CI),
     typescript: enableTypeScript = isPackageExists('typescript'),
@@ -170,7 +170,7 @@ export function byyuurin(
   if (Object.keys(fusedConfig).length > 0)
     configs.push([fusedConfig])
 
-  let composer = new FlatConfigComposer<TypedFlatConfigItem>()
+  let composer = new FlatConfigComposer<TypedFlatConfigItem, ConfigNames>()
 
   composer = composer.append(
     ...configs,

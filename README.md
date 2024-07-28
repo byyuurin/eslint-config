@@ -108,7 +108,7 @@ Add the following settings to your `.vscode/settings.json`:
   },
 
   // Enable the ESlint flat config support
-  "eslint.experimental.useFlatConfig": true,
+  "eslint.useFlatConfig": true,
 
   // Silent the stylistic rules in you IDE, but still auto fix them (if set to "off")
   "eslint.rules.customizations": [

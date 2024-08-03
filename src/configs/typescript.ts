@@ -2,7 +2,7 @@ import process from 'node:process'
 import { GLOB_SRC, GLOB_TS, GLOB_TSX } from '../globs'
 import { defineFlatConfigProvider } from '../helpers'
 import type { OptionsComponentExts, OptionsFiles, OptionsOverrides, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from '../types'
-import { interopDefault, renameRules, toArray } from '../utils'
+import { interopDefault, renameRules } from '../utils'
 
 export const typescript = defineFlatConfigProvider(async (
   options: OptionsFiles & OptionsComponentExts & OptionsOverrides & OptionsTypeScriptWithTypes & OptionsTypeScriptParserOptions = {},
@@ -11,6 +11,7 @@ export const typescript = defineFlatConfigProvider(async (
     componentExts = [],
     overrides = {},
     parserOptions = {},
+    tsconfigPath,
   } = options
 
   const files = options.files ?? [
@@ -19,10 +20,6 @@ export const typescript = defineFlatConfigProvider(async (
   ]
 
   const filesTypeAware = options.filesTypeAware ?? [GLOB_TS, GLOB_TSX]
-
-  const tsconfigPath = options?.tsconfigPath
-    ? toArray(options.tsconfigPath)
-    : undefined
 
   const [
     pluginTs,
@@ -45,7 +42,10 @@ export const typescript = defineFlatConfigProvider(async (
           sourceType: 'module',
           ...isTypeAware
             ? {
-                project: tsconfigPath,
+                projectService: {
+                  projectService: true,
+                  tsconfigRootDir: tsconfigPath,
+                },
                 tsconfigRootDir: process.cwd(),
               }
             : {},
@@ -83,13 +83,10 @@ export const typescript = defineFlatConfigProvider(async (
           { '@typescript-eslint': 'ts' },
         ),
 
-        'no-useless-constructor': 'off',
-
         // Supported Rules
         // https://typescript-eslint.io/rules/#supported-rules
         // ----------------------------------------
         'ts/ban-ts-comment': ['error', { 'ts-expect-error': 'allow-with-description' }],
-        'ts/ban-types': ['error', { types: { Function: false } }],
         'ts/consistent-type-definitions': ['warn', 'interface'],
         'ts/consistent-type-imports': ['warn', { prefer: 'type-imports', disallowTypeAnnotations: false }],
 
@@ -100,10 +97,9 @@ export const typescript = defineFlatConfigProvider(async (
         'ts/no-explicit-any': 'off',
         'ts/no-extraneous-class': 'off',
         'ts/no-import-type-side-effects': 'warn',
-        'ts/no-invalid-void-type': 'off',
+        // 'ts/no-invalid-void-type': 'off',
         'ts/no-non-null-assertion': 'off',
-        'ts/no-require-imports': 'error',
-        'ts/triple-slash-reference': 'off',
+        // 'ts/triple-slash-reference': 'off',
         'ts/unified-signatures': 'off',
 
         // Extension Rules
@@ -123,6 +119,7 @@ export const typescript = defineFlatConfigProvider(async (
         'no-use-before-define': 'off',
         'ts/no-use-before-define': ['error', { functions: false, classes: false, variables: true }],
 
+        'no-useless-constructor': 'off',
         'ts/no-useless-constructor': 'off',
 
         ...overrides,
@@ -143,7 +140,6 @@ export const typescript = defineFlatConfigProvider(async (
               'ts/no-for-in-array': 'error',
               'ts/no-implied-eval': 'error',
               'ts/no-misused-promises': 'error',
-              'ts/no-throw-literal': 'error',
               'ts/no-unnecessary-type-assertion': 'error',
               'ts/no-unsafe-argument': 'error',
               'ts/no-unsafe-assignment': 'error',

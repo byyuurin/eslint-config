@@ -15,7 +15,7 @@ export type Awaitable<T> = T | Promise<T>
 
 export type Rules = RuleOptions
 
-export type TypedFlatConfigItem = Omit<Linter.FlatConfig<Linter.RulesRecord & Rules>, 'plugins'> & {
+export type TypedFlatConfigItem = Omit<Linter.Config<Linter.RulesRecord & Rules>, 'plugins'> & {
   // Relax plugins type limitation, as most of the plugins did not have correct type info yet.
   /**
    * An object containing a name-value mapping of plugin names to plugin objects. When `files` is specified, these plugins are only available to the matching files.
@@ -46,6 +46,7 @@ export interface OptionsStylistic {
   stylistic?: boolean | StylisticConfig
 }
 
+// eslint-disable-next-line ts/no-empty-object-type
 export interface StylisticConfig extends Pick<StylisticCustomizeOptions, 'indent' | 'quotes' | 'jsx' | 'semi'> {
 }
 
@@ -69,7 +70,7 @@ export interface OptionsTypeScriptWithTypes {
    * When this options is provided, type aware rules will be enabled.
    * @see https://typescript-eslint.io/linting/typed-linting/
    */
-  tsconfigPath?: string | string[]
+  tsconfigPath?: string
 
   /**
    * Glob patterns for files that should be type aware.

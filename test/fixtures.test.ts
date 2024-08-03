@@ -200,7 +200,7 @@ export default byyuurin(
 
       if (content === source) {
         if (fs.existsSync(outputPath))
-          fs.remove(outputPath)
+          await fs.remove(outputPath)
 
         return
       }

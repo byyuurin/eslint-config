@@ -72,7 +72,6 @@ export const javascript = defineFlatConfigProvider((
             enforceForClassMembers: true,
           },
         ],
-        'arrow-body-style': ['warn', 'as-needed'],
         'block-scoped-var': 'error',
         'default-case-last': 'error',
         'dot-notation': ['warn', { allowKeywords: true }],

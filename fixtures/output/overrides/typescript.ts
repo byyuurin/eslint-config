@@ -76,6 +76,8 @@ class Dog extends Animal {
 const dog = new Dog('Buddy')
 dog.bark()
 
-let fn = (): string => `hello${1}`
+let fn = (): string => {
+  return `hello${1}`
+}
 
 log(car1, car2, favoriteFruit, numericValue, fn())

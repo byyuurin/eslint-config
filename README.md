@@ -20,37 +20,30 @@ ESLint Flat config for JavaScript, TypeScript, Vue, UnoCSS
 pnpm i -D eslint @byyuurin/eslint-config
 ```
 
-### Create config file
-
-With `"type": "module"` in `package.json` (recommended):
+And create `eslint.config.mjs` in your project root:
 
 ```js
-// eslint.config.js
+// eslint.config.mjs
 import byyuurin from '@byyuurin/eslint-config'
 
 export default byyuurin()
 ```
 
-With CJS:
-
-```js
-// eslint.config.js
-const byyuurin = require('@byyuurin/eslint-config').default
-
-module.exports = byyuurin()
-```
-
 <details>
 <summary>Combined with legacy config:</summary>
 
+If you still use some configs from the legacy eslintrc format,
+you can use the [`@eslint/eslintrc`](https://www.npmjs.com/package/@eslint/eslintrc) package
+to convert them to the flat config.
+
 ```js
-// eslint.config.js
-const byyuurin = require('@byyuurin/eslint-config').default
-const { FlatCompat } = require('@eslint/eslintrc')
+// eslint.config.mjs
+import byyuurin from '@byyuurin/eslint-config'
+import { FlatCompat } from '@eslint/eslintrc'
 
 const compat = new FlatCompat()
 
-module.exports = byyuurin(
+export default byyuurin(
   {
     ignores: [],
   },
@@ -67,7 +60,7 @@ module.exports = byyuurin(
 )
 ```
 
-> Note that `.eslintignore` no longer works in Flat config
+> Note that `.eslintignore` no long, "fixable": trueer works in Flat config
 
 </details>
 
@@ -112,16 +105,16 @@ Add the following settings to your `.vscode/settings.json`:
 
   // Silent the stylistic rules in you IDE, but still auto fix them (if set to "off")
   "eslint.rules.customizations": [
-    { "rule": "style/*", "severity": "off" },
-    { "rule": "format/*", "severity": "off" },
-    { "rule": "*-indent", "severity": "off" },
-    { "rule": "*-spacing", "severity": "off" },
-    { "rule": "*-spaces", "severity": "off" },
-    { "rule": "*-order", "severity": "off" },
-    { "rule": "*-dangle", "severity": "off" },
-    { "rule": "*-newline", "severity": "off" },
-    { "rule": "*quotes", "severity": "off" },
-    { "rule": "*semi", "severity": "off" }
+    { "rule": "style/*", "severity": "off", "fixable": true },
+    { "rule": "format/*", "severity": "off", "fixable": true },
+    { "rule": "*-indent", "severity": "off", "fixable": true },
+    { "rule": "*-spacing", "severity": "off", "fixable": true },
+    { "rule": "*-spaces", "severity": "off", "fixable": true },
+    { "rule": "*-order", "severity": "off", "fixable": true },
+    { "rule": "*-dangle", "severity": "off", "fixable": true },
+    { "rule": "*-newline", "severity": "off", "fixable": true },
+    { "rule": "*quotes", "severity": "off", "fixable": true },
+    { "rule": "*semi", "severity": "off", "fixable": true }
   ],
 
   // Enable eslint for all supported languages

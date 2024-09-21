@@ -2,7 +2,7 @@ import process from 'node:process'
 import type { Linter } from 'eslint'
 import { FlatConfigComposer } from 'eslint-flat-config-utils'
 import { isPackageExists } from 'local-pkg'
-import { comments, formatters, ignores, imports, javascript, jsdoc, jsonc, markdown, node, stylistic, toml, typescript, unicorn, unocss, vue, yaml } from './configs'
+import { comments, disables, formatters, ignores, imports, javascript, jsdoc, jsonc, markdown, node, stylistic, toml, typescript, unicorn, unocss, vue, yaml } from './configs'
 import { internalPluginRenaming } from './plugins'
 import type { Awaitable, ConfigNames, OptionsConfig, TypedFlatConfigItem } from './types'
 import { toUniqueStringArray } from './utils'
@@ -157,6 +157,8 @@ export function byyuurin(
       stylistic: stylisticOptions,
     }))
   }
+
+  configs.push(disables())
 
   // User can optionally pass a flat config item to the first argument
   // We pick the known keys as ESLint would do schema validation

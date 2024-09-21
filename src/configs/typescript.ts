@@ -159,30 +159,5 @@ export const typescript = defineFlatConfigProvider(async (
         ...overrides,
       },
     },
-    {
-      name: 'byyuurin/typescript/dts-overrides',
-      files: ['**/*.d.ts'],
-      rules: {
-        'no-restricted-syntax': 'off',
-        'eslint-comments/no-unlimited-disable': 'off',
-        'import/no-duplicates': 'off',
-        'unused-imports/no-unused-vars': 'off',
-      },
-    },
-    {
-      name: 'byyuurin/typescript/tests-overrides',
-      files: ['**/*.{test,spec}.ts?(x)'],
-      rules: {
-        'no-unused-expressions': 'off',
-      },
-    },
-    {
-      name: 'byyuurin/typescript/javascript-overrides',
-      files: ['**/*.js', '**/*.cjs'],
-      rules: {
-        'ts/no-require-imports': 'off',
-        'ts/no-var-requires': 'off',
-      },
-    },
   ]
 })

@@ -1,7 +1,6 @@
 // @ts-expect-error missing types
 import js from '@eslint/js'
 import globals from 'globals'
-import { GLOB_SRC, GLOB_SRC_EXT } from '../globs'
 import { defineFlatConfigProvider } from '../helpers'
 import { pluginAntfu } from '../plugins'
 import type { OptionsOverrides, TypedFlatConfigItem } from '../types'
@@ -162,13 +161,6 @@ export const javascript = defineFlatConfigProvider((
         'unicode-bom': ['warn', 'never'],
 
         ...overrides,
-      },
-    },
-    {
-      name: 'byyuurin/eslint-config/disables',
-      files: [`scripts/${GLOB_SRC}`, `cli.${GLOB_SRC_EXT}`],
-      rules: {
-        'no-console': 'off',
       },
     },
   ]

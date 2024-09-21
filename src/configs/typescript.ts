@@ -99,6 +99,11 @@ export const typescript = defineFlatConfigProvider(async (
         'ts/no-import-type-side-effects': 'warn',
         // 'ts/no-invalid-void-type': 'off',
         'ts/no-non-null-assertion': 'off',
+        'ts/no-unused-expressions': ['error', {
+          allowShortCircuit: true,
+          allowTernary: true,
+          allowTaggedTemplates: true,
+        }],
         // 'ts/triple-slash-reference': 'off',
         'ts/unified-signatures': 'off',
 
@@ -112,7 +117,7 @@ export const typescript = defineFlatConfigProvider(async (
         'ts/no-loss-of-precision': 'error',
 
         'no-redeclare': 'off',
-        'ts/no-redeclare': 'error',
+        'ts/no-redeclare': ['error', { builtinGlobals: false }],
 
         'ts/no-unused-vars': 'off',
 

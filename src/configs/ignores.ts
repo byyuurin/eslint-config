@@ -4,16 +4,20 @@ import type { OptionsConfig, TypedFlatConfigItem } from '../types'
 import { interopDefault } from '../utils'
 
 export const ignores = defineFlatConfigProvider(async (
-  options: Pick<OptionsConfig, 'gitignore'> = {},
+  options: Pick<OptionsConfig, 'gitignore'> & { userIgnores?: string[] } = {},
 ) => {
   const {
     gitignore: enableGitignore = true,
+    userIgnores = [],
   } = options
 
   const items: TypedFlatConfigItem[] = [
     {
       name: 'byyuurin/ignores/defaults',
-      ignores: GLOB_EXCLUDE,
+      ignores: [
+        ...GLOB_EXCLUDE,
+        ...userIgnores,
+      ],
     },
   ]
 

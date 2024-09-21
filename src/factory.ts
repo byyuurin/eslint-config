@@ -9,8 +9,6 @@ import { toUniqueStringArray } from './utils'
 
 const flatConfigProps: (keyof TypedFlatConfigItem)[] = [
   'name',
-  'files',
-  'ignores',
   'languageOptions',
   'linterOptions',
   'processor',
@@ -32,10 +30,12 @@ const UnocssPackages = [
   '@unocss/nuxt',
 ]
 
+type FactoryOptions = OptionsConfig & Omit<TypedFlatConfigItem, 'files'>
+
 /**
  * Construct an array of ESLint flat config items.
  *
- * @param {OptionsConfig & TypedFlatConfigItem} options
+ * @param {FactoryOptions} options
  * The options for generating the ESLint configurations.
  *
  * @param userConfigs
@@ -45,8 +45,8 @@ const UnocssPackages = [
  * The merged ESLint configurations.
  */
 export function byyuurin(
-  options: OptionsConfig & TypedFlatConfigItem = {},
-  ...userConfigs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any, any> | Linter.FlatConfig[]>[]
+  options: FactoryOptions = {},
+  ...userConfigs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any, any> | Linter.Config[]>[]
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
   const {
     isInEditor = !!((process.env.VSCODE_PID || process.env.VSCODE_CWD || process.env.JETBRAINS_IDE || process.env.VIM) && !process.env.CI),
@@ -75,6 +75,7 @@ export function byyuurin(
   configs.push(
     ignores({
       gitignore: options.gitignore,
+      userIgnores: options.ignores,
     }),
     javascript({
       overrides: getOverrides(options, 'javascript'),
@@ -160,11 +161,14 @@ export function byyuurin(
 
   configs.push(disables())
 
+  if ('files' in options)
+    throw new Error('[@byyuurin/eslint-config] The first argument should not contain the "files" property as the options are supposed to be global. Place it in the second or later config instead.')
+
   // User can optionally pass a flat config item to the first argument
   // We pick the known keys as ESLint would do schema validation
   const fusedConfig = flatConfigProps.reduce((acc, key) => {
     if (key in options)
-      acc[key] = options[key] as any
+      acc[key] = options[key as keyof FactoryOptions] as any
 
     return acc
   }, {} as TypedFlatConfigItem)

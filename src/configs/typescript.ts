@@ -113,9 +113,6 @@ export const typescript = defineFlatConfigProvider(async (
         'no-dupe-class-members': 'off',
         'ts/no-dupe-class-members': 'error',
 
-        'no-loss-of-precision': 'off',
-        'ts/no-loss-of-precision': 'error',
-
         'no-redeclare': 'off',
         'ts/no-redeclare': ['error', { builtinGlobals: false }],
 

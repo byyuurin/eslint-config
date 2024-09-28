@@ -67,7 +67,6 @@ export const markdown = defineFlatConfigProvider(async (
         'ts/no-unused-vars': 'off',
         'ts/no-use-before-define': 'off',
         'ts/no-redeclare': 'off',
-        'ts/no-var-requires': 'off',
         'ts/comma-dangle': 'off',
         'ts/consistent-type-imports': 'off',
 

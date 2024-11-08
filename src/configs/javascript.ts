@@ -1,4 +1,3 @@
-// @ts-expect-error missing types
 import js from '@eslint/js'
 import globals from 'globals'
 import { defineFlatConfigProvider } from '../helpers'

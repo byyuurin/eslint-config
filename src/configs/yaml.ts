@@ -12,10 +12,16 @@ export const yaml = defineFlatConfigProvider(async (
     stylistic = true,
   } = options
 
-  const {
+  let {
     indent = 2,
     quotes = 'single',
   } = typeof stylistic === 'boolean' ? {} : stylistic
+
+  if (indent === 'tab')
+    indent = 2
+
+  if (quotes === 'backtick')
+    quotes = 'single'
 
   const [
     pluginYaml,
@@ -62,7 +68,7 @@ export const yaml = defineFlatConfigProvider(async (
           ? {
               'yaml/block-mapping-question-indicator-newline': 'warn',
               'yaml/block-sequence-hyphen-indicator-newline': 'warn',
-              'yaml/indent': ['warn', indent === 'tab' ? 2 : indent],
+              'yaml/indent': ['warn', indent],
               'yaml/no-tab-indent': 'error',
               'yaml/quotes': ['warn', { prefer: quotes, avoidEscape: false }],
 

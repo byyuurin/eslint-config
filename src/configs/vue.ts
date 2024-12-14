@@ -57,15 +57,15 @@ export const vue = defineFlatConfigProvider(async (
       processor: sfcBlocks === false
         ? pluginVue.processors['.vue']
         : mergeProcessors([
-          pluginVue.processors['.vue'],
-          processorVueBlocks({
-            ...sfcBlocks,
-            blocks: {
-              styles: true,
-              ...sfcBlocks.blocks,
-            },
-          }),
-        ]),
+            pluginVue.processors['.vue'],
+            processorVueBlocks({
+              ...sfcBlocks,
+              blocks: {
+                styles: true,
+                ...sfcBlocks.blocks,
+              },
+            }),
+          ]),
       files,
       rules: {
         'node/prefer-global/process': 'off',

@@ -37,7 +37,6 @@ export const imports = defineFlatConfigProvider((
         // import
         // https://github.com/import-js/eslint-plugin-import#static-analysis
         // ----------------------------------------
-        'import/named': 'error',
         'import/no-self-import': 'error',
         'import/no-webpack-loader-syntax': 'error',
 

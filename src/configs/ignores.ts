@@ -24,11 +24,17 @@ export const ignores = defineFlatConfigProvider(async (
   if (enableGitignore) {
     await interopDefault(import('eslint-config-flat-gitignore')).then((r) => {
       if (typeof enableGitignore !== 'boolean') {
-        items.push(r(enableGitignore))
+        items.push(r({
+          name: 'byyuurin/ignores/gitignore',
+        }))
+
         return
       }
 
-      items.push(r({ strict: false }))
+      items.push(r({
+        name: 'byyuurin/ignores/gitignore',
+        strict: false,
+      }))
     })
   }
 

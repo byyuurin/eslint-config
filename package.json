@@ -29,7 +29,7 @@
     "lint:fix": "pnpm run stub && eslint . --fix",
     "release": "bumpp && pnpm publish",
     "test": "vitest",
-    "type-gen": "esno scripts/type-gen.ts",
+    "type-gen": "tsx scripts/type-gen.ts",
     "type-check": "tsc --noEmit",
     "prepack": "nr build",
     "prepare": "simple-git-hooks"
@@ -91,13 +91,13 @@
     "eslint": "^9.18.0",
     "eslint-plugin-format": "^1.0.1",
     "eslint-typegen": "^1.0.0",
-    "esno": "^4.8.0",
     "execa": "^9.5.2",
     "fast-glob": "^3.3.3",
     "fs-extra": "^11.2.0",
     "lint-staged": "^15.3.0",
     "simple-git-hooks": "^2.11.1",
     "tsup": "^8.3.5",
+    "tsx": "^4.19.2",
     "typescript": "^5.7.3",
     "vitest": "^2.1.8",
     "vue": "^3.5.13"

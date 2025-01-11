@@ -60,7 +60,7 @@ export default byyuurin(
 )
 ```
 
-> Note that `.eslintignore` no long, "fixable": trueer works in Flat config
+> Note that `.eslintignore` no longer works in Flat config, see [customization](#customization) for more details.
 
 </details>
 
@@ -80,7 +80,7 @@ For example:
 > [!important]
 > Running `npx eslint`, you should be prompted to install the required dependencies.
 >
-> The first time you enable formatters, you need to run the command again.
+> The first time you enable **formatters** or **unocss**, you need to run the command again.
 
 ## VS Code support (auto fix)
 

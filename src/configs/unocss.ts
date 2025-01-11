@@ -2,12 +2,12 @@ import { defineFlatConfigProvider } from '../helpers'
 import type { OptionsUnoCSS } from '../types'
 import { ensurePackages, interopDefault } from '../utils'
 
-const packageName = '@unocss/eslint-plugin'
+export const unocssPluginName = '@unocss/eslint-plugin'
 
 export const unocss = defineFlatConfigProvider(async (
   options: OptionsUnoCSS = {},
 ) => {
-  await ensurePackages([packageName])
+  await ensurePackages([unocssPluginName])
 
   const {
     attributify = false,
@@ -18,7 +18,7 @@ export const unocss = defineFlatConfigProvider(async (
     {
       name: 'byyuurin/unocss/rules',
       plugins: {
-        unocss: await interopDefault(import(packageName)),
+        unocss: await interopDefault(import(unocssPluginName)),
       },
       rules: {
         'unocss/order': 'warn',

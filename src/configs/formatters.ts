@@ -7,12 +7,12 @@ import type { VendoredDprintOptions } from '../vender/dprint-types'
 import type { VendoredPrettierOptions } from '../vender/prettier-types'
 import { stylisticConfigDefaults } from './stylistic'
 
-const packageName = 'eslint-plugin-format'
+export const formatterPluginName = 'eslint-plugin-format'
 
 export const formatters = defineFlatConfigProvider(async (
   options: OptionsStylistic & OptionsFormatters = {},
 ) => {
-  await ensurePackages([packageName])
+  await ensurePackages([formatterPluginName])
 
   options = {
     css: true,
@@ -38,7 +38,7 @@ export const formatters = defineFlatConfigProvider(async (
     {
       name: 'byyuurin/formatters/setup',
       plugins: {
-        format: await interopDefault(import(packageName)),
+        format: await interopDefault(import(formatterPluginName)),
       },
     },
   ]

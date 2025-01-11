@@ -2,7 +2,7 @@ import process from 'node:process'
 import type { Linter } from 'eslint'
 import { FlatConfigComposer } from 'eslint-flat-config-utils'
 import { isPackageExists } from 'local-pkg'
-import { comments, disables, formatters, ignores, imports, javascript, jsdoc, jsonc, markdown, node, stylistic, toml, typescript, unicorn, unocss, vue, yaml } from './configs'
+import { comments, disables, formatters, ignores, imports, javascript, jsdoc, jsonc, markdown, node, stylistic, toml, typescript, unicorn, unocss, unocssPluginName, vue, yaml } from './configs'
 import { internalPluginRenaming } from './plugins'
 import type { Awaitable, ConfigNames, OptionsConfig, TypedFlatConfigItem } from './types'
 import { toUniqueStringArray } from './utils'
@@ -52,7 +52,7 @@ export function byyuurin(
     isInEditor = !!((process.env.VSCODE_PID || process.env.VSCODE_CWD || process.env.JETBRAINS_IDE || process.env.VIM) && !process.env.CI),
     typescript: enableTypeScript = isPackageExists('typescript'),
     vue: enableVue = VuePackages.some((i) => isPackageExists(i)),
-    unocss: enableUnoCSS = UnocssPackages.some((i) => isPackageExists(i)),
+    unocss: enableUnoCSS = UnocssPackages.some((i) => isPackageExists(i)) && isPackageExists(unocssPluginName),
   } = options
 
   let { componentExts = [] } = options

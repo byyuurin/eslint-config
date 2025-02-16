@@ -10,10 +10,7 @@
     "url": "https://github.com/byyuurin/eslint-config.git"
   },
   "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    }
+    ".": "./dist/index.js"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -21,10 +18,10 @@
     "dist"
   ],
   "scripts": {
-    "build": "nr type-gen && tsup --format esm,cjs --clean --dts",
-    "stub": "tsup --format esm",
-    "dev": "tsup --format esm,cjs --watch & eslint-config-inspector",
-    "watch": "tsup --format esm,cjs --watch",
+    "build": "nr type-gen && tsup --clean --dts",
+    "stub": "tsup",
+    "dev": "eslint-config-inspector",
+    "watch": "tsup --watch",
     "lint": "pnpm run stub && eslint .",
     "lint:fix": "pnpm run stub && eslint . --fix",
     "release": "bumpp && pnpm publish",

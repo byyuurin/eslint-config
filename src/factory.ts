@@ -1,11 +1,10 @@
-import process from 'node:process'
 import type { Linter } from 'eslint'
 import { FlatConfigComposer } from 'eslint-flat-config-utils'
 import { isPackageExists } from 'local-pkg'
 import { comments, disables, formatters, ignores, imports, javascript, jsdoc, jsonc, markdown, node, stylistic, toml, typescript, unicorn, unocss, unocssPluginName, vue, yaml } from './configs'
 import { internalPluginRenaming } from './plugins'
 import type { Awaitable, ConfigNames, OptionsConfig, TypedFlatConfigItem } from './types'
-import { toUniqueStringArray } from './utils'
+import { isInEditorEnv, toUniqueStringArray } from './utils'
 
 const flatConfigProps: (keyof TypedFlatConfigItem)[] = [
   'name',
@@ -30,30 +29,36 @@ const UnocssPackages = [
   '@unocss/nuxt',
 ]
 
-type FactoryOptions = OptionsConfig & Omit<TypedFlatConfigItem, 'files'>
-
 /**
  * Construct an array of ESLint flat config items.
  *
- * @param {FactoryOptions} options
- * The options for generating the ESLint configurations.
- *
- * @param userConfigs
- * The user configurations to be merged with the generated configurations.
- *
- * @returns {FlatConfigComposer<TypedFlatConfigItem>}
- * The merged ESLint configurations.
+ * @param {OptionsConfig & TypedFlatConfigItem} options
+ *  The options for generating the ESLint configurations.
+ * @param {Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[]>[]} userConfigs
+ *  The user configurations to be merged with the generated configurations.
+ * @returns {Promise<TypedFlatConfigItem[]>}
+ *  The merged ESLint configurations.
  */
 export function byyuurin(
-  options: FactoryOptions = {},
+  options: OptionsConfig & Omit<TypedFlatConfigItem, 'files'> = {},
   ...userConfigs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any, any> | Linter.Config[]>[]
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
   const {
-    isInEditor = !!((process.env.VSCODE_PID || process.env.VSCODE_CWD || process.env.JETBRAINS_IDE || process.env.VIM) && !process.env.CI),
     typescript: enableTypeScript = isPackageExists('typescript'),
     vue: enableVue = VuePackages.some((i) => isPackageExists(i)),
     unocss: enableUnoCSS = UnocssPackages.some((i) => isPackageExists(i)) && isPackageExists(unocssPluginName),
   } = options
+
+  let isInEditor = options.isInEditor
+
+  if (isInEditor == null) {
+    isInEditor = isInEditorEnv()
+
+    if (isInEditor) {
+      // eslint-disable-next-line no-console
+      console.log('[@byyuurin/eslint-config] Detected running in editor, some rules are disabled.')
+    }
+  }
 
   let { componentExts = [] } = options
 
@@ -168,7 +173,8 @@ export function byyuurin(
   // We pick the known keys as ESLint would do schema validation
   const fusedConfig = flatConfigProps.reduce((acc, key) => {
     if (key in options)
-      acc[key] = options[key as keyof FactoryOptions] as any
+      // @ts-expect-error ignore check
+      acc[key] = options[key]
 
     return acc
   }, {} as TypedFlatConfigItem)

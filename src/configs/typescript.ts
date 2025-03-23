@@ -19,7 +19,39 @@ export const typescript = defineFlatConfigProvider(async (
     ...componentExts.map((ext) => `**/*.${ext}`),
   ]
 
+  const isTypeAware = !!tsconfigPath
   const filesTypeAware = options.filesTypeAware ?? [GLOB_TS, GLOB_TSX]
+
+  const rulesTypedAware: TypedFlatConfigItem['rules'] = {
+    'dot-notation': 'off',
+    'no-implied-eval': 'off',
+    'no-throw-literal': 'off',
+    'ts/await-thenable': 'error',
+    'ts/dot-notation': ['error', { allowKeywords: true }],
+    'ts/no-floating-promises': 'error',
+    'ts/no-for-in-array': 'error',
+    'ts/no-implied-eval': 'error',
+    'ts/no-misused-promises': 'error',
+    'ts/no-unnecessary-type-assertion': 'error',
+    'ts/no-unsafe-argument': 'error',
+    'ts/no-unsafe-assignment': 'error',
+    'ts/no-unsafe-call': 'error',
+    'ts/no-unsafe-member-access': 'error',
+    'ts/no-unsafe-return': 'error',
+    'ts/restrict-plus-operands': 'error',
+    'ts/restrict-template-expressions': 'error',
+    'ts/unbound-method': 'error',
+  }
+
+  const overridesRules: TypedFlatConfigItem['rules'] = {}
+  const overridesTypedAware: TypedFlatConfigItem['rules'] = {}
+
+  Object.entries(overrides).forEach(([name, config]) => {
+    if (rulesTypedAware[name])
+      overridesTypedAware[name] = config
+    else
+      overridesRules[name] = config
+  })
 
   const [
     pluginTs,
@@ -125,37 +157,19 @@ export const typescript = defineFlatConfigProvider(async (
         'no-useless-constructor': 'off',
         'ts/no-useless-constructor': 'off',
 
-        ...overrides,
+        ...overridesRules,
       },
     },
-    {
-      name: 'byyuurin/typescript/rules-type-aware',
-      files: filesTypeAware,
-      rules: {
-        ...tsconfigPath
-          ? {
-              'dot-notation': 'off',
-              'no-implied-eval': 'off',
-              'no-throw-literal': 'off',
-              'ts/await-thenable': 'error',
-              'ts/dot-notation': ['error', { allowKeywords: true }],
-              'ts/no-floating-promises': 'error',
-              'ts/no-for-in-array': 'error',
-              'ts/no-implied-eval': 'error',
-              'ts/no-misused-promises': 'error',
-              'ts/no-unnecessary-type-assertion': 'error',
-              'ts/no-unsafe-argument': 'error',
-              'ts/no-unsafe-assignment': 'error',
-              'ts/no-unsafe-call': 'error',
-              'ts/no-unsafe-member-access': 'error',
-              'ts/no-unsafe-return': 'error',
-              'ts/restrict-plus-operands': 'error',
-              'ts/restrict-template-expressions': 'error',
-              'ts/unbound-method': 'error',
-            }
-          : {},
-        ...overrides,
-      },
-    },
+
+    ...isTypeAware
+      ? [{
+          name: 'byyuurin/typescript/rules-type-aware',
+          files: filesTypeAware,
+          rules: {
+            ...rulesTypedAware,
+            ...overridesTypedAware,
+          },
+        }]
+      : [],
   ]
 })

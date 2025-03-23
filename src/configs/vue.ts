@@ -68,7 +68,9 @@ export const vue = defineFlatConfigProvider(async (
           ]),
       files,
       rules: {
+        'import/first': 'off',
         'node/prefer-global/process': 'off',
+        'ts/no-redeclare': 'off',
 
         ...pluginVue.configs.base.rules,
 

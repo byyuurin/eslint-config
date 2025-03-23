@@ -1,13 +1,13 @@
 // @ts-check
 import styleMigrate from '@stylistic/eslint-plugin-migrate'
-import createJITI from 'jiti'
+import { createJiti } from 'jiti'
 
-const jiti = createJITI(import.meta.url)
+const jiti = createJiti(import.meta.url)
 
 /**
  * @type {import('./src').default}
  */
-const byyuurin = jiti('./src').default
+const byyuurin = await jiti.import('./src', { default: true })
 
 export default byyuurin(
   {

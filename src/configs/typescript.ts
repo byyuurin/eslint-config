@@ -94,6 +94,7 @@ export const typescript = defineFlatConfigProvider(async (
         'ts/method-signature-style': ['warn', 'property'],
 
         'ts/no-dynamic-delete': 'off',
+        'ts/no-empty-object-type': ['error', { allowInterfaces: 'always' }],
         'ts/no-explicit-any': 'off',
         'ts/no-extraneous-class': 'off',
         'ts/no-import-type-side-effects': 'warn',

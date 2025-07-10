@@ -186,7 +186,7 @@ export const vue = defineFlatConfigProvider(async (
               'vue/max-attributes-per-line': ['warn', { singleline: 9, multiline: 1 }],
               'vue/object-curly-newline': ['warn', { multiline: true, consistent: true }],
               'vue/object-curly-spacing': ['warn', 'always'],
-              'vue/object-property-newline': ['warn', { allowMultiplePropertiesPerLine: true }],
+              'vue/object-property-newline': ['warn', { allowAllPropertiesOnSameLine: true }],
               'vue/operator-linebreak': ['warn', 'before'],
               'vue/padding-line-between-blocks': ['warn', 'always'],
               'vue/quote-props': ['warn', 'consistent-as-needed'],

@@ -81,7 +81,7 @@ export const jsonc = defineFlatConfigProvider(async (
               'jsonc/key-spacing': ['warn', { afterColon: true, beforeColon: false }],
               'jsonc/object-curly-newline': ['warn', { consistent: true, multiline: true }],
               'jsonc/object-curly-spacing': ['warn', 'always'],
-              'jsonc/object-property-newline': ['warn', { allowMultiplePropertiesPerLine: true }],
+              'jsonc/object-property-newline': ['warn', { allowAllPropertiesOnSameLine: true }],
               'jsonc/quote-props': 'warn',
               'jsonc/quotes': 'warn',
             }

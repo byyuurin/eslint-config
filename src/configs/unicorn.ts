@@ -21,7 +21,7 @@ export const unicorn = defineFlatConfigProvider(() => [
       'unicorn/no-document-cookie': 'error',
       'unicorn/no-for-loop': 'warn',
       'unicorn/no-hex-escape': 'warn',
-      'unicorn/no-instanceof-array': 'warn',
+      'unicorn/no-instanceof-builtins': 'warn',
       'unicorn/no-invalid-remove-event-listener': 'error',
       'unicorn/no-lonely-if': 'warn',
       'unicorn/no-negated-condition': 'warn',

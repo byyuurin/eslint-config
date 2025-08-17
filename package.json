@@ -10,24 +10,26 @@
     "url": "https://github.com/byyuurin/eslint-config.git"
   },
   "exports": {
-    ".": "./dist/index.js"
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
   },
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "stub": "tsup --format esm",
-    "dev": "tsup --format esm,cjs --watch & eslint-config-inspector",
-    "watch": "tsup --format esm,cjs --watch",
+    "stub": "tsdown",
+    "dev": "tsdown --watch & eslint-config-inspector",
+    "watch": "tsdown --watch",
     "lint": "pnpm run stub && eslint .",
     "lint:fix": "pnpm run stub && eslint . --fix",
     "release": "bumpp && pnpm publish",
     "test": "vitest",
     "type-gen": "tsx scripts/type-gen.ts",
     "type-check": "tsc --noEmit",
-    "prepack": "nr type-gen && tsup --format esm,cjs --clean --dts",
+    "prepack": "nr type-gen && tsdown --clean --dts",
     "prepare": "simple-git-hooks"
   },
   "peerDependencies": {
@@ -93,7 +95,7 @@
     "fs-extra": "^11.3.3",
     "lint-staged": "^15.5.2",
     "simple-git-hooks": "^2.13.1",
-    "tsup": "^8.5.1",
+    "tsdown": "^0.18.4",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
     "vitest": "^3.2.4",

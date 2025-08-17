@@ -18,16 +18,16 @@
     "dist"
   ],
   "scripts": {
-    "stub": "tsup --format esm",
-    "dev": "tsup --format esm,cjs --watch & eslint-config-inspector",
-    "watch": "tsup --format esm,cjs --watch",
+    "stub": "tsdown",
+    "dev": "tsdown --watch & eslint-config-inspector",
+    "watch": "tsdown --watch",
     "lint": "pnpm run stub && eslint .",
     "lint:fix": "pnpm run stub && eslint . --fix",
     "release": "bumpp && pnpm publish",
     "test": "vitest",
     "type-gen": "tsx scripts/type-gen.ts",
     "type-check": "tsc --noEmit",
-    "prepack": "nr type-gen && tsup --format esm,cjs --clean --dts",
+    "prepack": "nr type-gen && tsdown --clean --dts",
     "prepare": "simple-git-hooks"
   },
   "peerDependencies": {
@@ -93,7 +93,7 @@
     "fs-extra": "^11.3.2",
     "lint-staged": "^15.5.2",
     "simple-git-hooks": "^2.13.1",
-    "tsup": "^8.5.0",
+    "tsdown": "^0.14.2",
     "tsx": "^4.20.5",
     "typescript": "^5.9.2",
     "vitest": "^3.2.4",

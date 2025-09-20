@@ -1,5 +1,5 @@
 import { defineFlatConfigProvider } from '../helpers'
-import { pluginAntfu, pluginImport, pluginSimpleImportSort, pluginUnusedImports } from '../plugins'
+import { pluginAntfu, pluginImportLite, pluginSimpleImportSort, pluginUnusedImports } from '../plugins'
 import type { OptionsIsInEditor, OptionsStylistic } from '../types'
 
 export const imports = defineFlatConfigProvider((
@@ -14,40 +14,27 @@ export const imports = defineFlatConfigProvider((
     {
       plugins: {
         'antfu': pluginAntfu,
-        'import': pluginImport,
+        'import': pluginImportLite,
         'unused-imports': pluginUnusedImports,
         'simple-import-sort': pluginSimpleImportSort,
       },
       name: 'byyuurin/imports/rules',
       rules: {
         // antfu
+        // https://github.com/antfu/eslint-plugin-antfu/tree/main/src/rules
         // ----------------------------------------
         'antfu/import-dedupe': 'warn',
 
-        // import
-        // https://github.com/import-js/eslint-plugin-import#helpful-warnings
-        // ----------------------------------------
-        'import/export': 'error',
-        'import/no-mutable-exports': 'error',
-
-        // import
-        // https://github.com/import-js/eslint-plugin-import#module-systems
-        // ----------------------------------------
-
-        // import
-        // https://github.com/import-js/eslint-plugin-import#static-analysis
-        // ----------------------------------------
-        'import/no-self-import': 'error',
-        'import/no-webpack-loader-syntax': 'error',
-
-        // import
-        // https://github.com/import-js/eslint-plugin-import#style-guide
+        // import-lite
+        // https://github.com/9romise/eslint-plugin-import-lite/tree/main/src/rules
         // ----------------------------------------
         'import/first': 'warn',
         'import/no-duplicates': 'warn',
+        'import/no-mutable-exports': 'error',
         'import/no-named-default': 'error',
 
         // unused-imports
+        // https://github.com/sweepline/eslint-plugin-unused-imports/tree/master/src/rules
         // ----------------------------------------
         'unused-imports/no-unused-imports': isInEditor ? 'off' : 'warn',
 
@@ -63,11 +50,11 @@ export const imports = defineFlatConfigProvider((
         ],
 
         // simple-import-sort
+        // https://github.com/lydell/eslint-plugin-simple-import-sort
         // ----------------------------------------
         ...stylistic
           ? {
               'sort-imports': 'off',
-              'import/order': 'off',
               'import/newline-after-import': 'warn',
 
               'simple-import-sort/imports': ['warn', {
